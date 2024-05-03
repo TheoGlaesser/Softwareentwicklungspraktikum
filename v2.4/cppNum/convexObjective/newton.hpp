@@ -7,7 +7,7 @@
 
 namespace co {
 
-  template<typename T, typename LINEAR_SOLVER_T=la::llt_solver_t<T>>
+  template<typename T, typename LINEAR_SOLVER_T=la::gs_solver_t<T>>
   class newton_minimizer_t : public minimizer_t<T> {
       using approximation_t<T>::_states;
       using approximation_t<T>::_parameters;
@@ -29,8 +29,7 @@ namespace co {
 
 namespace co {
 
-  template<typename T, typename LINEAR_SOLVER_T>
-  newton_minimizer_t<T,LINEAR_SOLVER_T>::newton_minimizer_t(const T& accuracy, bool trace) : minimizer_t<T>(accuracy, trace) {}
+  template<typename T, typename LINEAR_SOLVER_T> newton_minimizer_t<T,LINEAR_SOLVER_T>::newton_minimizer_t(const T& accuracy, bool trace) : minimizer_t<T>(accuracy, trace) {}
 
   template<typename T, typename LINEAR_SOLVER_T>
   template<typename AS_T>
@@ -40,7 +39,7 @@ namespace co {
 
   template<typename T, typename LINEAR_SOLVER_T>
   la::vector_t<T> newton_minimizer_t<T,LINEAR_SOLVER_T>::run(la::vector_t<T> x, const la::vector_t<T> &p) {
-    as::newton_solver_t<T,newton_minimizer_t<T>,LINEAR_SOLVER_T> as_solver(_accuracy,_trace);
+    as::newton_solver_t<T,newton_minimizer_t<T, LINEAR_SOLVER_T>> as_solver(_accuracy,_trace);
     x=as_solver.run(x,p);
     if (_trace) { _states=as_solver.get_states(); _parameters=p; }
     return x;

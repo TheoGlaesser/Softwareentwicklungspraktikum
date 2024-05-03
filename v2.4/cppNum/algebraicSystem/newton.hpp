@@ -6,7 +6,7 @@
 
 namespace as {
 
-  template<typename T, typename SYSTEM_T=system_t, typename LINEAR_SOLVER_T=la::lu_solver_t<T>>
+  template<typename T, typename SYSTEM_T=system_t, typename LINEAR_SOLVER_T=la::gs_solver_t<T>>
   class newton_solver_t : public solver_t<T,SYSTEM_T> {
       using solver_t<T,SYSTEM_T>::_states;
       using solver_t<T,SYSTEM_T>::_parameters;

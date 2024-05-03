@@ -1,5 +1,5 @@
 # edit according to your environment
-BASE_DIR=$(HOME)/Coding/SoftwarePraktikum/v2.4
+BASE_DIR=$(HOME)/Coding/Softwareentwicklungspraktikum/v2.4
 CPPC=g++ -Wall -Wextra -pedantic -O3 
 INC=-I$(BASE_DIR) 
 THIRDPARTY_INC=-I$(BASE_DIR)/../thirdParty/ad -I$(BASE_DIR)/../thirdParty/eigen-3.4.0 

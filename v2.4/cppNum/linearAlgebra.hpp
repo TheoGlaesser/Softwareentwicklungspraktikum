@@ -2,6 +2,8 @@
 #pragma once
 
 #include "Eigen/Dense"
+#include <iostream>
+#include <cmath>
 
 namespace la {
 
@@ -24,5 +26,39 @@ namespace la {
       return A.llt().solve(b);
     }
   };
+  
+  template<typename T>
+  struct gs_solver_t {
+  static la::vector_t<T> run(const la::matrix_t<T>& A, const la::vector_t<T>& b) {
+	int n = b.size();
+	la::vector_t<T> x(n), x_prev(n);
+	T error = 5, tol = 0.0000001;
+
+
+	while (error > tol) {
+		for(int i=0; i<n; i++) {
+			T temp1 = 0, temp2 = 0;
+
+			for(int j=0; j<i; j++) {
+				temp1 = temp1 + A(i,j) * x(j);
+			}
+			for(int j=i+1; j<n; j++) {
+				temp2 = temp2 + A(i,j) * x_prev(j);
+			}
+
+
+			x(i) = (1/A(i,i)) * (b(i) - temp1 - temp2);
+		}
+
+		for(int i=0; i<n; i++) {
+			if(abs(x(i) - x_prev(i)) < error) {error = abs(x(i) - x_prev(i));}	
+			x_prev(i) = x(i);
+		}
+	}
+	return x;
+     }
+  };
+
+
 
 }
