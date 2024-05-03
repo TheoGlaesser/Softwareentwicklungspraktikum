@@ -16,6 +16,13 @@ namespace la {
   template<typename T>
   struct lu_solver_t {
     static la::vector_t<T> run(const la::matrix_t<T>& A, const la::vector_t<T>& b) { 
+      	    int n = b.size();
+	    for(int i=0; i<n; i++) {
+		for(int j=0; j<n; j++) {
+			std::cout << A(i,j) << " ";
+		}
+		std::cout << "\n";
+	}
       return A.lu().solve(b);
     }
   };
@@ -30,16 +37,24 @@ namespace la {
   template<typename T>
   struct gs_solver_t {
   static la::vector_t<T> run(const la::matrix_t<T>& A, const la::vector_t<T>& b) {
-	int n = b.size();
+	int n = b.size(), iterations = 0, max_iterations = 100;
 	la::vector_t<T> x(n), x_prev(n);
-	T error = 5, tol = 0.0000001;
+	T error = 5, tol = 0.00000001;
 
+	
+	for(int i=0; i<n; i++) {
+		for(int j=0; j<n; j++) {
+			std::cout << A(i,j) << " ";
+		}
+		std::cout << "\n";
+	}
+	
 
-	while (error > tol) {
+	while (error > tol && iterations++ < max_iterations)  {
 		for(int i=0; i<n; i++) {
 			T temp1 = 0, temp2 = 0;
 
-			for(int j=0; j<i; j++) {
+				for(int j=0; j<i; j++) {
 				temp1 = temp1 + A(i,j) * x(j);
 			}
 			for(int j=i+1; j<n; j++) {
@@ -54,6 +69,7 @@ namespace la {
 			if(abs(x(i) - x_prev(i)) < error) {error = abs(x(i) - x_prev(i));}	
 			x_prev(i) = x(i);
 		}
+		//std::cout << error << "\n";
 	}
 	return x;
      }

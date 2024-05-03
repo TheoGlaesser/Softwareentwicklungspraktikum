@@ -7,7 +7,7 @@
 
 namespace co {
 
-  template<typename T, typename LINEAR_SOLVER_T=la::gs_solver_t<T>>
+  template<typename T, typename LINEAR_SOLVER_T=la::llt_solver_t<T>>
   class newton_minimizer_t : public minimizer_t<T> {
       using approximation_t<T>::_states;
       using approximation_t<T>::_parameters;
