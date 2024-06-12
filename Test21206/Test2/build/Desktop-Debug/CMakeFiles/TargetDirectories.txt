@@ -1,0 +1,9 @@
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/Test2.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/edit_cache.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/list_install_components.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/install.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/install/local.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/install/strip.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/Test2_autogen_timestamp_deps.dir
+D:/Qt/Test2/build/Desktop-Debug/CMakeFiles/Test2_autogen.dir
