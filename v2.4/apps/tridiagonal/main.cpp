@@ -1,11 +1,20 @@
 // info@stce.rwth-aachen.de
-#include "apps/polynomial/polynomial.hpp"
+#include "apps/tridiagonal/tridi.hpp"
 #include "cppNum/convexObjective/newton.hpp"
 #include "cppNum/linearAlgebra.hpp"
 #include "cppNum/derivative.hpp"
 #include <iostream>
+#include <chrono>
+#include <fstream>
+#include <cmath>
 
 int main(int argc, char* argv[]) {
+  //runtime 
+  std::fstream out;
+  out.open("error_gs.txt",std::ios::app);
+
+  auto start = std::chrono::high_resolution_clock::now();
+  //
   using T=double;
   using namespace std;
   assert(argc==2);
@@ -19,5 +28,14 @@ int main(int argc, char* argv[]) {
     << "||dfdx||=" << derivative_t::dfdx<co::objective_t>(x,p).norm() << endl
     << "spd(ddfdxx)=" << !(derivative_t::ddfdxx<co::objective_t>(x,p).llt().info()) << endl;
 
+  auto stop = std::chrono::high_resolution_clock::now();
+
+  double  highest = 0;
+  for(int i=0; i<nx; i++) {
+    if(std::abs(x(i)) > highest) highest = x(i);
+  }
+
+  out << highest << " ";
+  out.close();
   return 0;
 }  

@@ -1,5 +1,5 @@
 // info@stce.rwth-aachen.de
-#include "apps/sphere/sphere.hpp"
+#include "apps/spd1/spd1.hpp"
 #include "cppNum/convexObjective/newton.hpp"
 #include "cppNum/linearAlgebra.hpp"
 
