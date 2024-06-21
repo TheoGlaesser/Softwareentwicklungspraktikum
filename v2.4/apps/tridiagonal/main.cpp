@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
   la::vector_t<T> p=la::vector_t<T>::Random(np); 
   la::vector_t<T> x=la::vector_t<T>::Random(nx); 
 
-  co::newton_minimizer_t<T> minimizer(1e-7);
+  co::newton_minimizer_t<T, la::gs_solver_t<T>> minimizer(1e-7);
   x=minimizer.run(x,p);
   cout << "x=" << x.transpose() << "\nf(x)=" << co::objective_t::f(x,p) << endl
     << "||dfdx||=" << derivative_t::dfdx<co::objective_t>(x,p).norm() << endl
