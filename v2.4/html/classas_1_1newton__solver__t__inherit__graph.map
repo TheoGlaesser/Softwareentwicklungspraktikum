@@ -1,0 +1,6 @@
+<map id="as::newton_solver_t&lt; T, SYSTEM_T, LINEAR_SOLVER_T &gt;" name="as::newton_solver_t&lt; T, SYSTEM_T, LINEAR_SOLVER_T &gt;">
+<area shape="rect" id="node1" title="It inherites from solver_t and it receives as well as template parameter a solver,..." alt="" coords="19,229,194,285"/>
+<area shape="rect" id="node2" href="$classas_1_1solver__t.html" title=" " alt="" coords="5,155,208,181"/>
+<area shape="rect" id="node3" href="$classapproximation__t.html" title="This class inherites from iteration_t and stores the accuracy." alt="" coords="23,80,190,107"/>
+<area shape="rect" id="node4" href="$classiteration__t.html" title="This abstract class allows to store parameters, states and a bool for the trace. It then allows to pl..." alt="" coords="43,5,170,32"/>
+</map>

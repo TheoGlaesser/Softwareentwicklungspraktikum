@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 
+///This abstract class allows to store parameters, states and a bool for the trace. It then allows to plot the results.
 template<typename T>
 class iteration_t {
   protected:

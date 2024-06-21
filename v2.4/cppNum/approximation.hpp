@@ -3,6 +3,7 @@
 
 #include "iteration.hpp"
 
+///This class inherites from iteration_t and stores the accuracy
 template<typename T>
 class approximation_t : public iteration_t<T> {
   protected:

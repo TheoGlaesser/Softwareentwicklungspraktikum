@@ -4,7 +4,9 @@
 #include "linearAlgebra.hpp"
 #include "ad.hpp"
 
+///This class computes the derivatives of different functions, returning different objects depending on the size of the domain of the function.
 struct derivative_t {
+///This function computes the derivative w.r.t. x of a function which is a vector, therefore the derivative will be a matrix
   template<typename FUNCTION_T, typename T>
   static la::matrix_t<T> dFdx(const la::vector_t<T>& x_v, const la::vector_t<T>& p_v) { 
     int n=x_v.size(), m=p_v.size();
@@ -20,7 +22,7 @@ struct derivative_t {
     }
     return drdx;
   }
-
+///Computes the derivative w.r.t. p of a function which is a vector
   template<typename FUNCTION_T, typename T>
   static la::matrix_t<T> dFdp(const la::vector_t<T>& x_v, const la::vector_t<T>& p_v) { 
     int n=x_v.size(), m=p_v.size();
@@ -36,7 +38,7 @@ struct derivative_t {
     }
     return drdp;
   }
-
+///Computes the derivative of a function w.r.t. x if the function is returning a scalar
   template<typename FUNCTION_T, typename T=double>
   static la::vector_t<T> dfdx(const la::vector_t<T>& x_v, const la::vector_t<T> &p_v) { 
     int n=x_v.size(), m=p_v.size();
@@ -52,7 +54,7 @@ struct derivative_t {
     }
     return dydx;
   }
-
+///Computes the derivative of a function w.r.t. p if the function is returning a scalar
   template<typename FUNCTION_T, typename T=double>
   static la::matrix_t<T> ddfdxx(const la::vector_t<T>& x_v, const la::vector_t<T>& p_v) { 
     int n=x_v.size(), m=p_v.size();

@@ -1,0 +1,6 @@
+<map id="co::minimizer_t&lt; T &gt;" name="co::minimizer_t&lt; T &gt;">
+<area shape="rect" id="node1" title="This class inherites from approximation_t and stores the parameters and states. It allows to plot." alt="" coords="8,155,169,181"/>
+<area shape="rect" id="node4" href="$classco_1_1newton__minimizer__t.html" title="This class inherites from minimizer_t, and receives as template parameter the solver the user wants t..." alt="" coords="5,229,172,271"/>
+<area shape="rect" id="node2" href="$classapproximation__t.html" title="This class inherites from iteration_t and stores the accuracy." alt="" coords="5,80,172,107"/>
+<area shape="rect" id="node3" href="$classiteration__t.html" title="This abstract class allows to store parameters, states and a bool for the trace. It then allows to pl..." alt="" coords="25,5,152,32"/>
+</map>

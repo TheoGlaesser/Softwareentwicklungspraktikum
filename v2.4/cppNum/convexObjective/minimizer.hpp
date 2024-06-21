@@ -4,7 +4,7 @@
 #include "cppNum/approximation.hpp"
 
 namespace co {
-
+///This class inherites from approximation_t and stores the parameters and states. It allows to plot
   template<typename T>
   class minimizer_t : public approximation_t <T> {
     protected:

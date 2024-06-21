@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classiteration__t.html" title="This abstract class allows to store parameters, states and a bool for the trace. It then allows to pl..." alt="" coords="5,56,132,83"/>
+<area shape="rect" id="node2" href="$classapproximation__t.html" title="This class inherites from iteration_t and stores the accuracy." alt="" coords="180,56,347,83"/>
+<area shape="rect" id="node3" href="$classas_1_1solver__t.html" title="it is abstract and inherites from approximation_t. It has got a virtual routine that allows to run th..." alt="" coords="395,5,605,32"/>
+<area shape="rect" id="node4" href="$classco_1_1minimizer__t.html" title="This class inherites from approximation_t and stores the parameters and states. It allows to plot." alt="" coords="419,56,581,83"/>
+<area shape="rect" id="node6" href="$classas_1_1solver__t.html" title=" " alt="" coords="399,112,601,139"/>
+<area shape="rect" id="node5" href="$classco_1_1newton__minimizer__t.html" title="This class inherites from minimizer_t, and receives as template parameter the solver the user wants t..." alt="" coords="653,42,852,83"/>
+<area shape="rect" id="node7" href="$classas_1_1newton__solver__t.html" title="It inherites from solver_t and it receives as well as template parameter a solver,..." alt="" coords="665,108,840,164"/>
+</map>

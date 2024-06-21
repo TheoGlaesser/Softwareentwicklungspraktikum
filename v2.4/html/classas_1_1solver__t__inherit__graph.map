@@ -1,0 +1,5 @@
+<map id="as::solver_t&lt; T, SYSTEM_T &gt;" name="as::solver_t&lt; T, SYSTEM_T &gt;">
+<area shape="rect" id="node1" title="it is abstract and inherites from approximation_t. It has got a virtual routine that allows to run th..." alt="" coords="5,155,216,181"/>
+<area shape="rect" id="node2" href="$classapproximation__t.html" title="This class inherites from iteration_t and stores the accuracy." alt="" coords="27,80,194,107"/>
+<area shape="rect" id="node3" href="$classiteration__t.html" title="This abstract class allows to store parameters, states and a bool for the trace. It then allows to pl..." alt="" coords="47,5,174,32"/>
+</map>
