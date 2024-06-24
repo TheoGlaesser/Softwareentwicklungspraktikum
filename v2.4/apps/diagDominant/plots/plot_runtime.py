@@ -9,8 +9,8 @@ plt.figure(figsize=(10, 6))
 plt.plot(x, y_gs, label='gs_runtime', color='blue')  
 plt.plot(x, y_llt, label='llt_runtime', color='red')  
 
-plt.xlabel('x')
-plt.ylabel('y')
+plt.xlabel('n')
+plt.ylabel('runtime')
 plt.title('plot of gs_runtime and llt_runtime in different dimensions')
 plt.legend()
 

@@ -10,7 +10,7 @@ plt.plot(x, y_gs, label='gs_error', color='blue')
 plt.plot(x, y_llt, label='llt_error', color='red')  
 
 plt.xlabel('n')
-plt.ylabel('y')
+plt.ylabel('error')
 plt.title('plot of max||x|| gs_result and llt_result in different dimensions')
 plt.legend()
 

@@ -10,8 +10,6 @@
 
 int main(int argc, char* argv[]) {
   //runtime 
-  std::fstream out;
-  out.open("error_gs.txt",std::ios::app);
 
   auto start = std::chrono::high_resolution_clock::now();
   //
@@ -29,13 +27,7 @@ int main(int argc, char* argv[]) {
     << "spd(ddfdxx)=" << !(derivative_t::ddfdxx<co::objective_t>(x,p).llt().info()) << endl;
 
   auto stop = std::chrono::high_resolution_clock::now();
+  std::cout << "runtime: " <<  std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count() << "\n";
 
-  double  highest = 0;
-  for(int i=0; i<nx; i++) {
-    if(std::abs(x(i)) > highest) highest = x(i);
-  }
-
-  out << highest << " ";
-  out.close();
   return 0;
 }  
