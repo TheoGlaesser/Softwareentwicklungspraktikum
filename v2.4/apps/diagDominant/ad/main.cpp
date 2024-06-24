@@ -1,5 +1,5 @@
 // info@stce.rwth-aachen.de
-#include "apps/spd1/spd1.hpp"
+#include "apps/diagDominant/spd1.hpp"
 #include "cppNum/convexObjective/newton.hpp"
 #include "cppNum/linearAlgebra.hpp"
 #include "cppNum/derivative.hpp"

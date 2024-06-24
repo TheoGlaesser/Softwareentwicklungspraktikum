@@ -10,12 +10,9 @@ all :
 	cd tridiagonal && make
 	cd tridiagonal/visualization && make
 	cd tridiagonal/ad && make
-	cd spd1 && make
-	cd spd1/visualization && make
-	cd spd1/ad && make
-	cd pascal && make
-	cd pascal/visualization && make
-	cd pascal/ad && make
+	cd diagDominant && make
+	cd diagDominant/visualization && make
+	cd diagDominant/ad && make
 
 
 test :
@@ -25,8 +22,8 @@ test :
 	cd hilbert/ad && make test
 	cd tridiagonal && make test
 	cd tridiagonal/ad && make test
-	cd spd1 && make test
-	cd spd1/ad && makde test
+	cd diagDominant && make test
+	cd diagDominant/ad && makde test
 
 depend :
 	cd sphere && make depend
@@ -38,9 +35,9 @@ depend :
 	cd tridiagonal && make depend
 	cd tridiagonal/visualization && make depend
 	cd tridiagonal/ad && make depend
-	cd spd1 && make depend
-	cd spd1/visualization && make depend
-	cd spd1/ad && make depend
+	cd diagDominant && make depend
+	cd diagDominant/visualization && make depend
+	cd diagDominant/ad && make depend
 
 
 clean :
@@ -53,9 +50,9 @@ clean :
 	cd tridiagonal && make clean
 	cd tridiagonal/visualization && make clean
 	cd tridiagonal/ad && make clean
-	cd spd1 && make clean
-	cd spd1/visualization && make clean
-	cd spd1/ad && make clean
+	cd diagDominant && make clean
+	cd diagDominant/visualization && make clean
+	cd diagDominant/ad && make clean
 
 
 .PHONY: all test depend clean
