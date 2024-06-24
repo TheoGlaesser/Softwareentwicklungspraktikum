@@ -4,7 +4,7 @@
 #include "cppNum/approximation.hpp"
 
 namespace as {
-
+/// it is abstract and inherites from approximation_t. It has got a virtual routine that allows to run the solver 
   template<typename T, typename SYSTEM_T>
   class solver_t : public approximation_t<T> {
     protected:
