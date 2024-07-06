@@ -1,0 +1,3 @@
+[submodule "Tragwerk/qt-creator"]
+	path = Tragwerk/qt-creator
+	url = https://github.com/qt-creator/qt-creator.git
