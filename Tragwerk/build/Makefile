@@ -162,37 +162,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Test2
+# Target rules for targets named main
 
 # Build rule for target.
-Test2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Test2
-.PHONY : Test2
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-Test2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/build
-.PHONY : Test2/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named Test2_autogen
+# Target rules for targets named main_autogen
 
 # Build rule for target.
-Test2_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Test2_autogen
-.PHONY : Test2_autogen
+main_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main_autogen
+.PHONY : main_autogen
 
 # fast build rule for target.
-Test2_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2_autogen.dir/build.make CMakeFiles/Test2_autogen.dir/build
-.PHONY : Test2_autogen/fast
+main_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_autogen.dir/build.make CMakeFiles/main_autogen.dir/build
+.PHONY : main_autogen/fast
 
 Frontend/main.o: Frontend/main.cpp.o
 .PHONY : Frontend/main.o
 
 # target to build an object file
 Frontend/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/main.cpp.o
 .PHONY : Frontend/main.cpp.o
 
 Frontend/main.i: Frontend/main.cpp.i
@@ -200,7 +200,7 @@ Frontend/main.i: Frontend/main.cpp.i
 
 # target to preprocess a source file
 Frontend/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/main.cpp.i
 .PHONY : Frontend/main.cpp.i
 
 Frontend/main.s: Frontend/main.cpp.s
@@ -208,7 +208,7 @@ Frontend/main.s: Frontend/main.cpp.s
 
 # target to generate assembly for a file
 Frontend/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/main.cpp.s
 .PHONY : Frontend/main.cpp.s
 
 Frontend/mainwindow.o: Frontend/mainwindow.cpp.o
@@ -216,7 +216,7 @@ Frontend/mainwindow.o: Frontend/mainwindow.cpp.o
 
 # target to build an object file
 Frontend/mainwindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/mainwindow.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/mainwindow.cpp.o
 .PHONY : Frontend/mainwindow.cpp.o
 
 Frontend/mainwindow.i: Frontend/mainwindow.cpp.i
@@ -224,7 +224,7 @@ Frontend/mainwindow.i: Frontend/mainwindow.cpp.i
 
 # target to preprocess a source file
 Frontend/mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/mainwindow.cpp.i
 .PHONY : Frontend/mainwindow.cpp.i
 
 Frontend/mainwindow.s: Frontend/mainwindow.cpp.s
@@ -232,32 +232,32 @@ Frontend/mainwindow.s: Frontend/mainwindow.cpp.s
 
 # target to generate assembly for a file
 Frontend/mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Frontend/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/mainwindow.cpp.s
 .PHONY : Frontend/mainwindow.cpp.s
 
-Test2_autogen/mocs_compilation.o: Test2_autogen/mocs_compilation.cpp.o
-.PHONY : Test2_autogen/mocs_compilation.o
+main_autogen/mocs_compilation.o: main_autogen/mocs_compilation.cpp.o
+.PHONY : main_autogen/mocs_compilation.o
 
 # target to build an object file
-Test2_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Test2_autogen/mocs_compilation.cpp.o
-.PHONY : Test2_autogen/mocs_compilation.cpp.o
+main_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o
+.PHONY : main_autogen/mocs_compilation.cpp.o
 
-Test2_autogen/mocs_compilation.i: Test2_autogen/mocs_compilation.cpp.i
-.PHONY : Test2_autogen/mocs_compilation.i
+main_autogen/mocs_compilation.i: main_autogen/mocs_compilation.cpp.i
+.PHONY : main_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-Test2_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Test2_autogen/mocs_compilation.cpp.i
-.PHONY : Test2_autogen/mocs_compilation.cpp.i
+main_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.i
+.PHONY : main_autogen/mocs_compilation.cpp.i
 
-Test2_autogen/mocs_compilation.s: Test2_autogen/mocs_compilation.cpp.s
-.PHONY : Test2_autogen/mocs_compilation.s
+main_autogen/mocs_compilation.s: main_autogen/mocs_compilation.cpp.s
+.PHONY : main_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-Test2_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test2.dir/build.make CMakeFiles/Test2.dir/Test2_autogen/mocs_compilation.cpp.s
-.PHONY : Test2_autogen/mocs_compilation.cpp.s
+main_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.s
+.PHONY : main_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -271,17 +271,17 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Test2_autogen"
-	@echo "... Test2"
+	@echo "... main_autogen"
+	@echo "... main"
 	@echo "... Frontend/main.o"
 	@echo "... Frontend/main.i"
 	@echo "... Frontend/main.s"
 	@echo "... Frontend/mainwindow.o"
 	@echo "... Frontend/mainwindow.i"
 	@echo "... Frontend/mainwindow.s"
-	@echo "... Test2_autogen/mocs_compilation.o"
-	@echo "... Test2_autogen/mocs_compilation.i"
-	@echo "... Test2_autogen/mocs_compilation.s"
+	@echo "... main_autogen/mocs_compilation.o"
+	@echo "... main_autogen/mocs_compilation.i"
+	@echo "... main_autogen/mocs_compilation.s"
 .PHONY : help
 
 

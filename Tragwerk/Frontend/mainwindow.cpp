@@ -31,6 +31,12 @@ void MainWindow::addNode()
     if (xStr.isEmpty() || yStr.isEmpty()) {
         return; // Keine Eingabe
     }
+    
+    Backend::Point p1;
+    Backend::Force f; std::vector<Backend::Force> forces(1, f);
+    Backend::Bearing b; std::vector<Backend::Bearing> bearings(1, b);
+    Backend::Rod r; std::vector<Backend::Rod> rods(1, r);
+    Backend::Simulator(rods, forces, bearings, 1);
 
     bool okX, okY;
     double x = xStr.toDouble(&okX);

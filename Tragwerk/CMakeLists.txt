@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Test2 VERSION 0.1 LANGUAGES CXX)
+project(main VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -20,7 +20,7 @@ set(PROJECT_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(Test2
+    qt_add_executable(main
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
@@ -30,19 +30,23 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(Test2 SHARED
+        add_library(main SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(Test2
+        add_executable(main
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(Test2 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_include_directories(main PUBLIC current/Backend/src/Backend.h)
+
+target_link_libraries(main PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(main PRIVATE ${CMAKE_SOURCE_DIR}/bin/libbackend.a)
+
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -50,7 +54,7 @@ target_link_libraries(Test2 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.Test2)
 endif()
-set_target_properties(Test2 PROPERTIES
+set_target_properties(main PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -59,12 +63,12 @@ set_target_properties(Test2 PROPERTIES
 )
 
 include(GNUInstallDirs)
-install(TARGETS Test2
+install(TARGETS main
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(Test2)
+    qt_finalize_executable(main)
 endif()

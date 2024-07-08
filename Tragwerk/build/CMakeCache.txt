@@ -167,7 +167,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Test2
+CMAKE_PROJECT_NAME:STATIC=main
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1
@@ -269,6 +269,15 @@ Test2_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Test2_SOURCE_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk
+
+//Value Computed by CMake
+main_BINARY_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build
+
+//Value Computed by CMake
+main_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+main_SOURCE_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk
 
 
 ########################
