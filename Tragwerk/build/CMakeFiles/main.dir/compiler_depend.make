@@ -3,6 +3,7 @@
 
 CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   /usr/include/stdc-predef.h \
+  ../Frontend/mainwindow.h \
   ../Backend/src/Backend.h \
   ../Backend/src/Backend/Simulator.h \
   /usr/include/c++/11/vector \
@@ -456,7 +457,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  ../Frontend/mainwindow.h \
+  /usr/include/c++/11/math.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1047,6 +1048,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /usr/include/c++/11/math.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1183,6 +1185,9 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCheckBox \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcheckbox.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsView \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h \
@@ -1193,6 +1198,8 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGroupBox \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgroupbox.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h \
@@ -1205,7 +1212,6 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
@@ -1680,6 +1686,7 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /usr/include/c++/11/math.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1801,8 +1808,6 @@ main_autogen/V57I63ONWH/moc_mainwindow.cpp:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h:
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h:
@@ -1812,6 +1817,8 @@ main_autogen/V57I63ONWH/moc_mainwindow.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgroupbox.h:
 
@@ -1824,6 +1831,8 @@ main_autogen/V57I63ONWH/moc_mainwindow.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h:
 
 main_autogen/include/ui_mainwindow.h:
 
@@ -1878,6 +1887,8 @@ main_autogen/include/ui_mainwindow.h:
 /usr/include/c++/11/memory:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h:
 
 /usr/include/string.h:
 
@@ -2020,6 +2031,8 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/c++/11/tr1/poly_hermite.tcc:
 
 /usr/include/c++/11/bits/locale_facets.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCheckBox:
 
 /usr/include/c++/11/bits/exception.h:
 
@@ -2223,19 +2236,11 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/include/errno.h:
+/usr/include/c++/11/bits/concept_check.h:
 
-/usr/include/c++/11/bits/alloc_traits.h:
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
-/usr/include/stdc-predef.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Dot.h:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+/usr/include/c++/11/ext/string_conversions.h:
 
 /usr/include/c++/11/bits/vector.tcc:
 
@@ -2273,6 +2278,8 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel:
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
@@ -2291,8 +2298,6 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/c++/11/streambuf:
 
-/usr/include/c++/11/bits/concept_check.h:
-
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Householder/Householder.h:
 
 /usr/include/c++/11/bits/functexcept.h:
@@ -2302,6 +2307,28 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/include/c++/11/chrono:
+
+/usr/include/errno.h:
+
+/usr/include/c++/11/bits/alloc_traits.h:
+
+/usr/include/stdc-predef.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Dot.h:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/11/type_traits:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
@@ -2321,8 +2348,6 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h:
-
 /usr/include/c++/11/vector:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Householder/BlockHouseholder.h:
@@ -2338,10 +2363,6 @@ main_autogen/mocs_compilation.cpp:
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/SVD/UpperBidiagonalization.h:
 
 /usr/include/c++/11/tuple:
-
-/usr/include/c++/11/type_traits:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
@@ -2361,6 +2382,8 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
+../Frontend/mainwindow.h:
+
 /usr/include/c++/11/ext/type_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
@@ -2370,10 +2393,6 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h:
 
 /usr/include/c++/11/backward/binders.h:
-
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/include/c++/11/ext/string_conversions.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -2394,8 +2413,6 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/c++/11/typeinfo:
-
-/usr/include/c++/11/bits/stl_tempbuf.h:
 
 /usr/include/c++/11/bits/stl_algobase.h:
 
@@ -2442,8 +2459,6 @@ main_autogen/mocs_compilation.cpp:
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/CwiseTernaryOp.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Geometry/Translation.h:
-
-/usr/include/c++/11/pstl/pstl_config.h:
 
 /usr/include/c++/11/bits/unordered_map.h:
 
@@ -2869,7 +2884,7 @@ main_autogen/mocs_compilation.cpp:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
 
-../Frontend/mainwindow.h:
+/usr/include/c++/11/math.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/SelfCwiseBinaryOp.h:
 
@@ -3012,5 +3027,7 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcheckbox.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h:

@@ -1,7 +1,7 @@
-CMakeFiles/main.dir/Frontend/main.cpp.o: \
- /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/main.cpp \
+CMakeFiles/main.dir/Frontend/main_right.cpp.o: \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/main_right.cpp \
  /usr/include/stdc-predef.h \
- /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow_right.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/Simulator.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \

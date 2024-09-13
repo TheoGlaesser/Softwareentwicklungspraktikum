@@ -1,4 +1,4 @@
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/V57I63ONWH/moc_mainwindow.cpp: /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h \
+/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/V57I63ONWH/moc_mainwindow_right.cpp: /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow_right.h \
   /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/moc_predefs.h \
   /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend.h \
   /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Simulator.h \

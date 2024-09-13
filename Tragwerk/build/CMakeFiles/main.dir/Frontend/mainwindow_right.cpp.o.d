@@ -1,7 +1,7 @@
-CMakeFiles/main.dir/Frontend/main.cpp.o: \
- /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/main.cpp \
+CMakeFiles/main.dir/Frontend/mainwindow_right.cpp.o: \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow_right.cpp \
  /usr/include/stdc-predef.h \
- /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow_right.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/Simulator.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
@@ -524,6 +524,9 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/include/ui_mainwindow_right.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
@@ -531,4 +534,35 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCheckBox \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcheckbox.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsView \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGroupBox \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgroupbox.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMenuBar \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h

@@ -2,12 +2,20 @@
 #define MAINWINDOW_H
 
 #include "../Backend/src/Backend.h"
+#include "math.h"
+#include "cmath"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsLineItem>
 #include <QPointF>
 #include <vector>
+
+struct force {
+  QPointF point;
+  qreal betrag;
+  qreal winkel;
+};
 
 namespace Ui {
 class MainWindow;
@@ -22,17 +30,27 @@ public:
     ~MainWindow();
 
 private slots:
-    void addNode();  // Slot für das Hinzufügen eines Knotens
-    void undoLastNode();  // Slot für das Rückgängig machen des letzten Knotens
+    void addNode();
+    void removeSelectedItems(); 
+    void undoLastNode(); // Slot for removing selected items
+    void makeForce();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    std::vector<QPointF> nodes;  // Liste der Knoten
-    std::vector<QGraphicsEllipseItem*> nodeItems;  // Liste der Knoten-Elemente
-    std::vector<QGraphicsLineItem*> lineItems;  // Liste der Linien-Elemente
 
-    void drawCoordinateSystem();  // Methode zum Zeichnen des Koordinatensystems
+    std::vector<QPointF> nodes;
+    std::vector<QGraphicsEllipseItem*> nodeItems;
+
+    std::vector<QGraphicsLineItem*> lineItems;
+
+    std::vector<force> forces;
+    std::vector<QGraphicsLineItem*> forceLineItems;
+    std::vector<QGraphicsPolygonItem*> forcePolygonItems;
+
+
+    void drawCoordinateSystem();
+    bool isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node);  // Function to check line connection
 };
 
 #endif // MAINWINDOW_H
