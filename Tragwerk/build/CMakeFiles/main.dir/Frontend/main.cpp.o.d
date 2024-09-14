@@ -406,7 +406,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/../../thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/../../thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/./RealQZ.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/../../thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
- /usr/include/c++/11/math.h \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/ownDataTypes.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -524,6 +524,15 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
+ /usr/include/c++/11/math.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \

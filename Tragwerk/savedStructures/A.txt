@@ -1,0 +1,8 @@
+nodes
+30 30 30 60 
+lines
+30 30 30 60 
+forces
+
+supports
+

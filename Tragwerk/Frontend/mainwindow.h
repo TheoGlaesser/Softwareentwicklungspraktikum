@@ -1,7 +1,8 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
+
 
 #include "../Backend/src/Backend.h"
+#include "ownDataTypes.h"
 #include "math.h"
 #include "cmath"
 #include <QMainWindow>
@@ -10,12 +11,10 @@
 #include <QGraphicsLineItem>
 #include <QPointF>
 #include <vector>
+#include <string>
+#include <sstream>
+#include <QFileDialog>
 
-struct force {
-  QPointF point;
-  qreal betrag;
-  qreal winkel;
-};
 
 namespace Ui {
 class MainWindow;
@@ -34,23 +33,33 @@ private slots:
     void removeSelectedItems(); 
     void undoLastNode(); // Slot for removing selected items
     void makeForce();
+    void makeSupport();
+    void clear();
+    void save();
+    void load();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-
+    
+    //Nodes
     std::vector<QPointF> nodes;
     std::vector<QGraphicsEllipseItem*> nodeItems;
-
+    
+    //Lines
     std::vector<QGraphicsLineItem*> lineItems;
-
+    
+    //Forces
     std::vector<force> forces;
-    std::vector<QGraphicsLineItem*> forceLineItems;
-    std::vector<QGraphicsPolygonItem*> forcePolygonItems;
+    std::vector<forceGraphicsItem> forceGraphicsItems;
+
+    //Support
+    std::vector<QPointF> supports;
+    std::vector<QGraphicsPolygonItem*> supportItems; 
 
 
     void drawCoordinateSystem();
     bool isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node);  // Function to check line connection
 };
 
-#endif // MAINWINDOW_H
+//#endif // MAINWINDOW_H

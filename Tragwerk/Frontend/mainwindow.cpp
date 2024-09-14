@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Log.cpp"
 #include <algorithm>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -24,14 +25,25 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->removeButton, &QPushButton::clicked, this, &MainWindow::removeSelectedItems);
     connect(ui->undoButton, &QPushButton::clicked, this, &MainWindow::undoLastNode);  // Verbindung für Undo
     connect(ui->makeForceButton, &QPushButton::clicked, this, &MainWindow::makeForce);
+    connect(ui->supportButton, &QPushButton::clicked, this, &MainWindow::makeSupport);
+    connect(ui->clearButton, &QPushButton::clicked, this, &MainWindow::clear);
+    connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::save);
+    connect(ui->loadButton, &QPushButton::clicked, this, &MainWindow::load);
 
     drawCoordinateSystem();
 }
+
+
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
+
 
 void MainWindow::addNode()
 {
@@ -61,7 +73,18 @@ void MainWindow::addNode()
             lineItems.push_back(newLineItem);
         }
     }
+
+    Log::print_nodes(nodes);
+    Log::print_nodeItems(nodeItems);
+    Log::print_lines(lineItems);
+    Log::print_forces(forces);
+    Log::print_forceGraphicsItems(forceGraphicsItems);
+    Log::print_supportItems(supports);
 }
+
+
+
+
 
 bool MainWindow::isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node)
 {
@@ -69,11 +92,19 @@ bool MainWindow::isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipse
     return line->line().p1() == nodeCenter || line->line().p2() == nodeCenter;
 }
 
+
+
+
+
 void MainWindow::removeSelectedItems()
 {
     QList<QGraphicsItem*> selectedItems = scene->selectedItems();
     for (QGraphicsItem* item : selectedItems) {
-        if (QGraphicsEllipseItem* node = dynamic_cast<QGraphicsEllipseItem*>(item)) {
+        
+      
+      //IF NODE SELECTED
+        if (QGraphicsEllipseItem* node = dynamic_cast<QGraphicsEllipseItem*>(item)) 
+        {
             // Remove lines connected to this node
             auto it = lineItems.begin();
             while (it != lineItems.end()) {
@@ -88,25 +119,91 @@ void MainWindow::removeSelectedItems()
             // Remove the node itself
             scene->removeItem(node);
             delete node;
-            auto nodeIt = std::find(nodeItems.begin(), nodeItems.end(), node);
+            auto nodeIt = std::find(nodeItems.begin(), nodeItems.end(), node);  
             if (nodeIt != nodeItems.end()) {
                 nodeItems.erase(nodeIt);
+                ptrdiff_t index = nodeIt - nodeItems.begin();
+                nodes.erase(nodes.begin() + index);
             }
-        } else if (QGraphicsLineItem* line = dynamic_cast<QGraphicsLineItem*>(item)) {
+        } 
+
+
+
+        //IF LINE SELECTED
+        else if (QGraphicsLineItem* line = dynamic_cast<QGraphicsLineItem*>(item)) 
+        {
             // Remove the line
             scene->removeItem(line);
             delete line;
+
             auto lineIt = std::find(lineItems.begin(), lineItems.end(), line);
             if (lineIt != lineItems.end()) {
                 lineItems.erase(lineIt);
             }
-        } else {
+
+           //deleting the according PolygonItem
+           auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
+               [&line] (const forceGraphicsItem& x) -> bool {return line == x.forceLineItem;}); 
+           if (forceGraphicsIt != forceGraphicsItems.end()) {
+               scene->removeItem(forceGraphicsIt->forcePolygonItem);
+               delete forceGraphicsIt->forcePolygonItem;
+               forceGraphicsItems.erase(forceGraphicsIt);
+
+               ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
+               forces.erase(forces.begin() + index);
+           }
+        }
+
+
+
+       //IF POLYGON SELECTED
+       else if (QGraphicsPolygonItem* polygon = dynamic_cast<QGraphicsPolygonItem*>(item)) 
+        {
+            // Remove the line
+           scene->removeItem(polygon);
+           delete polygon;
+
+            auto supportIt = std::find(supportItems.begin(), supportItems.end(), polygon);
+            if (supportIt != supportItems.end()) {
+                supportItems.erase(supportIt);
+
+                ptrdiff_t index = supportIt - supportItems.begin();
+                supports.erase(supports.begin() + index);
+            }
+
+           auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
+               [&polygon] (const forceGraphicsItem& x) -> bool {return polygon == x.forcePolygonItem;}); 
+           if (forceGraphicsIt != forceGraphicsItems.end()) {
+               scene->removeItem(forceGraphicsIt->forceLineItem);
+               delete forceGraphicsIt->forceLineItem;
+               forceGraphicsItems.erase(forceGraphicsIt);
+
+               ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
+               forces.erase(forces.begin() + index);
+           }
+        } 
+        
+
+        else 
+        {
             // Handle other types of items if needed
             scene->removeItem(item);
             delete item;
         }
     }
+    Log::print_nodes(nodes);
+    Log::print_nodeItems(nodeItems);
+    Log::print_lines(lineItems);
+    Log::print_forces(forces);
+    Log::print_forceGraphicsItems(forceGraphicsItems);
+    Log::print_supportItems(supports);
 }
+
+
+
+
+
+
 
 void MainWindow::drawCoordinateSystem()
 {
@@ -136,6 +233,9 @@ void MainWindow::drawCoordinateSystem()
     }
 }
 
+
+
+
 void MainWindow::undoLastNode()
 {
     if (!nodes.empty()) {
@@ -157,6 +257,11 @@ void MainWindow::undoLastNode()
         }
     }
 }
+
+
+
+
+
 
 void MainWindow::makeForce()
 {
@@ -183,6 +288,7 @@ void MainWindow::makeForce()
         
         force newForce; newForce.point = newPoint; newForce.betrag = newBetrag; newForce.winkel = newWinkel;
         forces.push_back(newForce);
+        
         qreal arrowSize = 10; // size of head
                                              
         //Line
@@ -193,12 +299,9 @@ void MainWindow::makeForce()
         QPen pen; pen.setWidth(pow(betrag, 0.1));
         QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
         newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        forceLineItems.push_back(newLineItem);
+        //forceLineItems.push_back(newLineItem);
         
         //Polygon
-        
-        double angle = std::atan2(-line.dy(), line.dx()); std::cout << angle << std::endl; std::cout << winkel << std::endl;
-
         QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
                                               cos(-(winkel + 4*M_PI / 3)) * arrowSize);
         QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
@@ -209,12 +312,214 @@ void MainWindow::makeForce()
         //PolygonItem
         QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
         newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        forcePolygonItems.push_back(newPolygonItem);
+        //forcePolygonItems.push_back(newPolygonItem);
+        
+        //forceGraphicItem
+        forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
+        forceGraphicsItems.push_back(newforceGraphicsItem);
     }
+
+    Log::print_nodes(nodes);
+    Log::print_nodeItems(nodeItems);
+    Log::print_lines(lineItems);
+    Log::print_forces(forces);
+    Log::print_forceGraphicsItems(forceGraphicsItems);
+    Log::print_supportItems(supports);
+
 }
 
 
-    
+ 
 
-    
+
+void MainWindow::makeSupport()
+{
+    QString xStr = ui->lineEditX_6->text();
+    QString yStr = ui->lineEditX_7->text();
+
+    if (xStr.isEmpty() || yStr.isEmpty()) {
+        return;
+    }
+
+    bool okX, okY;
+    double x = xStr.toDouble(&okX);
+    double y = yStr.toDouble(&okY);
+
+
+    if (okX && okY) {
+        QPointF newNode(x, y); supports.push_back(newNode);
+        QPointF arrowP1(x-7, y-7);
+        QPointF arrowP2(x+7, y-7);
+
+        QPolygonF arrowHead;
+        arrowHead.clear();
+        arrowHead << newNode << arrowP1 << arrowP2;
+
+        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
+        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        supportItems.push_back(newPolygonItem);
+    }
+
+    Log::print_nodes(nodes);
+    Log::print_nodeItems(nodeItems);
+    Log::print_lines(lineItems);
+    Log::print_forces(forces);
+    Log::print_forceGraphicsItems(forceGraphicsItems);
+    Log::print_supportItems(supports);
+
+}
+   
+
+
+
+
+
+void MainWindow::clear() {
+  //nodes
+  nodes.clear();
+
+  for(auto nodeItem : nodeItems) {
+    scene->removeItem(nodeItem);
+    delete nodeItem;
+  }
+  nodeItems.clear();
+
+  //lines
+  for(auto lineItem : lineItems) {
+    scene->removeItem(lineItem);
+    delete lineItem;
+  }
+  lineItems.clear();
+
+  //Forces
+  forces.clear();
+
+  for(auto forceItem : forceGraphicsItems) {
+    scene->removeItem(forceItem.forceLineItem); 
+    scene->removeItem(forceItem.forcePolygonItem);
+    delete forceItem.forceLineItem;
+    delete forceItem.forcePolygonItem;
+  }
+  forceGraphicsItems.clear();
+
+  //Supports
+  supports.clear();
+
+  for(auto supportItem : supportItems) {
+    scene->removeItem(supportItem);
+    delete supportItem;
+  }
+  supportItems.clear();
+}
+
+
+
+
+
+
+void MainWindow::save() {
+  QString fileName = ui->lineEdit->text();
+
+  if (fileName.isEmpty())
+  {
+        return;
+  }
+
+  std::ofstream outputFile("../savedStructures/" + fileName.toStdString() + ".txt");
+  
+  //Nodes
+  outputFile << "nodes" << std::endl;
+  for(auto node : nodes) {
+    outputFile << node.x() << " " << node.y() << " ";
+  }
+  outputFile << std::endl;
+
+  //Lines
+  outputFile << "lines" << std::endl;
+  for(auto line : lineItems) {
+    outputFile << line->line().p1().x() << " " << line->line().p1().y() << " " << line->line().p2().x()  << " " << line->line().p2().y() << " ";
+  }
+  outputFile << std::endl;
+
+  //Forces
+  outputFile << "forces" << std::endl;
+  for(auto force : forces) {
+    outputFile << force.point.x()  << " " << force.point.y() << " " << force.betrag << " " << force.winkel << " ";
+  }
+  outputFile << std::endl;
+
+  //Support
+  outputFile << "supports" << std::endl;
+  for(auto support : supports) {
+    outputFile << support.x()  << " " << support.y() << " ";
+  }
+  outputFile << std::endl;
+
+
+}
+
+
+
+
+
+void MainWindow::load() {
+  QString fileName = QFileDialog::getOpenFileName(this, tr("load Data"), "/home", tr("Data Files (*.txt)"));
+	
+  
+ /* std::ifstream stream(filepath);
+	
+	enum class ShaderType {
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+	
+	std::string line;
+	std::stringstream ss[2];	
+	ShaderType type = ShaderType::NONE;
+	
+	ShaderStrings result;
+
+ 	while(getline(stream, line)) {
+		if(line.find("#shader") != std::string::npos) {
+			if(line.find("vertex") 	!= std::string::npos) {
+				//SET MODE TO VERTEX
+				type = ShaderType::VERTEX;
+			}
+ 			else if(line.find("fragment") != std::string::npos) {
+				//SET MODE TO FRAGMENT
+				type = ShaderType::FRAGMENT;
+			}
+			else {
+				ss[(int)type] << line;
+			}
+		}
+		else {
+			ss[(int)type] << line << "\n";
+		}	
+	}*/
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

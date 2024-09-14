@@ -457,7 +457,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /usr/include/c++/11/math.h \
+  ../Frontend/ownDataTypes.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -583,6 +583,15 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
+  /usr/include/c++/11/math.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
@@ -1048,7 +1057,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /usr/include/c++/11/math.h \
+  ../Frontend/ownDataTypes.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1174,6 +1183,15 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
+  /usr/include/c++/11/math.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
   main_autogen/include/ui_mainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
@@ -1215,7 +1233,14 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
+  ../Frontend/Log.cpp \
+  ../Frontend/Log.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compilation.cpp \
   /usr/include/stdc-predef.h \
@@ -1686,7 +1711,7 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /usr/include/c++/11/math.h \
+  ../Frontend/ownDataTypes.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1799,10 +1824,27 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainterpath.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
+  /usr/include/c++/11/math.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
 
 
 main_autogen/V57I63ONWH/moc_mainwindow.cpp:
+
+/usr/include/c++/11/bits/fstream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/c++/11/fstream:
+
+../Frontend/Log.cpp:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget:
 
@@ -1817,6 +1859,8 @@ main_autogen/V57I63ONWH/moc_mainwindow.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h:
 
@@ -1847,6 +1891,16 @@ main_autogen/include/ui_mainwindow.h:
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h:
+
+/usr/include/c++/11/math.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF:
 
@@ -1900,11 +1954,15 @@ main_autogen/include/ui_mainwindow.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h:
+
 /usr/include/c++/11/bits/std_abs.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/SolverBase.h:
 
 /usr/include/c++/11/pstl/execution_defs.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h:
 
 /usr/include/c++/11/bits/erase_if.h:
 
@@ -1995,6 +2053,8 @@ main_autogen/mocs_compilation.cpp:
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/functors/AssignmentFunctors.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/functors/UnaryFunctors.h:
 
@@ -2674,6 +2734,8 @@ main_autogen/mocs_compilation.cpp:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/plugins/IndexedViewMethods.h:
 
+/usr/include/c++/11/bits/codecvt.h:
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/QR/HouseholderQR.h:
@@ -2711,6 +2773,8 @@ main_autogen/mocs_compilation.cpp:
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/BandMatrix.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h:
+
+../Frontend/Log.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Reshaped.h:
 
@@ -2884,8 +2948,6 @@ main_autogen/mocs_compilation.cpp:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
 
-/usr/include/c++/11/math.h:
-
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/SelfCwiseBinaryOp.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow:
@@ -2982,6 +3044,8 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearraylist.h:
 
+../Frontend/ownDataTypes.h:
+
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/arch/Default/Half.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringlist.h:
@@ -3001,6 +3065,8 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h:
 
 /usr/include/c++/11/ctime:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h:
 
 /usr/include/c++/11/bits/parse_numbers.h:
 
