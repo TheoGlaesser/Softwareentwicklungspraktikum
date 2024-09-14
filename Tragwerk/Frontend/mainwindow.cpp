@@ -6,7 +6,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    scene(new QGraphicsScene(this))
+    scene(new QGraphicsScene(this)),
+    E(std::numeric_limits<double>::max()),
+    A(std::numeric_limits<double>::max())
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(scene);
@@ -29,7 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->clearButton, &QPushButton::clicked, this, &MainWindow::clear);
     connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::save);
     connect(ui->loadButton, &QPushButton::clicked, this, &MainWindow::load);
-
+    connect(ui->checkBox_3, &QCheckBox::stateChanged, this, &MainWindow::linearStateChange);
+    connect(ui->parametersButton, &QPushButton::clicked, this, &MainWindow::updateE);
+    connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::updateA);
+    connect(ui->solveButton, &QPushButton::clicked, this, &MainWindow::solve);
+   
+    
     drawCoordinateSystem();
 }
 
@@ -426,30 +433,28 @@ void MainWindow::save() {
   }
 
   std::ofstream outputFile("../savedStructures/" + fileName.toStdString() + ".txt");
+
+  outputFile << nodes.size() << " " << lineItems.size() << " " << forces.size() <<  " " << supports.size() << std::endl;
   
   //Nodes
-  outputFile << "nodes" << std::endl;
   for(auto node : nodes) {
     outputFile << node.x() << " " << node.y() << " ";
   }
   outputFile << std::endl;
 
   //Lines
-  outputFile << "lines" << std::endl;
   for(auto line : lineItems) {
     outputFile << line->line().p1().x() << " " << line->line().p1().y() << " " << line->line().p2().x()  << " " << line->line().p2().y() << " ";
   }
   outputFile << std::endl;
 
   //Forces
-  outputFile << "forces" << std::endl;
   for(auto force : forces) {
     outputFile << force.point.x()  << " " << force.point.y() << " " << force.betrag << " " << force.winkel << " ";
   }
   outputFile << std::endl;
 
   //Support
-  outputFile << "supports" << std::endl;
   for(auto support : supports) {
     outputFile << support.x()  << " " << support.y() << " ";
   }
@@ -462,41 +467,90 @@ void MainWindow::save() {
 
 
 
-void MainWindow::load() {
-  QString fileName = QFileDialog::getOpenFileName(this, tr("load Data"), "/home", tr("Data Files (*.txt)"));
-	
-  
- /* std::ifstream stream(filepath);
-	
-	enum class ShaderType {
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-	
-	std::string line;
-	std::stringstream ss[2];	
-	ShaderType type = ShaderType::NONE;
-	
-	ShaderStrings result;
+void MainWindow::load()
+{
 
- 	while(getline(stream, line)) {
-		if(line.find("#shader") != std::string::npos) {
-			if(line.find("vertex") 	!= std::string::npos) {
-				//SET MODE TO VERTEX
-				type = ShaderType::VERTEX;
-			}
- 			else if(line.find("fragment") != std::string::npos) {
-				//SET MODE TO FRAGMENT
-				type = ShaderType::FRAGMENT;
-			}
-			else {
-				ss[(int)type] << line;
-			}
-		}
-		else {
-			ss[(int)type] << line << "\n";
-		}	
-	}*/
- 
+  clear();
+
+  QString fileName = QFileDialog::getOpenFileName(this, tr("load Data"), "/home", tr("Data Files (*.txt)"));
+  std::ifstream stream(fileName.toStdString());
+
+  int numNodes, numLines, numForces, numSupports;
+  stream >> numNodes; stream  >> numLines; stream >> numForces; stream >> numSupports;
+
+  for(int i=0; i<numNodes; i++) {
+    double x, y; stream >> x; stream >> y; 
+    QPointF newNode(x,y); nodes.push_back(newNode);
+
+    QGraphicsEllipseItem* newNodeItem = scene->addEllipse(x - 2, y - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
+    newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+    nodeItems.push_back(newNodeItem);
+  }
+
+  
+ for(int i=0; i<numLines; i++) {
+    double x1, y1, x2, y2; stream >> x1; stream >> y1; stream >> x2; stream >> y2;
+
+    QGraphicsLineItem* newLineItem = scene->addLine(x1, y1, x2, y2, QPen(Qt::black));
+    newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+    lineItems.push_back(newLineItem);
+ }
+
+  for(int i=0; i<numForces; i++) {
+    double x, y, betrag, winkel; stream >> x; stream >> y; stream >> betrag; stream >> winkel;
+
+    QPointF newPoint(x, y);
+    qreal newBetrag(betrag);
+    qreal newWinkel(winkel);
+    
+    force newForce; newForce.point = newPoint; newForce.betrag = newBetrag; newForce.winkel = newWinkel;
+    forces.push_back(newForce);
+    
+    qreal arrowSize = 10; // size of head
+                                         
+    //Line
+    double xEnd = x + cos(winkel) * 30; double yEnd = y + sin(winkel) * 30;
+    QPointF start = newPoint; QPointF end = QPoint(xEnd, yEnd);
+    QLineF line(start, end);
+    //Line Item
+    QPen pen; pen.setWidth(pow(betrag, 0.1));
+    QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
+    newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+    //forceLineItems.push_back(newLineItem);
+    
+    //Polygon
+    QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
+                                          cos(-(winkel + 4*M_PI / 3)) * arrowSize);
+    QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
+                                          cos(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize);
+    QPolygonF arrowHead;
+    arrowHead.clear();
+    arrowHead << line.p1() << arrowP1 << arrowP2;
+    //PolygonItem
+    QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
+    newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+    //forcePolygonItems.push_back(newPolygonItem);
+    
+    //forceGraphicItem
+    forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
+    forceGraphicsItems.push_back(newforceGraphicsItem);
+ }
+  
+  for(int i=0; i<numSupports; i++) {
+    double x, y; stream >> x; stream >> y;
+    QPointF newNode(x, y); supports.push_back(newNode);
+    QPointF arrowP1(x-7, y-7);
+    QPointF arrowP2(x+7, y-7);
+
+    QPolygonF arrowHead;
+    arrowHead.clear();
+    arrowHead << newNode << arrowP1 << arrowP2;
+
+    QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
+    newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+    supportItems.push_back(newPolygonItem);
+ }
+
 }
 
 
@@ -504,12 +558,58 @@ void MainWindow::load() {
 
 
 
+void MainWindow::linearStateChange()
+{
+  isLinear = !(isLinear);
+}
 
 
 
 
 
+void MainWindow::updateA()
+{
+  QString AStr = ui->lineEditX_9->text();
 
+  if (AStr.isEmpty()) {
+      return;
+  }
+
+  bool okA;
+  double newA = AStr.toDouble(&okA);
+  if(okA) {A = newA;}
+  std::cout << A << std::endl;
+}
+
+
+
+void MainWindow::updateE()
+{
+  QString EStr = ui->lineEditX_8->text();
+
+  if (EStr.isEmpty()) {
+      return;
+  }
+
+  bool okE;
+  double newE = EStr.toDouble(&okE);
+  if(okE) {E = newE;}
+  std::cout << E << std::endl;
+}
+
+
+
+
+
+void MainWindow::solve() 
+{
+  using T=double;
+  Backend::la::vector_t<Backend::Bearing> bearings(supports.size(),1);
+  Backend::la::vector_t<Backend::Rod> rods(lineItems.size(),1);
+  Backend::la::vector_t<Backend::Force> forces(forces.size(),1);
+
+
+}
 
 
 

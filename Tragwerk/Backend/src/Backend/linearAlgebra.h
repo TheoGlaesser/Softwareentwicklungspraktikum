@@ -6,6 +6,7 @@
 #include <cmath>
 
 //The namespace stores the different algorithms used to solve linear systems.
+namespace Backend {
 namespace la {
 
   template<typename T, int N=Eigen::Dynamic>
@@ -65,7 +66,7 @@ namespace la {
      }
   };
 
-
+}
 
 }
 

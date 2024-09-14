@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <limits>
 #include <QFileDialog>
 
 
@@ -20,7 +21,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow 
 {
     Q_OBJECT
 
@@ -37,6 +38,10 @@ private slots:
     void clear();
     void save();
     void load();
+    void linearStateChange();
+    void updateE();
+    void updateA();
+    void solve();
 
 private:
     Ui::MainWindow *ui;
@@ -56,6 +61,10 @@ private:
     //Support
     std::vector<QPointF> supports;
     std::vector<QGraphicsPolygonItem*> supportItems; 
+
+    //Linear
+    bool isLinear;
+    double E, A;
 
 
     void drawCoordinateSystem();

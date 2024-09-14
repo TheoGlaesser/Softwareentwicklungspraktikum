@@ -273,14 +273,14 @@
     <widget class="QPushButton" name="parametersButton">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>70</x>
        <y>260</y>
-       <width>80</width>
-       <height>18</height>
+       <width>51</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>E and A</string>
+      <string>E</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEditX_4">
@@ -413,19 +413,6 @@
       <string>Y</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>280</y>
-       <width>67</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="lineEdit">
      <property name="geometry">
       <rect>
@@ -447,6 +434,19 @@
      </property>
      <property name="text">
       <string>Linear</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>260</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>A</string>
      </property>
     </widget>
    </widget>

@@ -59,9 +59,9 @@ public:
     QCheckBox *checkBox_4;
     QLabel *label_6;
     QLabel *label_7;
-    QLabel *label_8;
     QLineEdit *lineEdit;
     QCheckBox *checkBox_3;
+    QPushButton *pushButton;
     QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -135,7 +135,7 @@ public:
         lineEditX_9->setGeometry(QRect(120, 240, 51, 20));
         parametersButton = new QPushButton(groupBox);
         parametersButton->setObjectName(QString::fromUtf8("parametersButton"));
-        parametersButton->setGeometry(QRect(80, 260, 80, 18));
+        parametersButton->setGeometry(QRect(70, 260, 51, 21));
         lineEditX_4 = new QLineEdit(groupBox);
         lineEditX_4->setObjectName(QString::fromUtf8("lineEditX_4"));
         lineEditX_4->setGeometry(QRect(60, 130, 61, 20));
@@ -166,15 +166,15 @@ public:
         label_7 = new QLabel(groupBox);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(140, 30, 21, 17));
-        label_8 = new QLabel(groupBox);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(40, 280, 67, 17));
         lineEdit = new QLineEdit(groupBox);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(120, 300, 81, 20));
         checkBox_3 = new QCheckBox(groupBox);
         checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
         checkBox_3->setGeometry(QRect(20, 400, 92, 23));
+        pushButton = new QPushButton(groupBox);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(120, 260, 51, 21));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(320, 20, 441, 551));
@@ -214,7 +214,7 @@ public:
         lineEditX_7->setText(QString());
         lineEditX_8->setText(QString());
         lineEditX_9->setText(QString());
-        parametersButton->setText(QCoreApplication::translate("MainWindow", "E and A", nullptr));
+        parametersButton->setText(QCoreApplication::translate("MainWindow", "E", nullptr));
         lineEditX_4->setText(QString());
         lineEditX_5->setText(QString());
         saveButton->setText(QCoreApplication::translate("MainWindow", "Save as", nullptr));
@@ -225,8 +225,8 @@ public:
         checkBox_4->setText(QCoreApplication::translate("MainWindow", "New", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        label_8->setText(QString());
         checkBox_3->setText(QCoreApplication::translate("MainWindow", "Linear", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "A", nullptr));
     } // retranslateUi
 
 };

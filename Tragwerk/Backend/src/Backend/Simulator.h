@@ -1,4 +1,5 @@
 #pragma once
+#include "linearAlgebra.h"
 #include <vector>
 #include <iostream>
 
@@ -6,6 +7,8 @@ namespace Backend {
 
   struct Point {
     double x, y;
+
+    Point() : x(0), y(0) {}
   };
 
   struct Rod {
@@ -28,14 +31,14 @@ namespace Backend {
 
   class Simulator {
     public:
-      Simulator(const std::vector<Rod> & rods, const std::vector<Force> & forces, const std::vector<Bearing> & bearing, bool linear);
+      Simulator(const la::vector_t<Rod> & rods, const la::vector_t<Force> & forces, const la::vector_t<Bearing> & bearing, bool linear);
       ~Simulator();
 
-      std::vector<Rod> run();
+      la::vector_t<Rod> run();
     private: 
-      std::vector<Rod> rods;
-      std::vector<Force> forces;
-      std::vector<Bearing> bearing;
+      la::vector_t<Rod> rods;
+      la::vector_t<Force> forces;
+      la::vector_t<Bearing> bearings;
   };
 
 }

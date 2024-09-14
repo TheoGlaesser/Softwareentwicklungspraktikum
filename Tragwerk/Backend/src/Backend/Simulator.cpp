@@ -1,13 +1,12 @@
 #include <vector>
 #include <iostream>
 #include "Simulator.h"
-#include "linearAlgebra.h"
 
 namespace Backend
 {
 
 
-  Simulator::Simulator(const std::vector<Rod> & rods, const std::vector<Force> & forces, const std::vector<Bearing> & bearing, bool linear) {
+  Simulator::Simulator(const la::vector_t<Rod> & rods, const la::vector_t<Force> & forces, const la::vector_t<Bearing> & bearing, bool linear) {
   std::cout << "Hello\n";
   }
 
