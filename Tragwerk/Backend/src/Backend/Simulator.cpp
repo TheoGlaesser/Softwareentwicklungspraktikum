@@ -6,12 +6,24 @@ namespace Backend
 {
 
 
-  Simulator::Simulator(const la::vector_t<Rod> & rods, const la::vector_t<Force> & forces, const la::vector_t<Bearing> & bearing, bool linear) {
-  std::cout << "Hello\n";
+  Simulator::Simulator(const std::vector<Rod> & rods, const std::vector<Force> & forces, const std::vector<Bearing> & bearing, bool linear, double E, double A) {
+    std::cout << "Hello\n";
   }
 
   Simulator::~Simulator() {
   std::cout << "Bye\n";
   }
 
+
+
+  Simulator::run() 
+  {
+
+  }
 }
+
+
+
+
+
+

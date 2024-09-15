@@ -603,12 +603,27 @@ void MainWindow::updateE()
 
 void MainWindow::solve() 
 {
-  using T=double;
-  Backend::la::vector_t<Backend::Bearing> bearings(supports.size(),1);
-  Backend::la::vector_t<Backend::Rod> rods(lineItems.size(),1);
-  Backend::la::vector_t<Backend::Force> forces(forces.size(),1);
+  std::vector<Backend::Bearing> backendBearings(supports.size());
+  for(int i=0; i<backendBearings.size(); i++) {
+    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y());
+  } 
 
 
+  std::vector<Backend::Rod> backendRods(lineItems.size());
+  for(int i=0; i<backendRods.size(); i++) {
+    backendRods[i] = Backend::Rod(lineItems[i]->line().p1().x(), lineItems[i]->line().p1().y(), lineItems[i]->line().p2().x(), lineItems[i]->line().p2().y()); 
+  }
+
+
+  std::vector<Backend::Force> backendForces(forces.size());
+  for(int i=0; i<backendForces.size(); i++) {
+    backendForces[i] = Backend::Force(forces[i].point.x(), forces[i].point.y(),  forces[i].betrag, forces[i].winkel);
+  }
+
+  
+
+  Backend::Simulator(backendRods, backendForces, backendBearings, isLinear, E, A);
+  
 }
 
 
