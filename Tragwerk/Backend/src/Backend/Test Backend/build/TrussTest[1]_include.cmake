@@ -1,0 +1,5 @@
+if(EXISTS "/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Test Backend/build/TrussTest[1]_tests.cmake")
+  include("/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Test Backend/build/TrussTest[1]_tests.cmake")
+else()
+  add_test(TrussTest_NOT_BUILT TrussTest_NOT_BUILT)
+endif()

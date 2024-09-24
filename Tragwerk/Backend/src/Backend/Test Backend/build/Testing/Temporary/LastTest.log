@@ -1,0 +1,24 @@
+Start testing: Sep 24 18:18 CEST
+----------------------------------------------------------
+1/1 Testing: TrussTest.General
+1/1 Test: TrussTest.General
+Command: "/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Test Backend/build/TrussTest" "--gtest_filter=TrussTest.General" "--gtest_also_run_disabled_tests"
+Directory: /home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Test Backend/build
+"TrussTest.General" start time: Sep 24 18:18 CEST
+Output:
+----------------------------------------------------------
+Note: Google Test filter = TrussTest.General
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TrussTest
+[ RUN      ] TrussTest.General
+Diocane
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"TrussTest.General" end time: Sep 24 18:18 CEST
+"TrussTest.General" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 24 18:18 CEST

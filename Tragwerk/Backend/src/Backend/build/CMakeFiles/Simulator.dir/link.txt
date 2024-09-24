@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/Simulator.dir/Simulator.cpp.o CMakeFiles/Simulator.dir/Assembler.cpp.o CMakeFiles/Simulator.dir/Element.cpp.o  -o Simulator 

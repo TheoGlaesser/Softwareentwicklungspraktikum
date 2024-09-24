@@ -73,7 +73,7 @@ void MainWindow::addNode()
         newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
         nodeItems.push_back(newNodeItem);
 
-        if (nodes.size() > 1) {
+        if (nodes.size() > 1) {//connect last node with new one
             const QPointF& lastNode = nodes[nodes.size() - 2];
             QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), newNode.x(), newNode.y(), QPen(Qt::black));
             newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
@@ -421,9 +421,6 @@ void MainWindow::clear() {
 
 
 
-
-
-
 void MainWindow::save() {
   QString fileName = ui->lineEdit->text();
 
@@ -613,7 +610,13 @@ void MainWindow::solve()
   for(int i=0; i<backendRods.size(); i++) {
     backendRods[i] = Backend::Rod(lineItems[i]->line().p1().x(), lineItems[i]->line().p1().y(), lineItems[i]->line().p2().x(), lineItems[i]->line().p2().y()); 
   }
-
+  
+  std::vector<Backend::Node> backendNodes(nodes.size());
+  for (int i=0; i < nodes.size(); i++) {
+	  backendNodes[i].p.x = nodes[i].x();
+	  backendNodes[i].p.y = nodes[i].y();
+	  backendNodes[i].id = i;
+  }
 
   std::vector<Backend::Force> backendForces(forces.size());
   for(int i=0; i<backendForces.size(); i++) {
@@ -622,7 +625,7 @@ void MainWindow::solve()
 
   
 
-  Backend::Simulator(backendRods, backendForces, backendBearings, isLinear, E, A);
+  Backend::Simulator(backendRods, backendForces, backendBearings, backendNodes, isLinear, E, A);
   
 }
 
