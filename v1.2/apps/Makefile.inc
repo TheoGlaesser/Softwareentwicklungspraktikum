@@ -1,5 +1,5 @@
 # edit according to your environment
-BASE_DIR=$(HOME)/Coding/SoftwarePraktikum/v1.2
+BASE_DIR=$(HOME)/Coding/Softwareentwicklungspraktikum/v1.2
 
 CPPC=g++ -Wall -Wextra -pedantic -O3 
 INC=-I$(BASE_DIR) 
