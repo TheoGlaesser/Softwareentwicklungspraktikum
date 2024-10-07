@@ -1,2 +1,2 @@
-/usr/bin/ar qc libbackend.a CMakeFiles/backend.dir/src/Backend/Simulator.cpp.o
+/usr/bin/ar qc libbackend.a CMakeFiles/backend.dir/src/Backend/Simulator.cpp.o CMakeFiles/backend.dir/src/Backend/Assembler.cpp.o CMakeFiles/backend.dir/src/Backend/Element.cpp.o
 /usr/bin/ranlib libbackend.a

@@ -129,6 +129,54 @@ backend/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/build
 .PHONY : backend/fast
 
+src/Backend/Assembler.o: src/Backend/Assembler.cpp.o
+.PHONY : src/Backend/Assembler.o
+
+# target to build an object file
+src/Backend/Assembler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Assembler.cpp.o
+.PHONY : src/Backend/Assembler.cpp.o
+
+src/Backend/Assembler.i: src/Backend/Assembler.cpp.i
+.PHONY : src/Backend/Assembler.i
+
+# target to preprocess a source file
+src/Backend/Assembler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Assembler.cpp.i
+.PHONY : src/Backend/Assembler.cpp.i
+
+src/Backend/Assembler.s: src/Backend/Assembler.cpp.s
+.PHONY : src/Backend/Assembler.s
+
+# target to generate assembly for a file
+src/Backend/Assembler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Assembler.cpp.s
+.PHONY : src/Backend/Assembler.cpp.s
+
+src/Backend/Element.o: src/Backend/Element.cpp.o
+.PHONY : src/Backend/Element.o
+
+# target to build an object file
+src/Backend/Element.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Element.cpp.o
+.PHONY : src/Backend/Element.cpp.o
+
+src/Backend/Element.i: src/Backend/Element.cpp.i
+.PHONY : src/Backend/Element.i
+
+# target to preprocess a source file
+src/Backend/Element.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Element.cpp.i
+.PHONY : src/Backend/Element.cpp.i
+
+src/Backend/Element.s: src/Backend/Element.cpp.s
+.PHONY : src/Backend/Element.s
+
+# target to generate assembly for a file
+src/Backend/Element.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/Backend/Element.cpp.s
+.PHONY : src/Backend/Element.cpp.s
+
 src/Backend/Simulator.o: src/Backend/Simulator.cpp.o
 .PHONY : src/Backend/Simulator.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... backend"
+	@echo "... src/Backend/Assembler.o"
+	@echo "... src/Backend/Assembler.i"
+	@echo "... src/Backend/Assembler.s"
+	@echo "... src/Backend/Element.o"
+	@echo "... src/Backend/Element.i"
+	@echo "... src/Backend/Element.s"
 	@echo "... src/Backend/Simulator.o"
 	@echo "... src/Backend/Simulator.i"
 	@echo "... src/Backend/Simulator.s"

@@ -73,7 +73,7 @@ void MainWindow::addNode()
         newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
         nodeItems.push_back(newNodeItem);
 
-        if (nodes.size() > 1) {
+        if (nodes.size() > 1) {//connect last node with new one
             const QPointF& lastNode = nodes[nodes.size() - 2];
             QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), newNode.x(), newNode.y(), QPen(Qt::black));
             newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
@@ -421,9 +421,6 @@ void MainWindow::clear() {
 
 
 
-
-
-
 void MainWindow::save() {
   QString fileName = ui->lineEdit->text();
 
@@ -472,11 +469,12 @@ void MainWindow::load()
 
   clear();
 
-  QString fileName = QFileDialog::getOpenFileName(this, tr("load Data"), "/home", tr("Data Files (*.txt)"));
+  QString fileName = QFileDialog::getOpenFileName(this, tr("load Data"), "", tr("Data Files (*.txt)"));
   std::ifstream stream(fileName.toStdString());
 
   int numNodes, numLines, numForces, numSupports;
   stream >> numNodes; stream  >> numLines; stream >> numForces; stream >> numSupports;
+
 
   for(int i=0; i<numNodes; i++) {
     double x, y; stream >> x; stream >> y; 
@@ -496,7 +494,8 @@ void MainWindow::load()
     lineItems.push_back(newLineItem);
  }
 
-  for(int i=0; i<numForces; i++) {
+
+ for(int i=0; i<numForces; i++) {
     double x, y, betrag, winkel; stream >> x; stream >> y; stream >> betrag; stream >> winkel;
 
     QPointF newPoint(x, y);
@@ -536,7 +535,8 @@ void MainWindow::load()
     forceGraphicsItems.push_back(newforceGraphicsItem);
  }
   
-  for(int i=0; i<numSupports; i++) {
+
+ for(int i=0; i<numSupports; i++) {
     double x, y; stream >> x; stream >> y;
     QPointF newNode(x, y); supports.push_back(newNode);
     QPointF arrowP1(x-7, y-7);
@@ -550,7 +550,6 @@ void MainWindow::load()
     newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
     supportItems.push_back(newPolygonItem);
  }
-
 }
 
 
@@ -605,7 +604,7 @@ void MainWindow::solve()
 {
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
-    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y());
+    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y(), 1, 1);
   } 
 
 
@@ -613,7 +612,13 @@ void MainWindow::solve()
   for(int i=0; i<backendRods.size(); i++) {
     backendRods[i] = Backend::Rod(lineItems[i]->line().p1().x(), lineItems[i]->line().p1().y(), lineItems[i]->line().p2().x(), lineItems[i]->line().p2().y()); 
   }
-
+  
+  std::vector<Backend::Node> backendNodes(nodes.size());
+  for (int i=0; i < nodes.size(); i++) {
+	  backendNodes[i].p.x = nodes[i].x();
+	  backendNodes[i].p.y = nodes[i].y();
+	  backendNodes[i].id = i;
+  }
 
   std::vector<Backend::Force> backendForces(forces.size());
   for(int i=0; i<backendForces.size(); i++) {
@@ -622,7 +627,9 @@ void MainWindow::solve()
 
   
 
-  Backend::Simulator(backendRods, backendForces, backendBearings, isLinear, E, A);
+  Backend::Simulator simulator(isLinear);
+  simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A);
+
   
 }
 

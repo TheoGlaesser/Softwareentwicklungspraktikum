@@ -1,4 +1,6 @@
+#pragma once
+
 namespace Constants {
-  constexpr NUM_DIMENSIONS = 2;
+  inline constexpr int NUM_DIMENSIONS = 2;
 
 } 
