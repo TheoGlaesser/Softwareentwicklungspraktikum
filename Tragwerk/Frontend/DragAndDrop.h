@@ -1,3 +1,4 @@
+#pragma once
 #include <QApplication>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -7,17 +8,8 @@
 #include <QDebug>
 #include <vector>
 
-class Node : public QGraphicsEllipseItem {
+class DragAndDrop {
 public:
-    Node(QPointF position, QGraphicsItem* parent = nullptr)
-        : QGraphicsEllipseItem(parent), isMoving(false), currentLine(nullptr) {
-        setRect(-10, -10, 20, 20);  // Set node size as 20x20 circle
-        setBrush(Qt::blue);
-        setPos(position);
-        setFlag(QGraphicsItem::ItemIsMovable);
-        setFlag(QGraphicsItem::ItemSendsGeometryChanges);
-    }
-
     void mousePressEvent(QGraphicsSceneMouseEvent* event) override {
         QGraphicsEllipseItem::mousePressEvent(event);
         if (event->button() == Qt::LeftButton) {
@@ -75,18 +67,6 @@ private:
     bool isMoving;
     QPointF startPosition;
     QGraphicsLineItem* currentLine;
-};
-
-class NodeScene : public QGraphicsScene {
-public:
-    NodeScene(QObject* parent = nullptr) : QGraphicsScene(parent) {}
-
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override {
-        // Add new node on double click
-        QPointF position = event->scenePos();
-        Node* node = new Node(position);
-        addItem(node);
-    }
 };
 
 

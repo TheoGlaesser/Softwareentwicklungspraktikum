@@ -61,6 +61,19 @@ struct Node {
   };
 
 
+  struct results {
+    std::vector<Rod> rods;
+    std::vector<Force> forces;
+    std::vector<Bearing> bearings;
+    std::vector<Node> nodes;
+
+    results(std::vector<Rod> rods, std::vector<Force> forces, std::vector<Bearing> bearings, std::vector<Node> nodes) {
+      rods = rods; forces = forces; bearings = bearings; nodes = nodes;
+    }
+
+    results() {};
+
+  };
 
 
 
@@ -69,7 +82,7 @@ class Simulator {
       Simulator(bool linear);
       ~Simulator() {};
 
-      void run(std::vector<Rod> &, const std::vector<Force> &, const std::vector<Bearing> &, std::vector<Node> &, const double &, const double &);
+      results run(std::vector<Rod>, std::vector<Force>, std::vector<Bearing>, std::vector<Node>, const double &, const double &);
     private: 
       std::vector<Rod> rods;
       std::vector<Force> forces;

@@ -236,6 +236,16 @@ std::vector<Backend::Rod> Assembler::compute_new_rods() {
 }
 
 
+std::vector<Backend::Force> Assembler::compute_new_forces() {
+ std::vector<Backend::Force> new_forces;
+   for(int i=0; i<forces.size(); i++) {
+     new_forces[i] = Backend::Force(forces[i].node_p->p.x, forces[i].node_p->p.y, forces[i].norm, forces[i].angle);
+   }
+   return new_forces;
+}
+
+
+
 //In the following int main () function there is an implementation that checks if everything is working. If you compile it now it might not work because of the Makefiles. Anyway, the same correctness check is written in the test, so please run the test to check for correctness.
 /*
 int main() {

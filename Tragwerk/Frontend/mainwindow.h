@@ -5,6 +5,7 @@
 #include "ownDataTypes.h"
 #include "math.h"
 #include "cmath"
+#include "DragAndDrop.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>

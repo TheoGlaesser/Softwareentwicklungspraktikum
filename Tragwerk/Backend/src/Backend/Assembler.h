@@ -27,6 +27,7 @@ class Assembler {
 		void apply_bearings();
 		std::vector<Backend::Node> solve();
 		std::vector<Backend::Rod> compute_new_rods();
+		std::vector<Backend::Force> compute_new_forces();
 };
 
 
