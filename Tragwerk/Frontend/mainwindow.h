@@ -42,6 +42,9 @@ private slots:
     void updateE();
     void updateA();
     void solve();
+    void showResult();
+    void showDisplacement();
+    void showOriginal();
 
 private:
     Ui::MainWindow *ui;
@@ -52,6 +55,7 @@ private:
     std::vector<QGraphicsEllipseItem*> nodeItems;
     
     //Lines
+    std::vector<std::pair<QPointF, QPointF>> lines;
     std::vector<QGraphicsLineItem*> lineItems;
     
     //Forces
@@ -62,9 +66,17 @@ private:
     std::vector<QPointF> supports;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 
+    Backend::results result;
+    resultGraphicsItems resultGraphicsItem;
+
     //Linear
     bool isLinear;
     double E, A;
+
+    //originalVisible 0 because it gets changed as show Original is called in the Constructor
+    bool originalVisible = 0;
+    bool resultVisible = 0;
+    bool displacementVisible = 0;
 
 
     void drawCoordinateSystem();

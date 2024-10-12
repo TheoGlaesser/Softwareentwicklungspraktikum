@@ -35,8 +35,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->parametersButton, &QPushButton::clicked, this, &MainWindow::updateE);
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::updateA);
     connect(ui->solveButton, &QPushButton::clicked, this, &MainWindow::solve);
+    connect(ui->checkBox_4, &QCheckBox::stateChanged, this, &MainWindow::showResult);
+    connect(ui->checkBox_2, &QCheckBox::stateChanged, this, &MainWindow::showDisplacement);
+    connect(ui->checkBox, &QCheckBox::stateChanged, this, &MainWindow::showOriginal);
    
-    
+    //Greying out the Displacement and Result Checkbox before the user simulates
+    ui->checkBox_2->setEnabled(false);
+    ui->checkBox_4->setEnabled(false);
+    ui->checkBox->setChecked(true);
+
     drawCoordinateSystem();
 }
 
@@ -66,19 +73,32 @@ void MainWindow::addNode()
     double y = yStr.toDouble(&okY);
 
     if (okX && okY) {
-        QPointF newNode(x, y);
-        nodes.push_back(newNode);
+        if(originalVisible) {
+          QPointF newNode(x, y);
+          nodes.push_back(newNode);
 
-        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(x - 2, y - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
-        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        nodeItems.push_back(newNodeItem);
+          QGraphicsEllipseItem* newNodeItem = scene->addEllipse(x - 2, y - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
+          newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+          nodeItems.push_back(newNodeItem);
 
-        if (nodes.size() > 1) {//connect last node with new one
-            const QPointF& lastNode = nodes[nodes.size() - 2];
-            QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), newNode.x(), newNode.y(), QPen(Qt::black));
-            newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-            lineItems.push_back(newLineItem);
-        }
+          if (nodes.size() > 1) {//connect last node with new one
+              const QPointF& lastNode = nodes[nodes.size() - 2];
+              QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), newNode.x(), newNode.y(), QPen(Qt::black));
+              newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+              lineItems.push_back(newLineItem);
+              lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF(newNode.x(), newNode.y())));
+          }
+       }
+
+       else {
+          QPointF newNode(x, y);
+          nodes.push_back(newNode);
+
+          if (nodes.size() > 1) {//connect last node with new one
+              const QPointF& lastNode = nodes[nodes.size() - 2];
+              lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF(newNode.x(), newNode.y())));
+          }
+       }
     }
 
     Log::print_nodes(nodes);
@@ -146,6 +166,8 @@ void MainWindow::removeSelectedItems()
             auto lineIt = std::find(lineItems.begin(), lineItems.end(), line);
             if (lineIt != lineItems.end()) {
                 lineItems.erase(lineIt);
+                ptrdiff_t index = lineIt - lineItems.begin();
+                lines.erase(lines.begin() + index);
             }
 
            //deleting the according PolygonItem
@@ -296,34 +318,36 @@ void MainWindow::makeForce()
         force newForce; newForce.point = newPoint; newForce.betrag = newBetrag; newForce.winkel = newWinkel;
         forces.push_back(newForce);
         
-        qreal arrowSize = 10; // size of head
-                                             
-        //Line
-        double xEnd = x + cos(winkel) * 30; double yEnd = y + sin(winkel) * 30;
-        QPointF start = newPoint; QPointF end = QPoint(xEnd, yEnd);
-        QLineF line(start, end);
-        //Line Item
-        QPen pen; pen.setWidth(pow(betrag, 0.1));
-        QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
-        newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        //forceLineItems.push_back(newLineItem);
-        
-        //Polygon
-        QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
-                                              cos(-(winkel + 4*M_PI / 3)) * arrowSize);
-        QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
-                                              cos(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize);
-        QPolygonF arrowHead;
-        arrowHead.clear();
-        arrowHead << line.p1() << arrowP1 << arrowP2;
-        //PolygonItem
-        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
-        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        //forcePolygonItems.push_back(newPolygonItem);
-        
-        //forceGraphicItem
-        forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
-        forceGraphicsItems.push_back(newforceGraphicsItem);
+        if(originalVisible) {
+          qreal arrowSize = 10; // size of head
+                                               
+          //Line
+          double xEnd = x + cos(winkel) * 30; double yEnd = y + sin(winkel) * 30;
+          QPointF start = newPoint; QPointF end = QPoint(xEnd, yEnd);
+          QLineF line(start, end);
+          //Line Item
+          QPen pen; pen.setWidth(pow(betrag, 0.1));
+          QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
+          newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+          //forceLineItems.push_back(newLineItem);
+          
+          //Polygon
+          QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
+                                                cos(-(winkel + 4*M_PI / 3)) * arrowSize);
+          QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
+                                                cos(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize);
+          QPolygonF arrowHead;
+          arrowHead.clear();
+          arrowHead << line.p1() << arrowP1 << arrowP2;
+          //PolygonItem
+          QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
+          newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+          //forcePolygonItems.push_back(newPolygonItem);
+          
+          //forceGraphicItem
+          forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
+          forceGraphicsItems.push_back(newforceGraphicsItem);
+        }
     }
 
     Log::print_nodes(nodes);
@@ -354,17 +378,18 @@ void MainWindow::makeSupport()
 
 
     if (okX && okY) {
-        QPointF newNode(x, y); supports.push_back(newNode);
-        QPointF arrowP1(x-7, y-7);
-        QPointF arrowP2(x+7, y-7);
+          QPointF newNode(x, y); supports.push_back(newNode);
+          if(originalVisible) {
+          QPointF arrowP1(x-7, y-7);
+          QPointF arrowP2(x+7, y-7);
 
-        QPolygonF arrowHead;
-        arrowHead.clear();
-        arrowHead << newNode << arrowP1 << arrowP2;
+          QPolygonF arrowHead;
+          arrowHead.clear();
+          arrowHead << newNode << arrowP1 << arrowP2;
 
-        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
-        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        supportItems.push_back(newPolygonItem);
+          QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
+          newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+          supportItems.push_back(newPolygonItem);
     }
 
     Log::print_nodes(nodes);
@@ -373,7 +398,7 @@ void MainWindow::makeSupport()
     Log::print_forces(forces);
     Log::print_forceGraphicsItems(forceGraphicsItems);
     Log::print_supportItems(supports);
-
+  }
 }
    
 
@@ -392,6 +417,8 @@ void MainWindow::clear() {
   nodeItems.clear();
 
   //lines
+  lines.clear();
+
   for(auto lineItem : lineItems) {
     scene->removeItem(lineItem);
     delete lineItem;
@@ -602,6 +629,7 @@ void MainWindow::updateE()
 
 void MainWindow::solve() 
 {
+  //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
     backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y(), 1, 1);
@@ -626,10 +654,136 @@ void MainWindow::solve()
   }
 
   
-
+  //CREATE AND RUN SIMULATOR
   Backend::Simulator simulator(isLinear);
-  simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A);
+  result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A);
+  
 
+  //ENABLE DISPLACEMENT AND RESULT VISIBILITY
+  ui->checkBox_2->setEnabled(true);
+  ui->checkBox_4->setEnabled(true);
+}
+
+
+
+
+
+void MainWindow::showResult() 
+{
+
+  if(resultVisible) {
+    for(int i=0; i<result.nodes.size(); i++) {
+        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(result.nodes[i].p.x - 2.0, result.nodes[i].p.y - 2.0, 4.0, 4.0, QPen(), QBrush(Qt::SolidPattern));
+        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        resultGraphicsItem.nodeItems.push_back(newNodeItem);
+     }
+
+     for(int i=0; i<result.rods.size(); i++) {
+        QGraphicsLineItem* newLineItem = scene->addLine(result.rods[i].p1.x, result.rods[i].p1.y, result.rods[i].p2.x, result.rods[i].p2.y, QPen(Qt::black));
+        newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        resultGraphicsItem.lineItems.push_back(newLineItem);
+     }
+
+
+     for(int i=0; i<result.forces.size(); i++) {
+        double x = result.forces[i].p.x;
+        double y = result.forces[i].p.y;
+        double betrag = result.forces[i].norm;
+        double winkel = result.forces[i].angle;
+
+        
+        qreal arrowSize = 10; // size of head
+                      
+        //Line
+        double xEnd = x + cos(winkel) * 30; double yEnd = y + sin(winkel) * 30;
+        QPointF start = QPoint(x,y); QPointF end = QPoint(xEnd, yEnd);
+        QLineF line(start, end);
+        //Line Item
+        QPen pen; pen.setWidth(pow(betrag, 0.1));
+        QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
+        newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        //forceLineItems.push_back(newLineItem);
+        
+        //Polygon
+        QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
+                                              cos(-(winkel + 4*M_PI / 3)) * arrowSize);
+        QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
+                                              cos(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize);
+        QPolygonF arrowHead;
+        arrowHead.clear();
+        arrowHead << line.p1() << arrowP1 << arrowP2;
+        //PolygonItem
+        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
+        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        //forcePolygonItems.push_back(newPolygonItem);
+        
+        //forceGraphicItem
+        forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
+        resultGraphicsItem.forceGraphicsItems.push_back(newforceGraphicsItem);
+
+
+
+     }
+
+     for(int i=0; i<result.bearings.size(); i++) {
+        double x = result.bearings[i].p.x;
+        double y = result.bearings[i].p.y;
+
+        QPointF newNode(x, y); 
+        QPointF arrowP1(x-7.0, y-7.0);
+        QPointF arrowP2(x+7.0, y-7.0);
+
+        QPolygonF arrowHead;
+        arrowHead.clear();
+        arrowHead << newNode << arrowP1 << arrowP2;
+
+        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
+        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        resultGraphicsItem.supportItems.push_back(newPolygonItem);
+     }
+  }
+
+  else {
+     for(auto nodeItem : resultGraphicsItem.nodeItems) {
+        scene->removeItem(nodeItem);
+        delete nodeItem;
+      }
+      resultGraphicsItem.nodeItems.clear();
+
+      //lines
+      for(auto lineItem : resultGraphicsItem.lineItems) {
+        scene->removeItem(lineItem);
+        delete lineItem;
+      }
+      resultGraphicsItem.lineItems.clear();
+
+      //Forces
+
+      for(auto forceItem : resultGraphicsItem.forceGraphicsItems) {
+        scene->removeItem(forceItem.forceLineItem); 
+        scene->removeItem(forceItem.forcePolygonItem);
+        delete forceItem.forceLineItem;
+        delete forceItem.forcePolygonItem;
+      }
+      resultGraphicsItem.forceGraphicsItems.clear();
+
+      //Supports
+
+      for(auto supportItem : resultGraphicsItem.supportItems) {
+        scene->removeItem(supportItem);
+        delete supportItem;
+      }
+      resultGraphicsItem.supportItems.clear();
+  }
+
+  resultVisible = !(resultVisible);
+}
+
+
+
+
+
+void MainWindow::showDisplacement() {
   
 }
 
@@ -637,11 +791,115 @@ void MainWindow::solve()
 
 
 
+void MainWindow::showOriginal() 
+{
+
+  if(originalVisible) {
+      std::cout << "clear\n";
+      //Nodes
+      for(auto nodeItem : nodeItems) {
+        scene->removeItem(nodeItem);
+        delete nodeItem;
+      }
+      nodeItems.clear();
+
+      //Lines
+      for(auto lineItem : lineItems) {
+        scene->removeItem(lineItem);
+        delete lineItem;
+      }
+      lineItems.clear();
+
+      //Forces
+      for(auto forceItem : forceGraphicsItems) {
+        scene->removeItem(forceItem.forceLineItem); 
+        scene->removeItem(forceItem.forcePolygonItem);
+        delete forceItem.forceLineItem;
+        delete forceItem.forcePolygonItem;
+      }
+      forceGraphicsItems.clear();
+
+      //Supports
+      for(auto supportItem : supportItems) {
+        scene->removeItem(supportItem);
+        delete supportItem;
+      }
+      supportItems.clear();
+  }
+
+  else {
+    std::cout << "Redraw\n";
+    for(int i=0; i<nodes.size(); i++) {
+        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(nodes[i].x() - 2.0, nodes[i].y() - 2.0, 4.0, 4.0, QPen(), QBrush(Qt::SolidPattern));
+        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        nodeItems.push_back(newNodeItem);
+     }
+
+     for(int i=0; i<lines.size(); i++) {
+        QGraphicsLineItem* newLineItem = scene->addLine(lines[i].first.x(), lines[i].first.y(), lines[i].second.x(), lines[i].second.y(), QPen(Qt::black));
+        newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        lineItems.push_back(newLineItem);
+     }
+
+
+     for(int i=0; i<forces.size(); i++) {
+        double x = forces[i].point.x();
+        double y = forces[i].point.y();
+        double betrag = forces[i].betrag;
+        double winkel = forces[i].winkel;
+
+        
+        qreal arrowSize = 10; // size of head
+                      
+        //Line
+        double xEnd = x + cos(winkel) * 30; double yEnd = y + sin(winkel) * 30;
+        QPointF start = QPoint(x,y); QPointF end = QPoint(xEnd, yEnd);
+        QLineF line(start, end);
+        //Line Item
+        QPen pen; pen.setWidth(pow(betrag, 0.1));
+        QGraphicsLineItem* newLineItem = scene->addLine(end.x(), end.y(), start.x(), start.y(), pen);
+        newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        //forceLineItems.push_back(newLineItem);
+        
+        //Polygon
+        QPointF arrowP1 = line.p1() + QPointF(sin(-(winkel + 4*M_PI / 3)) * arrowSize,
+                                              cos(-(winkel + 4*M_PI / 3)) * arrowSize);
+        QPointF arrowP2 = line.p1() + QPointF(sin(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize,
+                                              cos(-(winkel + 2*M_PI - M_PI / 3)) * arrowSize);
+        QPolygonF arrowHead;
+        arrowHead.clear();
+        arrowHead << line.p1() << arrowP1 << arrowP2;
+        //PolygonItem
+        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::SolidPattern));
+        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        //forcePolygonItems.push_back(newPolygonItem);
+        
+        //forceGraphicItem
+        forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
+        forceGraphicsItems.push_back(newforceGraphicsItem);
 
 
 
+     }
 
+     for(int i=0; i<supports.size(); i++) {
+        double x = supports[i].x();
+        double y = supports[i].y();
 
+        QPointF newNode(x, y); 
+        QPointF arrowP1(x-7.0, y-7.0);
+        QPointF arrowP2(x+7.0, y-7.0);
 
+        QPolygonF arrowHead;
+        arrowHead.clear();
+        arrowHead << newNode << arrowP1 << arrowP2;
 
+        QGraphicsPolygonItem* newPolygonItem = scene->addPolygon(arrowHead , QPen(), QBrush(Qt::FDiagPattern));
+        newPolygonItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        supportItems.push_back(newPolygonItem);
+     }
+  }
+
+  originalVisible = !(originalVisible);
+}
 

@@ -20,3 +20,10 @@ struct forceGraphicsItem {
   forceGraphicsItem(QGraphicsLineItem* line, QGraphicsPolygonItem* polygon) : forceLineItem(line), forcePolygonItem(polygon) {}
 };
 
+struct resultGraphicsItems {
+    std::vector<QGraphicsEllipseItem*> nodeItems;
+    std::vector<QGraphicsLineItem*> lineItems;
+    std::vector<forceGraphicsItem> forceGraphicsItems;
+    std::vector<QGraphicsPolygonItem*> supportItems; 
+};
+
