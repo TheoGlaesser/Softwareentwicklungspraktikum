@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.3
+** Created by: Qt User Interface Compiler version 5.12.8
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -196,39 +196,39 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("MainWindow", "Drawing Tools", nullptr));
-        addNodeButton->setText(QCoreApplication::translate("MainWindow", "Make Point", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Drawing Tools", nullptr));
+        addNodeButton->setText(QApplication::translate("MainWindow", "Make Point", nullptr));
         lineEditX->setText(QString());
-        undoButton->setText(QCoreApplication::translate("MainWindow", "Undo", nullptr));
-        removeButton->setText(QCoreApplication::translate("MainWindow", "Remove", nullptr));
-        makeForceButton->setText(QCoreApplication::translate("MainWindow", "Make Force", nullptr));
+        undoButton->setText(QApplication::translate("MainWindow", "Undo", nullptr));
+        removeButton->setText(QApplication::translate("MainWindow", "Remove", nullptr));
+        makeForceButton->setText(QApplication::translate("MainWindow", "Make Force", nullptr));
         lineEditX_2->setText(QString());
         lineEditX_3->setText(QString());
-        label->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Amount", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "Angle", nullptr));
-        clearButton->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
-        solveButton->setText(QCoreApplication::translate("MainWindow", "Solve", nullptr));
-        supportButton->setText(QCoreApplication::translate("MainWindow", "Make Support", nullptr));
+        label->setText(QApplication::translate("MainWindow", "X", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Y", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Amount", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "Angle", nullptr));
+        clearButton->setText(QApplication::translate("MainWindow", "Clear", nullptr));
+        solveButton->setText(QApplication::translate("MainWindow", "Solve", nullptr));
+        supportButton->setText(QApplication::translate("MainWindow", "Make Support", nullptr));
         lineEditX_6->setText(QString());
         lineEditX_7->setText(QString());
         lineEditX_8->setText(QString());
         lineEditX_9->setText(QString());
-        parametersButton->setText(QCoreApplication::translate("MainWindow", "E", nullptr));
+        parametersButton->setText(QApplication::translate("MainWindow", "E", nullptr));
         lineEditX_4->setText(QString());
         lineEditX_5->setText(QString());
-        saveButton->setText(QCoreApplication::translate("MainWindow", "Save as", nullptr));
-        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Visibility", nullptr));
-        checkBox->setText(QCoreApplication::translate("MainWindow", "Original", nullptr));
-        checkBox_2->setText(QCoreApplication::translate("MainWindow", "Displacement", nullptr));
-        checkBox_4->setText(QCoreApplication::translate("MainWindow", "show result", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
-        label_7->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
-        checkBox_3->setText(QCoreApplication::translate("MainWindow", "Linear", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "A", nullptr));
+        saveButton->setText(QApplication::translate("MainWindow", "Save as", nullptr));
+        loadButton->setText(QApplication::translate("MainWindow", "Load", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Visibility", nullptr));
+        checkBox->setText(QApplication::translate("MainWindow", "Original", nullptr));
+        checkBox_2->setText(QApplication::translate("MainWindow", "Displacement", nullptr));
+        checkBox_4->setText(QApplication::translate("MainWindow", "show result", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "X", nullptr));
+        label_7->setText(QApplication::translate("MainWindow", "Y", nullptr));
+        checkBox_3->setText(QApplication::translate("MainWindow", "Linear", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "A", nullptr));
     } // retranslateUi
 
 };

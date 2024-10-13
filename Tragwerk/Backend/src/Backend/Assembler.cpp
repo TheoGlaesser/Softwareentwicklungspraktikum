@@ -1,7 +1,7 @@
 #ifndef ASSEMBLER
 #define ASSEMBLER
 #include "Assembler.h"
-#include "Element.h"
+#include "Element.cpp"
 #include "linearAlgebra.h"
 #include <cmath>
 #endif
@@ -29,6 +29,9 @@ Assembler::Assembler(const int & dim, const int & n, const std::vector<Backend::
 std::vector<std::vector<double>> Assembler::get_A() {return A;}
 std::vector<double> Assembler::get_rhs() {return rhs;}
 std::vector<double> Assembler::get_displacement() {return displacement;}
+std::vector<Backend::Node> Assembler::get_new_nodes() {return new_nodes;}
+std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
+std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
 
 //Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
 void Assembler::assemble(const double & E, const double & A_0) {
@@ -70,24 +73,33 @@ void Assembler::assemble(const double & E, const double & A_0) {
 		A[second_node*2 + 1][second_node*2 + 1] += stiff[3][3];
 		
 	}
-
+	std::cout << "matrix has been instantiated" << std::endl;
 	//Compute right hand side of system, i.e. the b vector
+	
 	rhs = compute_forces();
-
+	std::cout << "Forces have been computed" << std::endl;
+	
 	//Consider bearings
 	apply_bearings();
+	std::cout << "Bearings have been applied" << std::endl;
 
 	//compute the new nodes after solving the linear system and considering the displacements
 	new_nodes = solve();
+	std::cout << "System has been solved" << std::endl;
 
 	//compute new rods
 	new_rods = compute_new_rods();
+	std::cout << "new rods have been computeed" << std::endl;
 
-	/*std::cout << "The new nodes are: " << std::endl;
+	std::cout << "The new nodes are: " << std::endl;
 	for (int i = 0; i < new_nodes.size(); i++) {
 		new_nodes[i].print();
 	}
-	*/
+	
+
+	//compute new forces
+	new_forces = compute_new_forces();
+	std::cout << "New forces have been computed" << std::endl;
 
 }
 
@@ -111,8 +123,8 @@ std::vector<double> Assembler::compute_forces() {
 		double rad = forces[i].angle*M_PI/180;
 		double norm = forces[i].norm;
 		//Write in the force vector the corresponding load
-		force_truss[index] = std::cos(rad)*norm;
-		force_truss[index + 1] = std::sin(rad)*norm;
+		force_truss[index] = -std::cos(rad)*norm;
+		force_truss[index + 1] = -std::sin(rad)*norm;
 	}
 
 	return force_truss;
@@ -196,22 +208,34 @@ std::vector<Backend::Node> Assembler::solve() {
 			eigen_A(i,j) = A[i][j];	
 		}
 	}
-	
+	//Check that the matrix is invertible
+	if (eigen_A.llt().info() == 0) {
+		std::cerr << "Stiffness matrix is not invertible - system hasn't been solved. Please try with other truss." << std::endl;
+		return nodes;
+	}
+
+			
 	//Solve the system with llt decomposition
 	Eigen::VectorXd eigen_x = eigen_A.llt().solve(eigen_rhs);
-	
+
 	//Save the values in the displacement variable
 	for (int i = 0; i < n*dim; i++) {
+		//Check that the displacements aren't infinite
+		if (std::isnan(eigen_x(i))) {
+			std::cout << "System is unstable, please try with different truss" << std::endl;
+			return nodes;
+		}
+
 		displacement[i] = eigen_x(i);
 	}
 	
 	//compute the new nodes by taking into consideration the displacement
-	std::vector<Backend::Node> new_nodes_local(nodes.size());
-	new_nodes_local = nodes;
+	std::vector<Backend::Node> new_nodes_local = nodes;
 	for (int i = 0; i < new_nodes_local.size(); i++) {
 		new_nodes_local[i].p.x += displacement[dim*i];
 		new_nodes_local[i].p.y += displacement[dim*i + 1];
-	}
+		new_nodes_local[i].print();
+		}
 
 	return new_nodes_local;
 
@@ -237,9 +261,14 @@ std::vector<Backend::Rod> Assembler::compute_new_rods() {
 
 
 std::vector<Backend::Force> Assembler::compute_new_forces() {
- std::vector<Backend::Force> new_forces;
+ std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
-     new_forces[i] = Backend::Force(forces[i].node_p->p.x, forces[i].node_p->p.y, forces[i].norm, forces[i].angle);
+	   int node_p = (*forces[i].node_p).id;
+	   new_forces[i].norm = forces[i].norm;
+   	   new_forces[i].angle = forces[i].angle;
+	   new_forces[i].p.x = new_nodes[node_p].p.x;
+	   new_forces[i].p.y = new_nodes[node_p].p.y;
+	   new_forces[i].node_p = &new_nodes[node_p];	   
    }
    return new_forces;
 }

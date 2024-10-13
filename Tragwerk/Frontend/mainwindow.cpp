@@ -72,8 +72,32 @@ void MainWindow::addNode()
     double x = xStr.toDouble(&okX);
     double y = yStr.toDouble(&okY);
 
+    bool isDrawn = false;
+    QPointF* nodeP;
+    
+    //check if node has been already created    
+    for (size_t i = 0; i < nodes.size(); i++) {
+	    if (nodes[i].x() == x && nodes[i].y() == y) {
+		    isDrawn = true;
+		    nodeP = &nodes[i];
+		    break;
+	    }
+    }
+	
+
     if (okX && okY) {
         if(originalVisible) {
+	  if (isDrawn) {
+	      if (nodes.size() > 1) {
+              const QPointF& lastNode = nodes[nodes.size() - 1];
+              QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), (*nodeP).x(), (*nodeP).y(), QPen(Qt::black));
+              newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+              lineItems.push_back(newLineItem);
+              lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF((*nodeP).x(), (*nodeP).y())));
+              }
+	  }
+	  else {
+
           QPointF newNode(x, y);
           nodes.push_back(newNode);
 
@@ -87,20 +111,31 @@ void MainWindow::addNode()
               newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
               lineItems.push_back(newLineItem);
               lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF(newNode.x(), newNode.y())));
+              }
           }
-       }
+	}
+       
+	else {
+	  if(isDrawn) {
+	      if (nodes.size() > 1) {
+	    	 const QPointF& lastNode = nodes[nodes.size() - 1];
+                 lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF((*nodeP).x(), (*nodeP).y())));
+	      }
+	  }	      
+	  else {	
+              QPointF newNode(x, y);
+              nodes.push_back(newNode);
 
-       else {
-          QPointF newNode(x, y);
-          nodes.push_back(newNode);
-
-          if (nodes.size() > 1) {//connect last node with new one
-              const QPointF& lastNode = nodes[nodes.size() - 2];
-              lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF(newNode.x(), newNode.y())));
-          }
+              if (nodes.size() > 1) {//connect last node with new one
+                 const QPointF& lastNode = nodes[nodes.size() - 2];
+                 lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF(newNode.x(), newNode.y())));
+              }
+	  }
        }
     }
-
+    
+              
+    
     Log::print_nodes(nodes);
     Log::print_nodeItems(nodeItems);
     Log::print_lines(lineItems);
@@ -308,7 +343,21 @@ void MainWindow::makeForce()
     double y = yStr.toDouble(&okY);
     double betrag = betragStr.toDouble(&okBetrag);
     double winkel = winkelStr.toDouble(&okWinkel);
-
+    winkel = winkel*M_PI/180;
+    
+    //Check that force points to a node
+    bool isNode = false;
+    for (size_t i = 0; i < nodes.size(); i++) {
+	    if (x == nodes[i].x() && y == nodes[i].y()) {
+		    isNode = true;
+		    break;
+	    }
+    }
+    
+    if(!isNode) {
+	    std::cout << "Force must be on a node. Please draw a force on an already created node" << std::endl;
+	    return;
+    }
 
     if (okX && okY && okWinkel && okBetrag) {
         QPointF newPoint(x, y);
@@ -444,6 +493,18 @@ void MainWindow::clear() {
     delete supportItem;
   }
   supportItems.clear();
+
+  //Results
+  if (resultGraphicsItem.nodeItems.size() == 0) {return;}
+  
+  //New nodes
+  for (auto resultNodeItem : resultGraphicsItem.nodeItems) {
+   scene->removeItem(resultNodeItem);
+   delete resultNodeItem;
+  }
+
+
+
 }
 
 
@@ -632,7 +693,7 @@ void MainWindow::solve()
   //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
-    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y(), 1, 1);
+    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y(), 0, 0);
   } 
 
 
@@ -656,8 +717,9 @@ void MainWindow::solve()
   
   //CREATE AND RUN SIMULATOR
   Backend::Simulator simulator(isLinear);
+  std::cout << "simulator has been built" << std::endl;
   result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A);
-  
+  std::cout << "simulator has been run" << std::endl;
 
   //ENABLE DISPLACEMENT AND RESULT VISIBILITY
   ui->checkBox_2->setEnabled(true);
@@ -670,9 +732,11 @@ void MainWindow::solve()
 
 void MainWindow::showResult() 
 {
-
+  resultVisible = !(resultVisible);
   if(resultVisible) {
+	  std::cout << result.nodes.size() << std::endl;
     for(int i=0; i<result.nodes.size(); i++) {
+	    result.nodes[i].print();
         QGraphicsEllipseItem* newNodeItem = scene->addEllipse(result.nodes[i].p.x - 2.0, result.nodes[i].p.y - 2.0, 4.0, 4.0, QPen(), QBrush(Qt::SolidPattern));
         newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
         resultGraphicsItem.nodeItems.push_back(newNodeItem);
@@ -775,8 +839,7 @@ void MainWindow::showResult()
       }
       resultGraphicsItem.supportItems.clear();
   }
-
-  resultVisible = !(resultVisible);
+  
 }
 
 
