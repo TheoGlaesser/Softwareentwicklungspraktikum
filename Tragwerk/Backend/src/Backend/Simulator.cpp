@@ -14,8 +14,8 @@ namespace Backend
   	Assembler truss(Constants::NUM_DIMENSIONS, nodes.size(), nodes, rods, forces, bearings);
 	  truss.assemble(E, A_0);
 
-    std::vector<Node> newNodes = truss.solve();
-		std::vector<Rod> newRods = truss.compute_new_rods();
+    std::vector<Backend::Node> newNodes = truss.solve();
+		std::vector<Backend::Rod> newRods = truss.compute_new_rods();
 		std::vector<Backend::Force> newForces =  truss.compute_new_forces();
    
    

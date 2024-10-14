@@ -903,3 +903,18 @@ void MainWindow::showOriginal()
   originalVisible = !(originalVisible);
 }
 
+
+
+
+
+/*void MainWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override {
+        // Add new node on double click
+        QPointF position = event->scenePos();
+        Node* node = new Node(position);
+        nodes.push_back(node);
+
+        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(x - 2, y - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
+        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
+        nodeItems.push_back(newNodeItem);
+}*/
+

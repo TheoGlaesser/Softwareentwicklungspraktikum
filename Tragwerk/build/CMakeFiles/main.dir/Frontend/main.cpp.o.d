@@ -409,7 +409,6 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/../../thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
  /usr/include/c++/11/iostream \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/Constants.h \
- /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/../Backend/src/Backend/Assembler.h \
  /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/ownDataTypes.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h \
@@ -529,14 +528,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
  /usr/include/c++/11/math.h \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+ /home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Frontend/DragAndDrop.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
@@ -544,4 +536,29 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsView \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QMouseEvent \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QDebug \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h

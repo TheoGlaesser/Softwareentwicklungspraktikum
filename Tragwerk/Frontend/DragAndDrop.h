@@ -8,7 +8,7 @@
 #include <QDebug>
 #include <vector>
 
-class DragAndDrop {
+/*class DragAndDrop {
 public:
     void mousePressEvent(QGraphicsSceneMouseEvent* event) override {
         QGraphicsEllipseItem::mousePressEvent(event);
@@ -68,5 +68,5 @@ private:
     QPointF startPosition;
     QGraphicsLineItem* currentLine;
 };
-
+*/
 

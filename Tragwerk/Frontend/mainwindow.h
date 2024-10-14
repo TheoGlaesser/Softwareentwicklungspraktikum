@@ -47,13 +47,15 @@ private slots:
     void showDisplacement();
     void showOriginal();
 
+    //void MainWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override;
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     
     //Nodes
     std::vector<QPointF> nodes;
-    std::vector<QGraphicsEllipseItem*> nodeItems;
+    std::vector<QGraphicsEllipseItem> nodeItems;
     
     //Lines
     std::vector<std::pair<QPointF, QPointF>> lines;
