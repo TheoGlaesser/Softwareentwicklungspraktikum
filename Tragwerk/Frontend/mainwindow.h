@@ -81,6 +81,8 @@ private:
 
     void drawCoordinateSystem();
     bool isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node);  // Function to check line connection
+    bool isForceOnNode(QGraphicsEllipseItem* , force);
+    bool isSupportOnNode(QGraphicsEllipseItem*, QPointF);
 };
 
 //#endif // MAINWINDOW_H

@@ -1,7 +1,7 @@
 #ifndef ASSEMBLER
 #define ASSEMBLER
 #include "Assembler.h"
-#include "Element.cpp"
+#include "Element.h"
 #include "linearAlgebra.h"
 #include <cmath>
 #endif
@@ -34,7 +34,7 @@ std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
 std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
 
 //Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
-void Assembler::assemble(const double & E, const double & A_0) {
+void Assembler::assemble(const double & E, const double & A_0, bool& isVisible) {
 	//for each rod the local stiffness matrix is computed through the objects Element and then it is added accordingly to the global stiffness matrix 
 	std::vector<std::vector<double>> stiff;
 	for (int i = 0; i < rods.size(); i++) {
@@ -45,6 +45,11 @@ void Assembler::assemble(const double & E, const double & A_0) {
 		Backend::Point p_A(x_A, y_A);
 		Backend::Point p_B(x_B, y_B);
 		Element my_fin_elem(p_A, p_B, nodes);
+		if (my_fin_elem.get_first_node() == nullptr || my_fin_elem.get_second_node() == nullptr) {
+			std::cout << "System is not solvable" << std::endl;
+			isVisible = false;
+			return;
+		}
 		//Compute local stiffness matrix
 		stiff = my_fin_elem.compute_stiff(E, A_0);
 		//Assign rods nodes to rods
@@ -73,38 +78,26 @@ void Assembler::assemble(const double & E, const double & A_0) {
 		A[second_node*2 + 1][second_node*2 + 1] += stiff[3][3];
 		
 	}
-	std::cout << "matrix has been instantiated" << std::endl;
 	//Compute right hand side of system, i.e. the b vector
-	
-	rhs = compute_forces();
-	std::cout << "Forces have been computed" << std::endl;
+	compute_rhs(isVisible);
 	
 	//Consider bearings
-	apply_bearings();
-	std::cout << "Bearings have been applied" << std::endl;
-
-	//compute the new nodes after solving the linear system and considering the displacements
-	new_nodes = solve();
-	std::cout << "System has been solved" << std::endl;
-
-	//compute new rods
-	new_rods = compute_new_rods();
-	std::cout << "new rods have been computeed" << std::endl;
-
-	std::cout << "The new nodes are: " << std::endl;
-	for (int i = 0; i < new_nodes.size(); i++) {
-		new_nodes[i].print();
-	}
+	apply_bearings(isVisible);
 	
-
+	//compute the new nodes after solving the linear system and considering the displacements
+	new_nodes = solve(isVisible);
+	
+	//compute new rods
+	new_rods = compute_new_rods(isVisible);
+	
+	
 	//compute new forces
-	new_forces = compute_new_forces();
-	std::cout << "New forces have been computed" << std::endl;
-
+	new_forces = compute_new_forces(isVisible);
 }
 
 //computes the force vector (right hand side)
-std::vector<double> Assembler::compute_forces() {
+void Assembler::compute_rhs(bool& isVisible) {
+	
 	//assign to the forces the corresponding nodes (make it better?)
 	for (int i = 0; i < forces.size(); i++) {
 		for (int j = 0; j < nodes.size(); j++) {
@@ -114,28 +107,34 @@ std::vector<double> Assembler::compute_forces() {
 			}
 		}
 	}
+
+	for (int i = 0; i < forces.size(); i++) {
+		if (forces[i].node_p == nullptr) {
+			std::cout << "System is not solvable" << std::endl;
+			isVisible = false;
+			return;
+		}
+	}
 	
 	std::vector<double> force_truss(dim*n, 0);
 	for (int i = 0; i < forces.size(); i++) {
 		int node_id = (*forces[i].node_p).id;
 		int index = dim*node_id;
-		//Convert from deg to rad
-		double rad = forces[i].angle*M_PI/180;
 		double norm = forces[i].norm;
+		double rad = forces[i].angle;
 		//Write in the force vector the corresponding load
 		force_truss[index] = -std::cos(rad)*norm;
 		force_truss[index + 1] = -std::sin(rad)*norm;
 	}
 
-	return force_truss;
+	rhs = force_truss;
 }
 
 //Consider bearings in the stiffness matrix
-void Assembler::apply_bearings() {
-	//Maybe to be improved, also bearings is not constant
+void Assembler::apply_bearings(bool& isVisible) {
 	//Assign bearing to node
 	for (int i = 0; i < bearings.size(); i++) {
-	       for (int j = 0; j < nodes.size(); j++) {
+		for (int j = 0; j < nodes.size(); j++) {
 	 		if (bearings[i].p.x == nodes[j].p.x && bearings[i].p.y == nodes[j].p.y) {
 			  	bearings[i].node_p = &nodes[j];
 		  	  	break;
@@ -143,6 +142,14 @@ void Assembler::apply_bearings() {
 	       } 
 	}
 	
+	for (int i = 0; i < bearings.size(); i++) {
+		if (bearings[i].node_p == nullptr) {
+			std::cout << "System is not solvable" << std::endl;
+			isVisible = false;
+			return;
+		}
+	}
+
 	//Compute correction term in the right hand side of system
 	for (int i = 0; i < bearings.size(); i++) {
 		std::vector<double> correction(dim*n, 0);
@@ -194,7 +201,7 @@ void Assembler::apply_bearings() {
 }
 
 //Solve the linear system with eigen
-std::vector<Backend::Node> Assembler::solve() {
+std::vector<Backend::Node> Assembler::solve(bool& isVisible) {
 	//Convert forces to eigen
 	Eigen::VectorXd eigen_rhs(n*dim);
 	for (int i = 0; i < eigen_rhs.size(); i++) {
@@ -208,13 +215,16 @@ std::vector<Backend::Node> Assembler::solve() {
 			eigen_A(i,j) = A[i][j];	
 		}
 	}
+
+	
 	//Check that the matrix is invertible
-	if (eigen_A.llt().info() == 0) {
+	if (eigen_A.llt().info() == Eigen::NumericalIssue) {
 		std::cerr << "Stiffness matrix is not invertible - system hasn't been solved. Please try with other truss." << std::endl;
+		isVisible = false;
 		return nodes;
 	}
 
-			
+	
 	//Solve the system with llt decomposition
 	Eigen::VectorXd eigen_x = eigen_A.llt().solve(eigen_rhs);
 
@@ -223,6 +233,7 @@ std::vector<Backend::Node> Assembler::solve() {
 		//Check that the displacements aren't infinite
 		if (std::isnan(eigen_x(i))) {
 			std::cout << "System is unstable, please try with different truss" << std::endl;
+			isVisible = false;
 			return nodes;
 		}
 
@@ -242,9 +253,14 @@ std::vector<Backend::Node> Assembler::solve() {
 }
 
 //Compute the rods after the system has been solved
-std::vector<Backend::Rod> Assembler::compute_new_rods() {
+std::vector<Backend::Rod> Assembler::compute_new_rods(bool& isVisible) {
 	std::vector<Backend::Rod> new_rods((rods).size());
 	for (int i = 0; i < new_rods.size(); i++) {
+		if (rods[i].first_node == nullptr || rods[i].second_node == nullptr) {
+			std::cout << "System is not solvable" << std::endl;
+			isVisible = false;
+			return rods;
+		}
 		int first_node = (*rods[i].first_node).id;
 		int second_node = (*rods[i].second_node).id;
 		new_rods[i].first_node = &new_nodes[first_node];
@@ -260,9 +276,14 @@ std::vector<Backend::Rod> Assembler::compute_new_rods() {
 }
 
 
-std::vector<Backend::Force> Assembler::compute_new_forces() {
+std::vector<Backend::Force> Assembler::compute_new_forces(bool& isVisible) {
  std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
+	   if (forces[i].node_p == nullptr) {
+		   std::cout << "System is not solvable" << std::endl;
+		   isVisible = false;
+		   return forces;
+	   }
 	   int node_p = (*forces[i].node_p).id;
 	   new_forces[i].norm = forces[i].norm;
    	   new_forces[i].angle = forces[i].angle;
@@ -276,33 +297,36 @@ std::vector<Backend::Force> Assembler::compute_new_forces() {
 
 
 //In the following int main () function there is an implementation that checks if everything is working. If you compile it now it might not work because of the Makefiles. Anyway, the same correctness check is written in the test, so please run the test to check for correctness.
+
 /*
 int main() {
 	Backend::Node Node1(0,0,0);
-	Backend::Node Node2(0,2,1);
-	Backend::Node Node3(2,2,2);
-	Backend::Node Node4(2,0,3);
-	Backend::Node Node5(1,4,4);
+	Backend::Node Node2(0,100,1);
+	Backend::Node Node3(100,100,2);
+	Backend::Node Node4(100,0,3);
+	Backend::Node Node5(50,200,4);
 	std::vector<Backend::Node> nodes = {Node1, Node2, Node3, Node4, Node5};
-	Backend::Rod Rod1(0,0,0,2);
-	Backend::Rod Rod2(0,2,2,2);
-	Backend::Rod Rod3(2,2,2,0);
-	Backend::Rod Rod4(2,0,0,2);
-	Backend::Rod Rod5(0,2,1,4);
-	Backend::Rod Rod6(1,4,2,2);
-	Backend::Rod Rod7(2,2,0,0);
-	Backend::Rod Rod8(0,0,2,0);
+	Backend::Rod Rod1(0,0,0,100);
+	Backend::Rod Rod2(0,100,100,100);
+	Backend::Rod Rod3(100,100,100,0);
+	Backend::Rod Rod4(100,0,0,100);
+	Backend::Rod Rod5(0,100,50,200);
+	Backend::Rod Rod6(50,200,100,100);
+	Backend::Rod Rod7(100,100,0,0);
+	Backend::Rod Rod8(0,0,100,0);
 	std::vector<Backend::Rod> rods = {Rod1, Rod2, Rod3, Rod4, Rod5, Rod6, Rod7, Rod8};
-	Backend::Force Force1(2,2,-10,45);
-	Backend::Force Force2(1,4,-30,90);
+	double angle = 90;
+	double rad = angle*M_PI/180;
+	Backend::Force Force1(50,200,100000,rad);
 	//Backend::Force Force3(2,0,-70,30);
-	std::vector<Backend::Force> forces = {Force1, Force2};
+	std::vector<Backend::Force> forces = {Force1};
 	Backend::Bearing Bearing1(0,0,0,0);
-	Backend::Bearing Bearing2(2,0,0,0);
+	Backend::Bearing Bearing2(100,0,0,0);
 	std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
 	Assembler truss(2, nodes.size(), nodes,rods, forces, bearings);
 	std::cout << "truss has been built" << std::endl;
-	truss.assemble(1,1);
+	bool isVisible = true;
+	truss.assemble(100000,1, isVisible);
 	std::vector<std::vector<double>> A = truss.get_A();
 	std::cout << "A was built" << std::endl;
 	for (int i = 0; i < A.size(); i++) {
@@ -325,6 +349,7 @@ int main() {
 		std::cout << truss_displacement[i] << " ";
 	}
 	std::cout << std::endl;
+
 
 	return 0;
 }

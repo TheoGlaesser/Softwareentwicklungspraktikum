@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/element_test.dir/Test_element.cpp.o CMakeFiles/element_test.dir/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o  -o element_test  lib/libgtest_main.a lib/libgtest.a -lpthread 

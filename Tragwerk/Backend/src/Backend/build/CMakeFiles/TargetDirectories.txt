@@ -1,3 +1,0 @@
-/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/build/CMakeFiles/rebuild_cache.dir
-/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/build/CMakeFiles/edit_cache.dir
-/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/build/CMakeFiles/Simulator.dir
