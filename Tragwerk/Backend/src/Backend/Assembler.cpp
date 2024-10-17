@@ -34,7 +34,7 @@ std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
 std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
 
 //Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
-void Assembler::assemble(const double & E, const double & A_0, bool& isVisible) {
+void Assembler::assemble(const double & E, const double & A_0, Backend::Exception & error) {
 	//for each rod the local stiffness matrix is computed through the objects Element and then it is added accordingly to the global stiffness matrix 
 	std::vector<std::vector<double>> stiff;
 	for (int i = 0; i < rods.size(); i++) {
@@ -46,8 +46,8 @@ void Assembler::assemble(const double & E, const double & A_0, bool& isVisible) 
 		Backend::Point p_B(x_B, y_B);
 		Element my_fin_elem(p_A, p_B, nodes);
 		if (my_fin_elem.get_first_node() == nullptr || my_fin_elem.get_second_node() == nullptr) {
-			std::cout << "System is not solvable" << std::endl;
-			isVisible = false;
+			error.message = "System is not solvable";
+			error.isVisible = false;
 			return;
 		}
 		//Compute local stiffness matrix
@@ -79,24 +79,24 @@ void Assembler::assemble(const double & E, const double & A_0, bool& isVisible) 
 		
 	}
 	//Compute right hand side of system, i.e. the b vector
-	compute_rhs(isVisible);
+	compute_rhs(error);
 	
 	//Consider bearings
-	apply_bearings(isVisible);
+	apply_bearings(error);
 	
 	//compute the new nodes after solving the linear system and considering the displacements
-	new_nodes = solve(isVisible);
+	new_nodes = solve(error);
 	
 	//compute new rods
-	new_rods = compute_new_rods(isVisible);
+	new_rods = compute_new_rods(error);
 	
 	
 	//compute new forces
-	new_forces = compute_new_forces(isVisible);
+	new_forces = compute_new_forces(error);
 }
 
 //computes the force vector (right hand side)
-void Assembler::compute_rhs(bool& isVisible) {
+void Assembler::compute_rhs(Backend::Exception & error) {
 	
 	//assign to the forces the corresponding nodes (make it better?)
 	for (int i = 0; i < forces.size(); i++) {
@@ -110,8 +110,8 @@ void Assembler::compute_rhs(bool& isVisible) {
 
 	for (int i = 0; i < forces.size(); i++) {
 		if (forces[i].node_p == nullptr) {
-			std::cout << "System is not solvable" << std::endl;
-			isVisible = false;
+			error.message = "System is not solvable";
+			error.isVisible = false;
 			return;
 		}
 	}
@@ -131,7 +131,7 @@ void Assembler::compute_rhs(bool& isVisible) {
 }
 
 //Consider bearings in the stiffness matrix
-void Assembler::apply_bearings(bool& isVisible) {
+void Assembler::apply_bearings(Backend::Exception & error) {
 	//Assign bearing to node
 	for (int i = 0; i < bearings.size(); i++) {
 		for (int j = 0; j < nodes.size(); j++) {
@@ -144,8 +144,8 @@ void Assembler::apply_bearings(bool& isVisible) {
 	
 	for (int i = 0; i < bearings.size(); i++) {
 		if (bearings[i].node_p == nullptr) {
-			std::cout << "System is not solvable" << std::endl;
-			isVisible = false;
+			error.message = "System is not solvable";
+			error.isVisible = false;
 			return;
 		}
 	}
@@ -201,7 +201,7 @@ void Assembler::apply_bearings(bool& isVisible) {
 }
 
 //Solve the linear system with eigen
-std::vector<Backend::Node> Assembler::solve(bool& isVisible) {
+std::vector<Backend::Node> Assembler::solve(Backend::Exception & error) {
 	//Convert forces to eigen
 	Eigen::VectorXd eigen_rhs(n*dim);
 	for (int i = 0; i < eigen_rhs.size(); i++) {
@@ -219,8 +219,8 @@ std::vector<Backend::Node> Assembler::solve(bool& isVisible) {
 	
 	//Check that the matrix is invertible
 	if (eigen_A.llt().info() == Eigen::NumericalIssue) {
-		std::cerr << "Stiffness matrix is not invertible - system hasn't been solved. Please try with other truss." << std::endl;
-		isVisible = false;
+		error.message = "Stiffness matrix is not invertible - system hasn't been solved. Please try with other truss.";
+		error.isVisible = false;
 		return nodes;
 	}
 
@@ -232,8 +232,8 @@ std::vector<Backend::Node> Assembler::solve(bool& isVisible) {
 	for (int i = 0; i < n*dim; i++) {
 		//Check that the displacements aren't infinite
 		if (std::isnan(eigen_x(i))) {
-			std::cout << "System is unstable, please try with different truss" << std::endl;
-			isVisible = false;
+			error.message = "System is unstable, please try with different truss";
+			error.isVisible = false;
 			return nodes;
 		}
 
@@ -253,12 +253,12 @@ std::vector<Backend::Node> Assembler::solve(bool& isVisible) {
 }
 
 //Compute the rods after the system has been solved
-std::vector<Backend::Rod> Assembler::compute_new_rods(bool& isVisible) {
+std::vector<Backend::Rod> Assembler::compute_new_rods(Backend::Exception & error) {
 	std::vector<Backend::Rod> new_rods((rods).size());
 	for (int i = 0; i < new_rods.size(); i++) {
 		if (rods[i].first_node == nullptr || rods[i].second_node == nullptr) {
-			std::cout << "System is not solvable" << std::endl;
-			isVisible = false;
+			error.message = "System is not solvable";
+			error.isVisible = false;
 			return rods;
 		}
 		int first_node = (*rods[i].first_node).id;
@@ -276,12 +276,12 @@ std::vector<Backend::Rod> Assembler::compute_new_rods(bool& isVisible) {
 }
 
 
-std::vector<Backend::Force> Assembler::compute_new_forces(bool& isVisible) {
+std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & error) {
  std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
 	   if (forces[i].node_p == nullptr) {
-		   std::cout << "System is not solvable" << std::endl;
-		   isVisible = false;
+		   error.isVisible = false;
+		   error.message = "System is not solvable";
 		   return forces;
 	   }
 	   int node_p = (*forces[i].node_p).id;

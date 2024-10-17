@@ -8,8 +8,20 @@
 #include <vector>
 #include <QLabel>
 #include <QMessageBox>
+#include <iostream>
+#include <string>
+
 
 class MainWindow; 
+
+
+struct support {
+  QPointF p;
+  bool xFixed, yFixed;
+  double xDisp, yDisp;
+
+  support(QPointF p, bool xFixed, bool yFixed, double xDisp, double yDisp) : p(p), xFixed(xFixed), yFixed(yFixed), xDisp(xDisp), yDisp(yDisp)  {}
+};
 
 struct force {
   QPointF point;
@@ -65,5 +77,6 @@ struct resultGraphicsItems {
     std::vector<forceGraphicsItem> forceGraphicsItems;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 };
+
 
 

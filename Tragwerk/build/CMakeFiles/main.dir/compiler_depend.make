@@ -604,6 +604,8 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
@@ -1215,6 +1217,8 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
   main_autogen/include/ui_mainwindow.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
@@ -1638,6 +1642,21 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc \
   ../Frontend/mainwindow.h \
   ../Frontend/Constants.h \
   ../Backend/src/Backend.h \
@@ -1678,20 +1697,6 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/complex \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/istream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/bits/basic_ios.h \
-  /usr/include/c++/11/bits/locale_facets.h \
-  /usr/include/c++/11/cwctype \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
-  /usr/include/c++/11/bits/locale_facets.tcc \
-  /usr/include/c++/11/bits/basic_ios.tcc \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/sstream.tcc \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/MKL_support.h \
   /usr/include/c++/11/cassert \
@@ -1881,7 +1886,6 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /usr/include/c++/11/iostream \
   ../Backend/src/Backend/Constants.h \
   ../Backend/src/Backend/Assembler.h \
   /usr/include/c++/11/math.h \
@@ -1891,7 +1895,9 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
 
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compilation.cpp \
   /usr/include/stdc-predef.h \
@@ -2496,7 +2502,9 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
 
 
 main_autogen/V57I63ONWH/moc_mainwindow.cpp:
@@ -2584,6 +2592,8 @@ main_autogen/include/ui_mainwindow.h:
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QString:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h:
 

@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     scene(new QGraphicsScene(this)),
-    E(std::numeric_limits<double>::max()),
-    A(std::numeric_limits<double>::max())
+    E(100000),
+    A(1)
 
 {
     ui->setupUi(this);
@@ -45,17 +45,21 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_2, &QCheckBox::clicked, this, &MainWindow::graphicalExport);
     connect(ui->button_zoom_in, &QPushButton::clicked, this, &MainWindow::onButtonZoomIn);
     connect(ui->button_zoom_out, &QPushButton::clicked, this, &MainWindow::onButtonZoomOut);
+    connect(ui->checkBox_y_fixed_2, &QCheckBox::stateChanged, this, &MainWindow::xFixedChange);
+    connect(ui->checkBox_y_fixed, &QCheckBox::stateChanged, this, &MainWindow::yFixedChange);
+    
    
     //Greying out the Displacement and Result Checkbox before the user simulates
     ui->checkBox_2->setEnabled(false);
     ui->checkBox_4->setEnabled(false);
     ui->checkBox->setChecked(true);
+    ui->checkBox_y_fixed->setChecked(true);
+    ui->checkBox_y_fixed_2->setChecked(true);
 
 
     width = ui->graphicsView->width();
     height = ui->graphicsView->height();
     drawCoordinateSystem();
-    
 }
 
 
@@ -66,7 +70,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+void MainWindow::showBox(const QString & myStr) {
+	QMessageBox infoLabel;
+        infoLabel.setInformativeText(myStr);
+        infoLabel.exec();
+}
 
 
 
@@ -235,7 +243,7 @@ void MainWindow::removeSelectedItems()
 		}
 
     	    for(int i=0; i < supports.size(); i++) {
-		if (isSupportOnNode(node, supports[i])) {
+		if (isSupportOnNode(node, supports[i].p)) {
 			    scene->removeItem(supportItems[i]);
 		    	    delete supportItems[i];
 			    supports.erase(supports.begin() + i);
@@ -438,6 +446,13 @@ void MainWindow::makeForce()
     double x = xStr.toDouble(&okX);
     double y = yStr.toDouble(&okY);
     double betrag = betragStr.toDouble(&okBetrag);
+	
+    if (betrag <= 0) {
+	    const QString err = "Please make a force with positive amount";
+	    showBox(err);	
+	    return;
+    }
+
     double winkel = winkelStr.toDouble(&okWinkel);
     winkel = winkel*M_PI/180;
     
@@ -451,7 +466,8 @@ void MainWindow::makeForce()
     }
     
     if(!isNode) {
-	    std::cout << "Force must be on a node. Please draw a force on an already created node" << std::endl;
+	    const QString err = "Force must be on a node. Please draw a force on an already created node";
+	    showBox(err);
 	    return;
     }
 
@@ -500,8 +516,6 @@ void MainWindow::makeForce()
     Log::print_lines(lineItems);
     Log::print_forces(forces);
     Log::print_forceGraphicsItems(forceGraphicsItems);
-    Log::print_supportItems(supports);
-
 }
 
 
@@ -510,17 +524,25 @@ void MainWindow::makeForce()
 
 void MainWindow::makeSupport()
 {
-    QString xStr = ui->lineEditX_6->text();
-    QString yStr = ui->lineEditX_7->text();
+    QString xStr = ui->lineEdit_x_pos->text();
+    QString yStr = ui->lineEditX_y_pos->text();
+    QString xDisplacement = ui->lineEdit_x_displacement->text();
+    QString yDisplacement = ui->lineEdit_y_displacement->text();
 
-    if (xStr.isEmpty() || yStr.isEmpty()) {
+
+    if (xStr.isEmpty() || yStr.isEmpty() || xDisplacement.isEmpty() || yDisplacement.isEmpty()) {
         return;
     }
 
-    bool okX, okY;
-    double x = xStr.toDouble(&okX);
-    double y = yStr.toDouble(&okY);
+
+    bool okXPos, okYPos, okXDisp, okYDisp; 
+    double x = xStr.toDouble(&okXPos);
+    double y = yStr.toDouble(&okYPos);
+    double xDisp = xDisplacement.toDouble(&okXDisp);
+    double yDisp = yDisplacement.toDouble(&okYDisp);
+
     
+
     bool isNode = false;
     for (size_t i = 0; i < nodes.size(); i++) {
             if (x == nodes[i].x() && y == nodes[i].y()) {
@@ -530,14 +552,18 @@ void MainWindow::makeSupport()
     }
 
     if(!isNode) {
-            std::cout << "Bearing must be on a node. Please draw a bearing on an already created node" << std::endl;
+            const QString err =  "Bearing must be on a node. Please draw a bearing on an already created node";
+	    showBox(err);
             return;
     }
 
 	
 
-    if (okX && okY) {
-          QPointF newNode(x, y); supports.push_back(newNode);
+    if (okXPos && okYPos && okXDisp && okYDisp) {
+          QPointF newNode(x, y); 
+          support newSupport(newNode, xFixed, yFixed, xDisp, yDisp);
+          supports.push_back(newSupport);
+
           if(originalVisible) {
           QPointF arrowP1(x-7, y-7);
           QPointF arrowP2(x+7, y-7);
@@ -579,17 +605,17 @@ void MainWindow::clear() {
 
   //Forces
   forces.clear();
-  for(int i = 0; i < forceGraphicsItems.size(); i++) {
-    scene->removeItem(forceGraphicsItems[i].forceLineItem); 
-    scene->removeItem(forceGraphicsItems[i].forcePolygonItem);
-    delete forceGraphicsItems[i].forceLineItem;
-    delete forceGraphicsItems[i].forcePolygonItem;
+  for(auto forceItem : forceGraphicsItems) {
+    scene->removeItem(forceItem.forceLineItem); 
+    scene->removeItem(forceItem.forcePolygonItem);
+    delete forceItem.forceLineItem;
+    delete forceItem.forcePolygonItem;
   }
   forceGraphicsItems.clear();
 
 
   //Supports
-
+  supports.clear();
   for(auto supportItem : supportItems) {
     scene->removeItem(supportItem);
     delete supportItem;
@@ -678,11 +704,9 @@ void MainWindow::save() {
 
   //Support
   for(auto support : supports) {
-    outputFile << support.x()  << " " << support.y() << " ";
+    outputFile << support.p.x()  << " " << support.p.y() << " " << support.xFixed << " " << support.yFixed << " " << support.xDisp << " " << support.yDisp;
   }
   outputFile << std::endl;
-
-
 }
 
 
@@ -763,8 +787,11 @@ void MainWindow::load()
   
 
  for(int i=0; i<numSupports; i++) {
-    double x, y; stream >> x; stream >> y;
-    QPointF newNode(x, y); supports.push_back(newNode);
+    double x, y, xDisp, yDisp; bool xFixed, yFixed;
+    stream >> x; stream >> y; stream >> xFixed; stream >> yFixed; stream >> xDisp; stream >> yDisp;
+    QPointF newNode(x, y); support newSupport(newNode, xFixed, yFixed, xDisp, yDisp);
+    supports.push_back(newSupport);
+
     QPointF arrowP1(x-7, y-7);
     QPointF arrowP2(x+7, y-7);
 
@@ -780,9 +807,6 @@ void MainWindow::load()
 
 
 
-
-
-
 void MainWindow::linearStateChange()
 {
   isLinear = !(isLinear);
@@ -790,6 +814,18 @@ void MainWindow::linearStateChange()
 
 
 
+void MainWindow::xFixedChange()
+{
+  xFixed = !(xFixed);
+  std::cout << "xFixed: " << xFixed << "\n";
+}
+
+
+void MainWindow::yFixedChange()
+{
+  yFixed = !(yFixed);
+  std::cout << "yFixed: " << yFixed << "\n";
+}
 
 
 void MainWindow::updateA()
@@ -831,7 +867,7 @@ void MainWindow::solve()
   //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
-    backendBearings[i] = Backend::Bearing(supports[i].x(), supports[i].y(), 0, 0);
+    backendBearings[i] = Backend::Bearing(supports[i].p.x(), supports[i].p.y(), 0, 0);
   } 
 
 
@@ -854,13 +890,14 @@ void MainWindow::solve()
 
   
   //CREATE AND RUN SIMULATOR
-  bool isVisible  = true;
+  bool isVisible = true;
+  Backend::Exception err(isVisible);
   Backend::Simulator simulator(isLinear);
-  result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, isVisible);
+  result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, err);
   
 
   //ENABLE DISPLACEMENT AND RESULT VISIBILITY
-  if (isVisible) {
+  if (err.isVisible) {
   	ui->checkBox_2->setEnabled(true);
   	ui->checkBox_4->setEnabled(true);
   }
@@ -874,6 +911,8 @@ void MainWindow::solve()
 	ui->checkBox_4->setEnabled(false);
 	ui->checkBox_2->setChecked(false);
 	ui->checkBox_4->setChecked(false);
+	const QString error =QString::fromStdString(err.message);
+	showBox(error);
   }
 }
 
@@ -945,7 +984,7 @@ void MainWindow::showResult()
         double x = result.bearings[i].p.x;
         double y = result.bearings[i].p.y;
 
-        QPointF newNode(x, false);
+        QPointF newNode(x, y);
         QPointF arrowP1(x-7.0, y-7.0);
         QPointF arrowP2(x+7.0, y-7.0);
 
@@ -1087,7 +1126,7 @@ void MainWindow::showOriginal()
   else {
     std::cout << "Redraw\n";
     for(int i=0; i<nodes.size(); i++) {
-        QPointF newNode(result.nodes[i].p.x, result.nodes[i].p.y);
+        QPointF newNode(nodes[i].x(), nodes[i].y());
         nodeGraphicsItem* newNodeItem = new nodeGraphicsItem(newNode, this); scene->addItem(newNodeItem);
         newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
         nodeItems.push_back(newNodeItem);
@@ -1135,14 +1174,12 @@ void MainWindow::showOriginal()
         //forceGraphicItem
         forceGraphicsItem newforceGraphicsItem(newLineItem, newPolygonItem);
         forceGraphicsItems.push_back(newforceGraphicsItem);
-
-
-
      }
 
+
      for(int i=0; i<supports.size(); i++) {
-        double x = supports[i].x();
-        double y = supports[i].y();
+        double x = supports[i].p.x();
+        double y = supports[i].p.y();
 
         QPointF newNode(x, y); 
         QPointF arrowP1(x-7.0, y-7.0);
@@ -1161,61 +1198,6 @@ void MainWindow::showOriginal()
   originalVisible = !(originalVisible);
 }
 
-
-
-
-
-/*void MainWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override {
-        // Add new node on double click
-        QPointF position = event->scenePos();
-        Node* node = new Node(position);
-        nodes.push_back(node);
-
-        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(x - 2, y - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
-        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-        nodeItems.push_back(newNodeItem);
-}*/
-
-
-
-
-/*void MainWindow::mouseDoubleClickEvent(QMouseEvent* event) {
-    // Add new node on double click
-    std::cout << "Double Click" << std::endl;
-    QPointF position = event->scenePos();
-    QPointF* newNode = new QPointF(position);
-
-    bool isDrawn = false;
-    
-    //check if node has been already created    
-    for (size_t i = 0; i < nodes.size(); i++) {
-	    if (nodes[i].x() == position.x() && nodes[i].y() == position.y()) {
-		    isDrawn = true;
-		    newNode = &nodes[i];
-		    break;
-	    }
-    }
-	
-
-    /*if (isDrawn) {
-      if (nodes.size() > 1) {
-          const QPointF& lastNode = nodes[nodes.size() - 1];
-          QGraphicsLineItem* newLineItem = scene->addLine(lastNode.x(), lastNode.y(), (*nodeP).x(), (*nodeP).y(), QPen(Qt::black));
-          newLineItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-          lineItems.push_back(newLineItem);
-          lines.push_back(std::pair(QPointF(lastNode.x(), lastNode.y()) , QPointF((*nodeP).x(), (*nodeP).y())));
-          }
-	  }
-
-	  if(!isDrawn) {
-          QPointF newNode(position.x(), position.y());
-          nodes.push_back(newNode);
-
-          QGraphicsEllipseItem* newNodeItem = scene->addEllipse(position.x() - 2, position.y() - 2, 4, 4, QPen(), QBrush(Qt::SolidPattern));
-          newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
-          nodeItems.push_back(newNodeItem);
-    }
-}*/
 
 
 

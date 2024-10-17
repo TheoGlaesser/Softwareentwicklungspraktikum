@@ -16,6 +16,8 @@
 #include <limits>
 #include <QFileDialog>
 #include <QGraphicsSceneMouseEvent>
+#include <QMessageBox>
+#include <QString>
 
 
 namespace Ui {
@@ -51,6 +53,8 @@ private slots:
     void graphicalExport();
     void onButtonZoomIn();
     void onButtonZoomOut();
+    void xFixedChange();
+    void yFixedChange();
 
 private:
     Ui::MainWindow *ui;
@@ -69,7 +73,7 @@ private:
     std::vector<forceGraphicsItem> forceGraphicsItems;
 
     //Support
-    std::vector<QPointF> supports;
+    std::vector<support> supports;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 
     //Results
@@ -87,11 +91,16 @@ private:
     bool originalVisible = 0;
     bool resultVisible = 0;
     bool displacementVisible = 0;
-
+  
+    //Bools for newsupportItems
+    bool xFixed = 0, yFixed = 0;
 
     void drawCoordinateSystem(); double width, height;
+    void showBox(const QString &);
+
     bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node);  // Function to check line connection
     bool isLineBetweenNodes(QPointF lhs, QPointF rhs);
+
     bool isForceOnNode(nodeGraphicsItem* , force);
     bool isSupportOnNode(nodeGraphicsItem*, QPointF);
 };

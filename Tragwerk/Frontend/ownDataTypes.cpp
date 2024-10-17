@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 
 
+
 void nodeGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
       QGraphicsEllipseItem::mousePressEvent(event);
       if (isSelected()) {

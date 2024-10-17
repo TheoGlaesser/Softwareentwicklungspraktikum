@@ -84,17 +84,6 @@ TEST_F(TrussTest, General) {
         std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
 	SetUp(nodes, rods, bearings, forces, 1,100000);
 
-	//test of the element
-	/*Backend::Point p1(0,0);
-  	Backend::Point p2(0,2);
-  	std::vector<std::vector<double>> test_stiff=test_element(p1,p2);
-	std::vector<std::vector<double>> correct_stiff(4, std::vector<double> (4,0));
-        correct_stiff[1][1] = 0.5;
-        correct_stiff[1][3] = -0.5;
-        correct_stiff[3][1] = -0.5;
-        correct_stiff[3][3] = 0.5;
-        EXPECT_EQ(test_stiff, correct_stiff);
-	*/
 	//Test right hand side
 	std::vector<double> correct_rhs = {0,0,0,0, 0,0, 0, 0, 0, -100000};
 	std::vector<double> output_rhside = test_rhs();
