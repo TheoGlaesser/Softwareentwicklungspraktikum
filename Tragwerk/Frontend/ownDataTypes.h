@@ -6,6 +6,8 @@
 #include <QGraphicsLineItem>
 #include <QPointF>
 #include <vector>
+#include <iostream>
+#include <string>
 
 struct force {
   QPointF point;
@@ -26,4 +28,8 @@ struct resultGraphicsItems {
     std::vector<forceGraphicsItem> forceGraphicsItems;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 };
+
+
+
+
 

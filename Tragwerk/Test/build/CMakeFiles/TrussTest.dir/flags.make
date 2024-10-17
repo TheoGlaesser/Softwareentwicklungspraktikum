@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/include -isystem /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest 
+CXX_INCLUDES = -isystem /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/include -isystem /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest 
 

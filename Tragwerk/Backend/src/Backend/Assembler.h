@@ -17,11 +17,11 @@ class Assembler {
 		std::vector<Backend::Node> new_nodes;
 		std::vector<Backend::Rod> new_rods;
 		std::vector<Backend::Force> new_forces;
-                void compute_rhs(bool&);
-                void apply_bearings(bool&);
-                std::vector<Backend::Node> solve(bool&);
-                std::vector<Backend::Rod> compute_new_rods(bool&);
-                std::vector<Backend::Force> compute_new_forces(bool&);
+                void compute_rhs(Backend::Exception &);
+                void apply_bearings(Backend::Exception &);
+                std::vector<Backend::Node> solve(Backend::Exception &);
+                std::vector<Backend::Rod> compute_new_rods(Backend::Exception &);
+                std::vector<Backend::Force> compute_new_forces(Backend::Exception &);
 	public:
 		Assembler();
 		Assembler(const int &, const int &, const std::vector<Backend::Node> &,const std::vector<Backend::Rod> &,const std::vector<Backend::Force> &,const std::vector<Backend::Bearing> &);
@@ -31,7 +31,7 @@ class Assembler {
 		std::vector<Backend::Node> get_new_nodes();
 		std::vector<Backend::Rod> get_new_rods();
 		std::vector<Backend::Force> get_new_forces();
-		void assemble(const double &, const double &, bool&);		
+		void assemble(const double &, const double &, Backend::Exception &);		
 };
 
 

@@ -1,3 +1,4 @@
-TrussTest.General 2 0.00333707
-TrussTest.Element 2 0.00201864
+TrussTest_NOT_BUILT 0 0
+TrussTest.General 1 0.00621129
+TrussTest.Element 1 0.00196506
 ---

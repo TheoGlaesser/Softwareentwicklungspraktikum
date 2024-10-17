@@ -1,21 +1,21 @@
 {
-	"BUILD_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen",
-	"CMAKE_BINARY_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk",
+	"BUILD_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen",
+	"CMAKE_BINARY_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk",
+	"CMAKE_SOURCE_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk",
 	"HEADERS" : 
 	[
 		[
-			"/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h",
+			"/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h",
 			"MU",
 			"V57I63ONWH/moc_mainwindow.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_NO_DEBUG", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -26,7 +26,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/current/Backend/src/Backend.h",
+		"/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/current/Backend/src/Backend.h",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
@@ -51,24 +51,24 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 1,
-	"PARSE_CACHE_FILE" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/main.cpp",
+			"/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/main.cpp",
 			"MU"
 		],
 		[
-			"/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.cpp",
+			"/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.cpp",
 			"MU"
 		]
 	],

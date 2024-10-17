@@ -15,6 +15,10 @@
 #include <sstream>
 #include <limits>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QString>
+#include <iostream>
+#include <utility>
 
 
 namespace Ui {
@@ -83,6 +87,7 @@ private:
     bool isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node);  // Function to check line connection
     bool isForceOnNode(QGraphicsEllipseItem* , force);
     bool isSupportOnNode(QGraphicsEllipseItem*, QPointF);
+    void showBox(const QString &);
 };
 
 //#endif // MAINWINDOW_H

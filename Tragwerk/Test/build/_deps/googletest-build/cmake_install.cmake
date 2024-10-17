@@ -1,4 +1,4 @@
-# Install script for directory: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src
+# Install script for directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-build/googlemock/cmake_install.cmake")
+  include("/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-build/googlemock/cmake_install.cmake")
 
 endif()
 
