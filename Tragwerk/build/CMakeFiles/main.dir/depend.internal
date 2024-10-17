@@ -251,6 +251,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/ownDataTypes.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -363,6 +364,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -370,6 +372,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
@@ -627,6 +630,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/mainwindow.h
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/ownDataTypes.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
@@ -750,6 +754,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMenuBar
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
@@ -772,6 +777,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
@@ -1032,6 +1038,7 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/V57I63ONWH/moc_mainwindow.cpp
  /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/build/main_autogen/mocs_compilation.cpp
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -1139,11 +1146,13 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h

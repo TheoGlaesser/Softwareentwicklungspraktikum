@@ -57,7 +57,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+void MainWindow::showBox(const QString & myStr) {
+	QMessageBox infoLabel;
+        infoLabel.setInformativeText(myStr);
+        infoLabel.exec();
+}
 
 
 
@@ -375,6 +379,13 @@ void MainWindow::makeForce()
     double x = xStr.toDouble(&okX);
     double y = yStr.toDouble(&okY);
     double betrag = betragStr.toDouble(&okBetrag);
+	
+    if (betrag <= 0) {
+	    const QString err = "Please make a force with positive amount";
+	    showBox(err);	
+	    return;
+    }
+
     double winkel = winkelStr.toDouble(&okWinkel);
     winkel = winkel*M_PI/180;
     
@@ -388,7 +399,8 @@ void MainWindow::makeForce()
     }
     
     if(!isNode) {
-	    std::cout << "Force must be on a node. Please draw a force on an already created node" << std::endl;
+	    const QString err = "Force must be on a node. Please draw a force on an already created node";
+	    showBox(err);
 	    return;
     }
 
@@ -467,7 +479,8 @@ void MainWindow::makeSupport()
     }
 
     if(!isNode) {
-            std::cout << "Bearing must be on a node. Please draw a bearing on an already created node" << std::endl;
+            const QString err =  "Bearing must be on a node. Please draw a bearing on an already created node";
+	    showBox(err);
             return;
     }
 
@@ -523,7 +536,6 @@ void MainWindow::clear() {
 
   //Forces
   forces.clear();
-  std::cout << "Old forces" << std::endl;
   for(auto forceItem : forceGraphicsItems) {
     scene->removeItem(forceItem.forceLineItem); 
     scene->removeItem(forceItem.forcePolygonItem);
@@ -720,15 +732,10 @@ void MainWindow::load()
 
 
 
-
-
-
 void MainWindow::linearStateChange()
 {
   isLinear = !(isLinear);
 }
-
-
 
 
 
@@ -768,10 +775,6 @@ void MainWindow::updateE()
 
 void MainWindow::solve() 
 {
-  /*bool tmp = resultVisible;
-  resultVisible = false;
-  showResult();
-  resultVisible = tmp;*/
   //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
@@ -798,13 +801,14 @@ void MainWindow::solve()
 
   
   //CREATE AND RUN SIMULATOR
-  bool isVisible  = true;
+  bool isVisible = true;
+  Backend::Exception err(isVisible);
   Backend::Simulator simulator(isLinear);
-  result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, isVisible);
+  result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, err);
   
 
   //ENABLE DISPLACEMENT AND RESULT VISIBILITY
-  if (isVisible) {
+  if (err.isVisible) {
   	ui->checkBox_2->setEnabled(true);
   	ui->checkBox_4->setEnabled(true);
   }
@@ -818,6 +822,8 @@ void MainWindow::solve()
 	ui->checkBox_4->setEnabled(false);
 	ui->checkBox_2->setChecked(false);
 	ui->checkBox_4->setChecked(false);
+	const QString error =QString::fromStdString(err.message);
+	showBox(error);
   }
 }
 

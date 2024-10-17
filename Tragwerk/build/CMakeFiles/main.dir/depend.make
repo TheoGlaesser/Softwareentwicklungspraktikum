@@ -250,6 +250,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp
 CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/mainwindow.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/ownDataTypes.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -362,6 +363,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWid
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
+CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -369,6 +371,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWid
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h
 CMakeFiles/main.dir/Frontend/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
@@ -626,6 +629,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/ownDataTypes.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
@@ -749,6 +753,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMenuBar
+CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
@@ -771,6 +776,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h
+CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
@@ -1031,6 +1037,7 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: ../Frontend/ownDataType
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/V57I63ONWH/moc_mainwindow.cpp
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compilation.cpp
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QString
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -1138,11 +1145,13 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-lin
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h
 CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h

@@ -1363,6 +1363,10 @@ limits
 -
 QFileDialog
 -
+QMessageBox
+-
+QString
+-
 
 /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Frontend/ownDataTypes.h
 QMainWindow
@@ -1377,10 +1381,18 @@ QPointF
 -
 vector
 -
+iostream
+-
+string
+-
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF
 qpoint.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QString
+qstring.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
 qvariant.h
@@ -2564,6 +2576,10 @@ qmainwindow.h
 qmenubar.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
+qmessagebox.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton
 qpushbutton.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
@@ -2764,6 +2780,12 @@ QtWidgets/qaction.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qmenu.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qdialog.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
