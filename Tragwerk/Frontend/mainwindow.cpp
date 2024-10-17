@@ -189,12 +189,12 @@ bool MainWindow::isLineBetweenNodes(QPointF lhs, QPointF rhs) {
 }
 
 
-bool MainWindow::isForceOnNode(QGraphicsEllipseItem* node,force force) {
+bool MainWindow::isForceOnNode(nodeGraphicsItem* node,force force) {
     QPointF nodeCenter = node->rect().center() + node->pos();
     return (force.point == nodeCenter);
 }
 
-bool MainWindow::isSupportOnNode(QGraphicsEllipseItem* node, QPointF support) {
+bool MainWindow::isSupportOnNode(nodeGraphicsItem* node, QPointF support) {
 	QPointF nodeCenter = node->rect().center() + node->pos();
 	return (support == nodeCenter);
 }
@@ -561,44 +561,34 @@ void MainWindow::makeSupport()
 void MainWindow::clear() {
   //nodes
   nodes.clear();
-
   for(auto nodeItem : nodeItems) {
     scene->removeItem(nodeItem);
     delete nodeItem;
   }
   nodeItems.clear();
 
+
   //lines
   lines.clear();
-
   for(auto lineItem : lineItems) {
     scene->removeItem(lineItem);
     delete lineItem;
   }
   lineItems.clear();
 
+
   //Forces
   forces.clear();
-<<<<<<< HEAD
-
   for(int i = 0; i < forceGraphicsItems.size(); i++) {
     scene->removeItem(forceGraphicsItems[i].forceLineItem); 
     scene->removeItem(forceGraphicsItems[i].forcePolygonItem);
     delete forceGraphicsItems[i].forceLineItem;
     delete forceGraphicsItems[i].forcePolygonItem;
-=======
-  std::cout << "Old forces" << std::endl;
-  for(auto forceItem : forceGraphicsItems) {
-    scene->removeItem(forceItem.forceLineItem); 
-    scene->removeItem(forceItem.forcePolygonItem);
-    delete forceItem.forceLineItem;
-    delete forceItem.forcePolygonItem;
->>>>>>> e613bc4d371f1dc3429e1d6f740cb9885d6e2f17
   }
   forceGraphicsItems.clear();
 
+
   //Supports
-  supports.clear();
 
   for(auto supportItem : supportItems) {
     scene->removeItem(supportItem);
@@ -606,12 +596,13 @@ void MainWindow::clear() {
   }
   supportItems.clear();
 
+
   //Results
   if (resultGraphicsItem.nodeItems.size() == 0) {return;}
   
+
   //New nodes
   result.nodes.clear();	 
-  
   for (auto resultNodeItem : resultGraphicsItem.nodeItems) {
    scene->removeItem(resultNodeItem);
    delete resultNodeItem;
@@ -626,6 +617,7 @@ void MainWindow::clear() {
    delete resultLineItem;
   }
   resultGraphicsItem.lineItems.clear();
+
 
   //New forces
   result.forces.clear();
@@ -645,8 +637,11 @@ void MainWindow::clear() {
   }
   resultGraphicsItem.supportItems.clear();
 
-
-
+  for(int i=0; i<displacementVectors.size(); i++) {
+    scene->removeItem(displacementVectors[i].forceLineItem); 
+    scene->removeItem(displacementVectors[i].forcePolygonItem);
+  }
+  displacementVectors.clear();
 }
 
 
@@ -833,21 +828,6 @@ void MainWindow::updateE()
 
 void MainWindow::solve() 
 {
-<<<<<<< HEAD
-  for(int i = 0; i < forceGraphicsItems.size(); i++) {
-    scene->removeItem(forceGraphicsItems[i].forceLineItem); 
-    scene->removeItem(forceGraphicsItems[i].forcePolygonItem);
-    delete forceGraphicsItems[i].forceLineItem;
-    delete forceGraphicsItems[i].forcePolygonItem;
-  }
-  displacementVectors.clear();
-
-=======
-  /*bool tmp = resultVisible;
-  resultVisible = false;
-  showResult();
-  resultVisible = tmp;*/
->>>>>>> e613bc4d371f1dc3429e1d6f740cb9885d6e2f17
   //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
@@ -903,21 +883,16 @@ void MainWindow::showResult()
   resultVisible  = !resultVisible;
   QPen pen;
   if(resultVisible) {
-<<<<<<< HEAD
 	  std::cout << result.nodes.size() << std::endl;
+
     for(int i=0; i<result.nodes.size(); i++) {
 	    result.nodes[i].print();
        QPointF  newNode(result.nodes[i].p.x, result.nodes[i].p.y);
        nodeGraphicsItem* newNodeItem = new nodeGraphicsItem(newNode, this); scene->addItem(newNodeItem);
        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, true);  // Enable selection
        resultGraphicsItem.nodeItems.push_back(newNodeItem);
-=======
-     for(int i=0; i<result.nodes.size(); i++) {
-        QGraphicsEllipseItem* newNodeItem = scene->addEllipse(result.nodes[i].p.x - 2.0, result.nodes[i].p.y - 2.0, 4.0, 4.0, pen, QBrush(Qt::red));
-        newNodeItem->setFlag(QGraphicsItem::ItemIsSelectable, false);  // Enable selection
-        resultGraphicsItem.nodeItems.push_back(newNodeItem);
->>>>>>> e613bc4d371f1dc3429e1d6f740cb9885d6e2f17
-     }
+    }
+
 
      for(int i=0; i<result.rods.size(); i++) {
         QGraphicsLineItem* newLineItem = scene->addLine(result.rods[i].p1.x, result.rods[i].p1.y, result.rods[i].p2.x, result.rods[i].p2.y, QPen(Qt::red));
