@@ -1,11 +1,10 @@
 #pragma once
 
-
+#include "Constants.h"
 #include "../Backend/src/Backend.h"
 #include "ownDataTypes.h"
 #include "math.h"
 #include "cmath"
-#include "DragAndDrop.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
@@ -16,19 +15,22 @@
 #include <sstream>
 #include <limits>
 #include <QFileDialog>
+#include <QGraphicsSceneMouseEvent>
 
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow 
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    friend class ::nodeGraphicsItem;
 
 private slots:
     void addNode();
@@ -46,8 +48,9 @@ private slots:
     void showResult();
     void showDisplacement();
     void showOriginal();
-
-    //void MainWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override;
+    void graphicalExport();
+    void onButtonZoomIn();
+    void onButtonZoomOut();
 
 private:
     Ui::MainWindow *ui;
@@ -55,7 +58,7 @@ private:
     
     //Nodes
     std::vector<QPointF> nodes;
-    std::vector<QGraphicsEllipseItem> nodeItems;
+    std::vector<nodeGraphicsItem*> nodeItems;
     
     //Lines
     std::vector<std::pair<QPointF, QPointF>> lines;
@@ -69,8 +72,12 @@ private:
     std::vector<QPointF> supports;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 
+    //Results
     Backend::results result;
     resultGraphicsItems resultGraphicsItem;
+
+    //Displaclement
+    std::vector<forceGraphicsItem> displacementVectors;
 
     //Linear
     bool isLinear;
@@ -82,8 +89,14 @@ private:
     bool displacementVisible = 0;
 
 
-    void drawCoordinateSystem();
-    bool isLineConnectedToNode(QGraphicsLineItem* line, QGraphicsEllipseItem* node);  // Function to check line connection
+    void drawCoordinateSystem(); double width, height;
+    bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node);  // Function to check line connection
+    bool isLineBetweenNodes(QPointF lhs, QPointF rhs);
 };
 
 //#endif // MAINWINDOW_H
+
+
+
+
+

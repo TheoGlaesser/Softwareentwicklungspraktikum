@@ -255,20 +255,14 @@ Qt5Core_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Core
 //The directory containing a CMake configuration file for Qt5Gui.
 Qt5Gui_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui
 
+//The directory containing a CMake configuration file for Qt5PrintSupport.
+Qt5PrintSupport_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5PrintSupport
+
 //The directory containing a CMake configuration file for Qt5Widgets.
 Qt5Widgets_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets
 
 //The directory containing a CMake configuration file for Qt5.
 Qt5_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5
-
-//Value Computed by CMake
-Test2_BINARY_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build
-
-//Value Computed by CMake
-Test2_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Test2_SOURCE_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk
 
 //Value Computed by CMake
 main_BINARY_DIR:STATIC=/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build

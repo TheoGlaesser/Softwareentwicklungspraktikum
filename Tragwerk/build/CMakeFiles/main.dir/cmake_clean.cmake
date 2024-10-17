@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/Frontend/main.cpp.o.d"
   "CMakeFiles/main.dir/Frontend/mainwindow.cpp.o"
   "CMakeFiles/main.dir/Frontend/mainwindow.cpp.o.d"
+  "CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o"
+  "CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o.d"
   "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o.d"
   "main"

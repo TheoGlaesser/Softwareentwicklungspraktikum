@@ -8,7 +8,7 @@ void Log::print_nodes(const std::vector<QPointF>& nodes) {
   std::cout << "\n";
 }
 
-void Log::print_nodeItems(const std::vector<QGraphicsEllipseItem*>& nodeItems) {
+void Log::print_nodeItems(const std::vector<nodeGraphicsItem*>& nodeItems) {
   std::cout << "nodeGraphics: ";
   for(auto nodeItem : nodeItems) {
     std::cout << "(" << nodeItem->rect().center().x() << "," <<  nodeItem->rect().center().y() << ") ";
@@ -39,9 +39,11 @@ void Log::print_forces(const std::vector<force>& forces) {
 
 void Log::print_forceGraphicsItems(const std::vector<forceGraphicsItem>& forceGraphicsItems) {
   std::cout << "forceGraphicsItems: ";
-  for(auto forceItem : forceGraphicsItems) {
-    std::cout << "(" << forceItem.forceLineItem->line().p1().x() << "," << forceItem.forceLineItem->line().p1().y()  << ") ";
+  for(int i = 0; i < forceGraphicsItems.size(); i++)
+  {
+    std::cout << "(" << forceGraphicsItems[i].forceLineItem->line().p1().x() << "," << forceGraphicsItems[i].forceLineItem->line().p1().y()  << ") ";
   }
+
   std::cout << "\n";
 }
 
