@@ -61,16 +61,20 @@ public:
     QLabel *label_4;
     QLineEdit *lineEditX_5;
     QPushButton *makeForceButton;
-    QCheckBox *checkBox_y_fixed;
-    QCheckBox *checkBox_y_fixed_2;
-    QLineEdit *lineEdit_x_displacement;
-    QLineEdit *lineEdit_y_displacement;
     QFrame *line_2;
-    QHBoxLayout *horizontalLayout_4;
-    QLineEdit *lineEdit_x_pos;
+    QGridLayout *gridLayout_3;
+    QLabel *label_8;
+    QLabel *label_11;
+    QLabel *label_9;
     QLineEdit *lineEditX_y_pos;
-    QFrame *line_3;
+    QLineEdit *lineEdit_y_displacement;
+    QLabel *label_10;
+    QCheckBox *checkBox_y_fixed_2;
+    QCheckBox *checkBox_y_fixed;
+    QLineEdit *lineEdit_x_pos;
+    QLineEdit *lineEdit_x_displacement;
     QPushButton *supportButton;
+    QFrame *line_3;
     QHBoxLayout *horizontalLayout_5;
     QLineEdit *lineEditX_8;
     QLineEdit *lineEditX_9;
@@ -125,7 +129,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 622, 752));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 622, 692));
         gridLayout_4 = new QGridLayout(scrollAreaWidgetContents);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         verticalLayout_2 = new QVBoxLayout();
@@ -222,28 +226,6 @@ public:
 
         verticalLayout_2->addWidget(makeForceButton);
 
-        checkBox_y_fixed = new QCheckBox(scrollAreaWidgetContents);
-        checkBox_y_fixed->setObjectName(QString::fromUtf8("checkBox_y_fixed"));
-
-        verticalLayout_2->addWidget(checkBox_y_fixed);
-
-        checkBox_y_fixed_2 = new QCheckBox(scrollAreaWidgetContents);
-        checkBox_y_fixed_2->setObjectName(QString::fromUtf8("checkBox_y_fixed_2"));
-        checkBox_y_fixed_2->setSizeIncrement(QSize(120, 18));
-        checkBox_y_fixed_2->setCursor(QCursor(Qt::BusyCursor));
-
-        verticalLayout_2->addWidget(checkBox_y_fixed_2);
-
-        lineEdit_x_displacement = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_x_displacement->setObjectName(QString::fromUtf8("lineEdit_x_displacement"));
-
-        verticalLayout_2->addWidget(lineEdit_x_displacement);
-
-        lineEdit_y_displacement = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_y_displacement->setObjectName(QString::fromUtf8("lineEdit_y_displacement"));
-
-        verticalLayout_2->addWidget(lineEdit_y_displacement);
-
         line_2 = new QFrame(scrollAreaWidgetContents);
         line_2->setObjectName(QString::fromUtf8("line_2"));
         line_2->setFrameShape(QFrame::HLine);
@@ -251,20 +233,68 @@ public:
 
         verticalLayout_2->addWidget(line_2);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        lineEdit_x_pos = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_x_pos->setObjectName(QString::fromUtf8("lineEdit_x_pos"));
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setContentsMargins(-1, 0, -1, -1);
+        label_8 = new QLabel(scrollAreaWidgetContents);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
 
-        horizontalLayout_4->addWidget(lineEdit_x_pos);
+        gridLayout_3->addWidget(label_8, 0, 0, 1, 1);
+
+        label_11 = new QLabel(scrollAreaWidgetContents);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout_3->addWidget(label_11, 1, 2, 1, 1);
+
+        label_9 = new QLabel(scrollAreaWidgetContents);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        gridLayout_3->addWidget(label_9, 1, 0, 1, 1);
 
         lineEditX_y_pos = new QLineEdit(scrollAreaWidgetContents);
         lineEditX_y_pos->setObjectName(QString::fromUtf8("lineEditX_y_pos"));
 
-        horizontalLayout_4->addWidget(lineEditX_y_pos);
+        gridLayout_3->addWidget(lineEditX_y_pos, 1, 3, 1, 1);
+
+        lineEdit_y_displacement = new QLineEdit(scrollAreaWidgetContents);
+        lineEdit_y_displacement->setObjectName(QString::fromUtf8("lineEdit_y_displacement"));
+
+        gridLayout_3->addWidget(lineEdit_y_displacement, 0, 3, 1, 1);
+
+        label_10 = new QLabel(scrollAreaWidgetContents);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        gridLayout_3->addWidget(label_10, 0, 2, 1, 1);
+
+        checkBox_y_fixed_2 = new QCheckBox(scrollAreaWidgetContents);
+        checkBox_y_fixed_2->setObjectName(QString::fromUtf8("checkBox_y_fixed_2"));
+        checkBox_y_fixed_2->setSizeIncrement(QSize(120, 18));
+        checkBox_y_fixed_2->setCursor(QCursor(Qt::BusyCursor));
+
+        gridLayout_3->addWidget(checkBox_y_fixed_2, 2, 0, 1, 1);
+
+        checkBox_y_fixed = new QCheckBox(scrollAreaWidgetContents);
+        checkBox_y_fixed->setObjectName(QString::fromUtf8("checkBox_y_fixed"));
+
+        gridLayout_3->addWidget(checkBox_y_fixed, 2, 1, 1, 1);
+
+        lineEdit_x_pos = new QLineEdit(scrollAreaWidgetContents);
+        lineEdit_x_pos->setObjectName(QString::fromUtf8("lineEdit_x_pos"));
+
+        gridLayout_3->addWidget(lineEdit_x_pos, 1, 1, 1, 1);
+
+        lineEdit_x_displacement = new QLineEdit(scrollAreaWidgetContents);
+        lineEdit_x_displacement->setObjectName(QString::fromUtf8("lineEdit_x_displacement"));
+
+        gridLayout_3->addWidget(lineEdit_x_displacement, 0, 1, 1, 1);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
+        verticalLayout_2->addLayout(gridLayout_3);
+
+        supportButton = new QPushButton(scrollAreaWidgetContents);
+        supportButton->setObjectName(QString::fromUtf8("supportButton"));
+
+        verticalLayout_2->addWidget(supportButton);
 
         line_3 = new QFrame(scrollAreaWidgetContents);
         line_3->setObjectName(QString::fromUtf8("line_3"));
@@ -272,11 +302,6 @@ public:
         line_3->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line_3);
-
-        supportButton = new QPushButton(scrollAreaWidgetContents);
-        supportButton->setObjectName(QString::fromUtf8("supportButton"));
-
-        verticalLayout_2->addWidget(supportButton);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
@@ -482,10 +507,12 @@ public:
         label_4->setText(QCoreApplication::translate("MainWindow", "Angle", nullptr));
         lineEditX_5->setText(QString());
         makeForceButton->setText(QCoreApplication::translate("MainWindow", "Make Force", nullptr));
-        checkBox_y_fixed->setText(QCoreApplication::translate("MainWindow", "Fixed y", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "xDisplacement", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "yPosition", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "xPosition", nullptr));
+        label_10->setText(QCoreApplication::translate("MainWindow", "yDisplacement", nullptr));
         checkBox_y_fixed_2->setText(QCoreApplication::translate("MainWindow", "Fixed x", nullptr));
-        lineEdit_x_pos->setText(QString());
-        lineEditX_y_pos->setText(QString());
+        checkBox_y_fixed->setText(QCoreApplication::translate("MainWindow", "Fixed y", nullptr));
         supportButton->setText(QCoreApplication::translate("MainWindow", "Make Support", nullptr));
         lineEditX_8->setText(QString());
         lineEditX_9->setText(QString());
