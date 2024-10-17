@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/executable.dir/Test_element.cpp.o CMakeFiles/executable.dir/home/stce/SEPraktikum/Local/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o  -o executable 

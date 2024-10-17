@@ -81,7 +81,7 @@ class Simulator {
       Simulator(bool linear);
       ~Simulator() {};
 
-      results run(std::vector<Rod>, std::vector<Force>, std::vector<Bearing>, std::vector<Node>, const double &, const double &);
+      results run(std::vector<Rod>, std::vector<Force>, std::vector<Bearing>, std::vector<Node>, const double &, const double &, bool &);
     private: 
       std::vector<Rod> rods;
       std::vector<Force> forces;

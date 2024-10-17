@@ -92,6 +92,8 @@ private:
     void drawCoordinateSystem(); double width, height;
     bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node);  // Function to check line connection
     bool isLineBetweenNodes(QPointF lhs, QPointF rhs);
+    bool isForceOnNode(nodeGraphcisItem* , force);
+    bool isSupportOnNode(nodeGraphcisItem*, QPointF);
 };
 
 //#endif // MAINWINDOW_H

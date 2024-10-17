@@ -1,13 +1,24 @@
 # Softwareentwicklungspraktikum
 
-Moin zusammen hier ein paar Informationen:
+##External tools
+You need to have installed on your computer cmake and QT. In the following links you find the corresponding webpages of the external tools: cmake https://cmake.org/ and qt https://www.qt.io/
 
-Bin mit dem Frontend fast durch was noch fehlt sind der grafische Export die drei Checkboxen wegen Visibility, sowie noch Drag and Drop und gegebenenfalls raus und reinzoomen.
-Ebenfalls noch ein paar technisch relevante Fragen z.B. sollte der User nicht zwei Knoten and der Selben Stelle erstellen dürfen und Feedback wann ein System singulär oder überbestimmt ist.
-Man kann aber schon vernünftig Tragwerke eingeben sowie steht das Verbindung zum Backend. Dieses benutzt eigene Datentypen damit es modular ist. Die run-Funktion nimmt Lager, Kräfte, Stäbe, E, A, und 
-linear(ob linear oder nichtLinear simuliert werden soll) als Input und gibt die verschobenen Stäbe zurück. Die Inputs sind noch als std::vector die assemblierte Matrix würde ich aber mit 
-la::Matrix (ist das la file aus cppNum, also mit der Eigen Bibliothek) machen weil wir dann schon direkt einen Solver dabei haben. 
+##Instruction to compile
+First of all you have to compile the backend part into a static library. To accomplish that you can do "cmake -S . -B ../bin" in the folder Tragwerk/Backend/ and then after all the required makefiles have been built you have to do "make" in the same folder. 
 
-Anleitung zum compileren: 
-Zuerst muss das Backend zu einer static library compiliert werden. Dafür in Tragwerk/Backend/ "cmake -S . -B ../bin" und dann natürlich in Tragwerk/bin make ausführen.
-Nun führen wir in Tragwerk/  "cmake -S . -B build" aus und machen make in Tragwerk/build , und erhalten damit die fertige Ausführbare
+Afterwards, you have to move to folder Tragwerk/ and do "cmake -S . -B build". An executable file "main" will be prepared. You just then need to open it using the console command "./main" and a window will open. 
+
+
+##Information about units
+When entering data, there are no units. The user is responsible for providing data regarding consistent units
+e.g.
+point coordinates in m, loads in N, cross sections in m² and the modulus of elasticity in N/m²,
+displacements then will be in m, bar forces in N, normal stress in N/m².
+
+
+
+
+
+
+
+
