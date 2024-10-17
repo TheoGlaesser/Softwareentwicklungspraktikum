@@ -236,6 +236,33 @@ Frontend/mainwindow.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/mainwindow.cpp.s
 .PHONY : Frontend/mainwindow.cpp.s
 
+Frontend/ownDataTypes.o: Frontend/ownDataTypes.cpp.o
+
+.PHONY : Frontend/ownDataTypes.o
+
+# target to build an object file
+Frontend/ownDataTypes.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o
+.PHONY : Frontend/ownDataTypes.cpp.o
+
+Frontend/ownDataTypes.i: Frontend/ownDataTypes.cpp.i
+
+.PHONY : Frontend/ownDataTypes.i
+
+# target to preprocess a source file
+Frontend/ownDataTypes.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.i
+.PHONY : Frontend/ownDataTypes.cpp.i
+
+Frontend/ownDataTypes.s: Frontend/ownDataTypes.cpp.s
+
+.PHONY : Frontend/ownDataTypes.s
+
+# target to generate assembly for a file
+Frontend/ownDataTypes.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.s
+.PHONY : Frontend/ownDataTypes.cpp.s
+
 main_autogen/mocs_compilation.o: main_autogen/mocs_compilation.cpp.o
 
 .PHONY : main_autogen/mocs_compilation.o
@@ -283,6 +310,9 @@ help:
 	@echo "... Frontend/mainwindow.o"
 	@echo "... Frontend/mainwindow.i"
 	@echo "... Frontend/mainwindow.s"
+	@echo "... Frontend/ownDataTypes.o"
+	@echo "... Frontend/ownDataTypes.i"
+	@echo "... Frontend/ownDataTypes.s"
 	@echo "... main_autogen/mocs_compilation.o"
 	@echo "... main_autogen/mocs_compilation.i"
 	@echo "... main_autogen/mocs_compilation.s"

@@ -1,10 +1,10 @@
-Start testing: Oct 17 18:26 CEST
+Start testing: Oct 17 21:00 CEST
 ----------------------------------------------------------
 1/2 Testing: TrussTest.General
 1/2 Test: TrussTest.General
 Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.General" "--gtest_also_run_disabled_tests"
 Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.General" start time: Oct 17 18:26 CEST
+"TrussTest.General" start time: Oct 17 21:00 CEST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = TrussTest.General
@@ -12,26 +12,24 @@ Note: Google Test filter = TrussTest.General
 [----------] Global test environment set-up.
 [----------] 1 test from TrussTest
 [ RUN      ] TrussTest.General
-Bearings[0] booleans are: 
-11
-Bearings[1] booleans are: 
-11
 (0,0)
 (-16.8318,58.6637)
 (116.832,58.6637)
 (100,0)
 (50,80.3706)
-[       OK ] TrussTest.General (2 ms)
-[----------] 1 test from TrussTest (2 ms total)
+0 0
+100 0
+[       OK ] TrussTest.General (0 ms)
+[----------] 1 test from TrussTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (2 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.01 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TrussTest.General" end time: Oct 17 18:26 CEST
+"TrussTest.General" end time: Oct 17 21:00 CEST
 "TrussTest.General" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -39,7 +37,7 @@ Test Passed.
 2/2 Test: TrussTest.Element
 Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.Element" "--gtest_also_run_disabled_tests"
 Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.Element" start time: Oct 17 18:26 CEST
+"TrussTest.Element" start time: Oct 17 21:00 CEST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = TrussTest.Element
@@ -54,11 +52,11 @@ Note: Google Test filter = TrussTest.Element
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"TrussTest.Element" end time: Oct 17 18:26 CEST
+"TrussTest.Element" end time: Oct 17 21:00 CEST
 "TrussTest.Element" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 17 18:26 CEST
+End testing: Oct 17 21:00 CEST

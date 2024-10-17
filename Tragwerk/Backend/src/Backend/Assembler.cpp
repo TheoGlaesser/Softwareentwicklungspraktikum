@@ -34,6 +34,7 @@ std::vector<double> Assembler::get_displacement() {return displacement;}
 std::vector<Backend::Node> Assembler::get_new_nodes() {return new_nodes;}
 std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
 std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
+std::vector<Backend::Bearing> Assembler::get_new_bearings() {return new_bearings;}
 
 //Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
 void Assembler::assemble(const double & E, const double & A_0, Backend::Exception & error) {
@@ -85,16 +86,19 @@ void Assembler::assemble(const double & E, const double & A_0, Backend::Exceptio
 	
 	//Consider bearings
 	apply_bearings(error);
-	
+
 	//compute the new nodes after solving the linear system and considering the displacements
 	new_nodes = solve(error);
 	
 	//compute new rods
 	new_rods = compute_new_rods(error);
 	
-	
+	//compute new bearings
+	new_bearings = compute_new_bearings(error);
+
 	//compute new forces
 	new_forces = compute_new_forces(error);
+
 }
 
 //computes the force vector (right hand side)
@@ -133,7 +137,6 @@ void Assembler::compute_rhs(Backend::Exception & error) {
 
 //Consider bearings in the stiffness matrix
 void Assembler::apply_bearings(Backend::Exception & error) {
-	
 	//Assign bearing to node
 	for (int i = 0; i < bearings.size(); i++) {
 		for (int j = 0; j < nodes.size(); j++) {
@@ -309,7 +312,7 @@ std::vector<Backend::Rod> Assembler::compute_new_rods(Backend::Exception & error
 
 
 std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & error) {
- std::vector<Backend::Force> new_forces(forces.size());
+	std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
 	   if (forces[i].node_p == nullptr) {
 		   error.isVisible = false;
@@ -326,6 +329,26 @@ std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & e
    return new_forces;
 }
 
+std::vector<Backend::Bearing> Assembler::compute_new_bearings(Backend::Exception & error) {
+	std::vector<Backend::Bearing> new_bearings(bearings.size());
+	for (int i=0; i < new_bearings.size(); i++) {
+		if (bearings[i].node_p == nullptr) {
+			error.isVisible = false;
+			error.message = "System is not solvable";
+			return bearings;
+		}
+		
+		int node_p = (*bearings[i].node_p).id;
+		new_bearings[i].p.x = new_nodes[node_p].p.x;
+		new_bearings[i].p.y = new_nodes[node_p].p.y;
+		std::cout << new_bearings[i].p.x << " " << new_bearings[i].p.y << std::endl;
+		new_bearings[i].xInfo.first = 0;
+		new_bearings[i].xInfo.second = 0;
+		new_bearings[i].yInfo.first = 0;
+                new_bearings[i].yInfo.second = 0;
+	}
+	return new_bearings;
+}
 
 
 //In the following int main () function there is an implementation that checks if everything is working. If you compile it now it might not work because of the Makefiles. Anyway, the same correctness check is written in the test, so please run the test to check for correctness.

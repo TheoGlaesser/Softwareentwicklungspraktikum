@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "main_autogen"
   "CMakeFiles/main.dir/Frontend/main.cpp.o"
   "CMakeFiles/main.dir/Frontend/mainwindow.cpp.o"
+  "CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o"
   "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o"
   "main"
   "main.pdb"

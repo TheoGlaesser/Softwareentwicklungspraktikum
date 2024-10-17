@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp
+Assembler.h
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.h
+Element.h
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.h
+linearAlgebra.h
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/linearAlgebra.h
+cmath
+-
+utility
+-
+cmath
+-
+
 /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.h
 iostream
 -
@@ -15,6 +29,12 @@ Simulator.h
 /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Simulator.h
 
 /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Constants.h
+
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp
+Element.h
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.h
+cmath
+-
 
 /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.h
 iostream

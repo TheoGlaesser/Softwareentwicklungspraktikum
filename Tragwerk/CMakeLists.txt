@@ -11,11 +11,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt5 COMPONENTS Core Gui PrintSupport REQUIRED)
+
+    
 
 set(PROJECT_SOURCES
      Frontend/main.cpp
      Frontend/mainwindow.cpp
      Frontend/mainwindow.ui
+     Frontend/ownDataTypes.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -44,6 +48,7 @@ endif()
 target_include_directories(main PUBLIC current/Backend/src/Backend.h)
 
 target_link_libraries(main PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(main PRIVATE Qt5::Core Qt5::Gui Qt5::PrintSupport)
 target_link_libraries(main PRIVATE ${CMAKE_SOURCE_DIR}/bin/libbackend.a)
 
 

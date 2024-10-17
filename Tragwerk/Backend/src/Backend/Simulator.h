@@ -67,14 +67,13 @@ struct Node {
 
   };
 
-
-
-
 struct Exception {
         bool isVisible;
         std::string message = "no error";
         Exception(const bool & isVisible): isVisible(isVisible) {}
 };
+
+
 
 
 class Simulator {
