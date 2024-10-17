@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend.h 
+CXX_INCLUDES = -I/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend.h 
 

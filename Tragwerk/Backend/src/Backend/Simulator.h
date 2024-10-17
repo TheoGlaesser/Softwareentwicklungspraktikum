@@ -11,13 +11,6 @@ namespace Backend {
 
     Point() : x(0), y(0) {}
     Point(double x, double y): x(x), y(y) {}
-    /*Point& operator=(const Point& p) {
-	if (p.x != x || p.y != y) {
-		x = p.x;
-		y = p.y;
-	}
-	return *this;
-    }*/
   };
 
 struct Node {
@@ -54,10 +47,10 @@ struct Node {
   struct Bearing {
     Point p;
     Node* node_p = nullptr;
-    double bound_condition_x;
-    double bound_condition_y;
+    std::pair<bool, double> xInfo;
+    std::pair<bool, double> yInfo;
     Bearing() : p(0,0) {}
-    Bearing(double x, double y, double bound_condition_x, double bound_condition_y) : p(x,y), bound_condition_x(bound_condition_x), bound_condition_y(bound_condition_y) {}
+    Bearing(double x, double y, const std::pair<bool,double> xInfo, const std::pair<bool,double> yInfo) : p(x,y), xInfo(xInfo), yInfo(yInfo) {}
   };
 
 
@@ -79,6 +72,8 @@ struct Exception {
         std::string message = "no error";
         Exception(const bool & isVisible): isVisible(isVisible) {}
 };
+
+
 
 
 class Simulator {

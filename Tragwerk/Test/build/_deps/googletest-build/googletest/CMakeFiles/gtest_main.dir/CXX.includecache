@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/src/gtest_main.cc
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/src/gtest_main.cc
 cstdio
 -
 gtest/gtest.h
-/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/src/gtest/gtest.h
+/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/_deps/googletest-src/googletest/src/gtest/gtest.h
 
 _deps/googletest-src/googletest/include/gtest/gtest-assertion-result.h
 memory

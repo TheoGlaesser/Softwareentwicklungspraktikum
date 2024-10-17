@@ -1,8 +1,0 @@
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/edit_cache.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/rebuild_cache.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/list_install_components.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/install.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/install/local.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/install/strip.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/build/CMakeFiles/main_autogen.dir

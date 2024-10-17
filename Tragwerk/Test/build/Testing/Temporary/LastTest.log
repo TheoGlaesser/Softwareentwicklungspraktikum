@@ -1,10 +1,10 @@
-Start testing: Oct 17 13:51 CEST
+Start testing: Oct 17 21:00 CEST
 ----------------------------------------------------------
 1/2 Testing: TrussTest.General
 1/2 Test: TrussTest.General
-Command: "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.General" "--gtest_also_run_disabled_tests"
-Directory: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.General" start time: Oct 17 13:51 CEST
+Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.General" "--gtest_also_run_disabled_tests"
+Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
+"TrussTest.General" start time: Oct 17 21:00 CEST
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = TrussTest.General
@@ -17,34 +17,9 @@ Note: Google Test filter = TrussTest.General
 (116.832,58.6637)
 (100,0)
 (50,80.3706)
+0 0
+100 0
 [       OK ] TrussTest.General (0 ms)
-[----------] 1 test from TrussTest (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (2 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TrussTest.General" end time: Oct 17 13:51 CEST
-"TrussTest.General" time elapsed: 00:00:00
-----------------------------------------------------------
-
-2/2 Testing: TrussTest.Element
-2/2 Test: TrussTest.Element
-Command: "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.Element" "--gtest_also_run_disabled_tests"
-Directory: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.Element" start time: Oct 17 13:51 CEST
-Output:
-----------------------------------------------------------
-Note: Google Test filter = TrussTest.Element
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TrussTest
-[ RUN      ] TrussTest.Element
-System is not solvable
-[       OK ] TrussTest.Element (0 ms)
 [----------] 1 test from TrussTest (0 ms total)
 
 [----------] Global test environment tear-down
@@ -54,8 +29,34 @@ System is not solvable
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TrussTest.Element" end time: Oct 17 13:51 CEST
+"TrussTest.General" end time: Oct 17 21:00 CEST
+"TrussTest.General" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: TrussTest.Element
+2/2 Test: TrussTest.Element
+Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.Element" "--gtest_also_run_disabled_tests"
+Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
+"TrussTest.Element" start time: Oct 17 21:00 CEST
+Output:
+----------------------------------------------------------
+Note: Google Test filter = TrussTest.Element
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TrussTest
+[ RUN      ] TrussTest.Element
+[       OK ] TrussTest.Element (0 ms)
+[----------] 1 test from TrussTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"TrussTest.Element" end time: Oct 17 21:00 CEST
 "TrussTest.Element" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 17 13:51 CEST
+End testing: Oct 17 21:00 CEST

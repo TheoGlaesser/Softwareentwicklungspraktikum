@@ -1,4 +1,4 @@
-# Install script for directory: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend
+# Install script for directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/bin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/bin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

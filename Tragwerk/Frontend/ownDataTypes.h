@@ -6,6 +6,8 @@
 #include <QGraphicsLineItem>
 #include <QPointF>
 #include <vector>
+#include <iostream>
+#include <string>
 #include <QLabel>
 #include <QMessageBox>
 #include <iostream>
@@ -77,6 +79,8 @@ struct resultGraphicsItems {
     std::vector<forceGraphicsItem> forceGraphicsItems;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 };
+
+
 
 
 

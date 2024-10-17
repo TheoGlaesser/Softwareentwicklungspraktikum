@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test
+CMAKE_SOURCE_DIR = /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
+CMAKE_BINARY_DIR = /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -232,86 +232,86 @@ gtest/fast:
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o
-
-# target to build an object file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
-
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
-
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i
-
-# target to preprocess a source file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
-
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
-
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s
-
-# target to generate assembly for a file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
-
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
-
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o
 
 # target to build an object file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i
 
 # target to preprocess a source file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s
 
 # target to generate assembly for a file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o
 
 # target to build an object file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i
 
 # target to preprocess a source file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
 
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s: home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
 
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s
 
 # target to generate assembly for a file
-home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s:
-	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
-.PHONY : home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
+
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o
+
+# target to build an object file
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i
+
+# target to preprocess a source file
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s: home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
+
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s
+
+# target to generate assembly for a file
+home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s:
+	$(MAKE) -f CMakeFiles/TrussTest.dir/build.make CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
+.PHONY : home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
 
 # Help Target
 help:
@@ -331,15 +331,15 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i"
-	@echo "... home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.o"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.i"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.s"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.o"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.i"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.s"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.o"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.i"
+	@echo "... home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.s"
 .PHONY : help
 
 

@@ -2,8 +2,10 @@
 #define TRUSSTEST
 #include "../Assembler.h"
 #include "../Element.h"
+#include "../Simulator.h"
 #include <iostream>
 #include <vector>
+#include <utility>
 #endif
 #include <gtest/gtest.h>
 
@@ -29,8 +31,8 @@ class TrussTest : public testing::Test {
 			test_E = E;
 			Assembler test_truss_copy(dim, nodes.size(), nodes, rods, forces, bearings);
 			test_truss = test_truss_copy;
-			bool isVisible = true;
-			test_truss.assemble(E, A_0,isVisible);
+			Backend::Exception error(true);
+			test_truss.assemble(E, A_0,error);
 		}
 
 		std::vector<std::vector<double>> test_element(const Backend::Point & p1, const Backend::Point & p2) {
@@ -77,10 +79,13 @@ TEST_F(TrussTest, General) {
         double angle = 90;
         double rad = angle*M_PI/180;
         Backend::Force Force1(50,200,100000,rad);
-        //Backend::Force Force3(2,0,-70,30);
         std::vector<Backend::Force> forces = {Force1};
-        Backend::Bearing Bearing1(0,0,0,0);
-        Backend::Bearing Bearing2(100,0,0,0);
+	std::pair<bool, double> xInfo1(true,0);
+	std::pair<bool, double> yInfo1(true,0);
+	std::pair<bool, double> xInfo2(true,0);
+	std::pair<bool, double> yInfo2(true,0);
+        Backend::Bearing Bearing1(0,0,xInfo1,yInfo1);
+        Backend::Bearing Bearing2(100,0,xInfo2,yInfo2);
         std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
 	SetUp(nodes, rods, bearings, forces, 1,100000);
 
@@ -124,8 +129,12 @@ TEST_F(TrussTest, Element) {
         double rad = angle*M_PI/180;
         Backend::Force Force1(1,4,1,rad);
         std::vector<Backend::Force> forces = {Force1};
-        Backend::Bearing Bearing1(0,0,0,0);
-        Backend::Bearing Bearing2(2,0,0,0);
+        std::pair<bool, double> xInfo1(true,0);
+    	std::pair<bool, double> yInfo1(true,0);
+ 	std::pair<bool, double> xInfo2(true,0);
+	std::pair<bool, double> yInfo2(true,0);
+	Backend::Bearing Bearing1(0,0,xInfo1,yInfo1);
+        Backend::Bearing Bearing2(2,0,xInfo2,yInfo2);
         std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
         SetUp(nodes, rods, bearings, forces, 1,1);
 

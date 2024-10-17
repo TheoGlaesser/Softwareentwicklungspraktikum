@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test
+CMAKE_SOURCE_DIR = /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
+CMAKE_BINARY_DIR = /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TrussTest.dir/depend.make
@@ -57,64 +57,64 @@ include CMakeFiles/TrussTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TrussTest.dir/flags.make
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o: CMakeFiles/TrussTest.dir/flags.make
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o -c /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o: CMakeFiles/TrussTest.dir/flags.make
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o -c /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.i
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.s
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o: CMakeFiles/TrussTest.dir/flags.make
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o -c /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o: CMakeFiles/TrussTest.dir/flags.make
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o -c /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.i
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.s
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o: CMakeFiles/TrussTest.dir/flags.make
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o: /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o -c /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o: CMakeFiles/TrussTest.dir/flags.make
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o -c /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp > CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.i
 
-CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
+CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp -o CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.s
 
 # Object files for target TrussTest
 TrussTest_OBJECTS = \
-"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o" \
-"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o" \
-"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o"
+"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o" \
+"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o" \
+"CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o"
 
 # External object files for target TrussTest
 TrussTest_EXTERNAL_OBJECTS =
 
-TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
-TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
-TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
+TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/testBackend/TrussTest.cpp.o
+TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Assembler.cpp.o
+TrussTest: CMakeFiles/TrussTest.dir/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Backend/src/Backend/Element.cpp.o
 TrussTest: CMakeFiles/TrussTest.dir/build.make
 TrussTest: lib/libgtest_main.a
 TrussTest: lib/libgtest.a
 TrussTest: CMakeFiles/TrussTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable TrussTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable TrussTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TrussTest.dir/link.txt --verbose=$(VERBOSE)
-	/usr/bin/cmake -D TEST_TARGET=TrussTest -D TEST_EXECUTABLE=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=TrussTest_TESTS -D CTEST_FILE=/home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -P /usr/share/cmake-3.16/Modules/GoogleTestAddTests.cmake
+	/usr/bin/cmake -D TEST_TARGET=TrussTest -D TEST_EXECUTABLE=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=TrussTest_TESTS -D CTEST_FILE=/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -P /usr/share/cmake-3.16/Modules/GoogleTestAddTests.cmake
 
 # Rule to build all files generated by this target.
 CMakeFiles/TrussTest.dir/build: TrussTest
@@ -126,6 +126,6 @@ CMakeFiles/TrussTest.dir/clean:
 .PHONY : CMakeFiles/TrussTest.dir/clean
 
 CMakeFiles/TrussTest.dir/depend:
-	cd /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build /home/stce/SEPraktikum/12_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles/TrussTest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/CMakeFiles/TrussTest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/TrussTest.dir/depend
 

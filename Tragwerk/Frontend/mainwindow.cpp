@@ -867,7 +867,9 @@ void MainWindow::solve()
   //Make Variables compatible with Backend
   std::vector<Backend::Bearing> backendBearings(supports.size());
   for(int i=0; i<backendBearings.size(); i++) {
-    backendBearings[i] = Backend::Bearing(supports[i].p.x(), supports[i].p.y(), 0, 0);
+	  std::pair<bool,double> xInfo(supports[i].xFixed, supports[i].xDisp);
+	  std::pair<bool,double> yInfo(supports[i].yFixed, supports[i].yDisp);
+	  backendBearings[i] = Backend::Bearing(supports[i].p.x(), supports[i].p.y(),xInfo, yInfo);
   } 
 
 
@@ -922,8 +924,6 @@ void MainWindow::showResult()
   resultVisible  = !resultVisible;
   QPen pen;
   if(resultVisible) {
-	  std::cout << result.nodes.size() << std::endl;
-
     for(int i=0; i<result.nodes.size(); i++) {
 	    result.nodes[i].print();
        QPointF  newNode(result.nodes[i].p.x, result.nodes[i].p.y);

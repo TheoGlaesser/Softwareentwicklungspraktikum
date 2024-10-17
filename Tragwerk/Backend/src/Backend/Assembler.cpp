@@ -4,6 +4,7 @@
 #include "Element.h"
 #include "linearAlgebra.h"
 #include <cmath>
+#include <utility>
 #endif
 
 #define _USE_MATH_DEFINES
@@ -25,6 +26,7 @@ Assembler::Assembler(const int & dim, const int & n, const std::vector<Backend::
 	rhs = zero_rhs;
 };
 
+
 //Functions to get the class variables
 std::vector<std::vector<double>> Assembler::get_A() {return A;}
 std::vector<double> Assembler::get_rhs() {return rhs;}
@@ -32,6 +34,7 @@ std::vector<double> Assembler::get_displacement() {return displacement;}
 std::vector<Backend::Node> Assembler::get_new_nodes() {return new_nodes;}
 std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
 std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
+std::vector<Backend::Bearing> Assembler::get_new_bearings() {return new_bearings;}
 
 //Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
 void Assembler::assemble(const double & E, const double & A_0, Backend::Exception & error) {
@@ -83,16 +86,19 @@ void Assembler::assemble(const double & E, const double & A_0, Backend::Exceptio
 	
 	//Consider bearings
 	apply_bearings(error);
-	
+
 	//compute the new nodes after solving the linear system and considering the displacements
 	new_nodes = solve(error);
 	
 	//compute new rods
 	new_rods = compute_new_rods(error);
 	
-	
+	//compute new bearings
+	new_bearings = compute_new_bearings(error);
+
 	//compute new forces
 	new_forces = compute_new_forces(error);
+
 }
 
 //computes the force vector (right hand side)
@@ -126,7 +132,6 @@ void Assembler::compute_rhs(Backend::Exception & error) {
 		force_truss[index] = -std::cos(rad)*norm;
 		force_truss[index + 1] = -std::sin(rad)*norm;
 	}
-
 	rhs = force_truss;
 }
 
@@ -157,20 +162,40 @@ void Assembler::apply_bearings(Backend::Exception & error) {
 		Backend::Node* node_x_p = bearings[i].node_p;
 		int node_x = ((*node_x_p).id)*2;
 		int node_y = ((*node_x_p).id)*2 + 1;
-		for (int j = 0; j < correction.size(); j+=2) {
-			//skip if node corresponds to bearing
-			if (j == node_x || j == node_y) {
-				continue;
-			}
-			//add to correction term the first boundary condition times the correspondin value in the stiffness matrix
-			correction[j] += bearings[i].bound_condition_x*A[j][node_x];
-			correction[j+1] += bearings[i].bound_condition_y*A[j+1][node_y];
+		//Check that there is a boundary condition in x direction
+		if (bearings[i].xInfo.first) {
+			for (int j = 0; j < correction.size(); j+=2) {
+				//skip if node corresponds to bearing
+				if (j == node_x) {
+					continue;
+					}
+				//add to correction term the first boundary condition times the corresponding value in the stiffness matrix
+				correction[j] += bearings[i].xInfo.second*A[j][node_x];
+				}
 		}
+		
+		//Check that there is a boundary condition in y direction
+		if (bearings[i].yInfo.first) {
+                        for (int j = 0; j < correction.size(); j+=2) {
+                                //skip if node corresponds to bearing
+                                if (j == node_y) {
+                                        continue;
+                                        }
+                                //add to correction term the second boundary condition times the corresponding value in the stiffness matrix
+                                correction[j+1] += bearings[i].yInfo.second*A[j+1][node_y];
+                                }
+                }
+		
 		
 		
 		//Apply boundary conditions to right hand side
-		rhs[node_x] = bearings[i].bound_condition_x;
-		rhs[node_y] = bearings[i].bound_condition_y;
+		if (bearings[i].xInfo.first) {
+			rhs[node_x] = bearings[i].xInfo.second;
+		}
+
+		if (bearings[i].yInfo.second) {
+			rhs[node_y] = bearings[i].yInfo.second;
+		}
 		
 		//Apply the correction to right hand side
 		for (int k = 0; k < correction.size(); k++) {
@@ -181,20 +206,30 @@ void Assembler::apply_bearings(Backend::Exception & error) {
 			rhs[k] -= correction[k];
 		}
 
-		//modify stiffness matrix accordingly: coloumn zeros
-		for (int j = 0; j < A.size(); j++) {
-                        A[j][node_x] = 0;
-                        A[j][node_y] = 0;
+		//modify stiffness matrix - x direction
+		if (bearings[i].xInfo.first) {
+			//coloumn zeros
+			for (int j = 0; j < A.size(); j++) {
+                        	A[j][node_x] = 0;
+			}
+			//row zeros
+			std::vector<double> mod_row(dim*n, 0);
+                	mod_row[node_x] = 1;
+                	A[node_x] = mod_row;
+		}
+
+		//modify stiffness matrix - y direction
+		if (bearings[i].yInfo.first) {
+			//coloumn zeros
+			for (int j = 0; j < A.size(); j++) {
+                        	A[j][node_y] = 0;
+			}
+			//row zeros
+			std::vector<double> mod_row_next(dim*n, 0);
+                	mod_row_next[node_y] = 1;
+                	A[node_y] = mod_row_next;
                 }
 		
-		//modify stiffness matrix accordingly: row zeros
-		std::vector<double> mod_row(dim*n, 0);
-		mod_row[node_x] = 1;
-		A[node_x] = mod_row;
-                
-		std::vector<double> mod_row_next(dim*n, 0);
-		mod_row_next[node_y] = 1;
-                A[node_y] = mod_row_next;
 
 	}		
 
@@ -277,7 +312,7 @@ std::vector<Backend::Rod> Assembler::compute_new_rods(Backend::Exception & error
 
 
 std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & error) {
- std::vector<Backend::Force> new_forces(forces.size());
+	std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
 	   if (forces[i].node_p == nullptr) {
 		   error.isVisible = false;
@@ -294,6 +329,26 @@ std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & e
    return new_forces;
 }
 
+std::vector<Backend::Bearing> Assembler::compute_new_bearings(Backend::Exception & error) {
+	std::vector<Backend::Bearing> new_bearings(bearings.size());
+	for (int i=0; i < new_bearings.size(); i++) {
+		if (bearings[i].node_p == nullptr) {
+			error.isVisible = false;
+			error.message = "System is not solvable";
+			return bearings;
+		}
+		
+		int node_p = (*bearings[i].node_p).id;
+		new_bearings[i].p.x = new_nodes[node_p].p.x;
+		new_bearings[i].p.y = new_nodes[node_p].p.y;
+		std::cout << new_bearings[i].p.x << " " << new_bearings[i].p.y << std::endl;
+		new_bearings[i].xInfo.first = 0;
+		new_bearings[i].xInfo.second = 0;
+		new_bearings[i].yInfo.first = 0;
+                new_bearings[i].yInfo.second = 0;
+	}
+	return new_bearings;
+}
 
 
 //In the following int main () function there is an implementation that checks if everything is working. If you compile it now it might not work because of the Makefiles. Anyway, the same correctness check is written in the test, so please run the test to check for correctness.
@@ -320,13 +375,18 @@ int main() {
 	Backend::Force Force1(50,200,100000,rad);
 	//Backend::Force Force3(2,0,-70,30);
 	std::vector<Backend::Force> forces = {Force1};
-	Backend::Bearing Bearing1(0,0,0,0);
-	Backend::Bearing Bearing2(100,0,0,0);
+	std::pair<bool,double> xInfo1(false, 0);
+	std::pair<bool,double> yInfo1(true, 0);
+	Backend::Bearing Bearing1(0,0,xInfo1,yInfo1);
+	std::pair<bool, double> xInfo2(true, 0);
+	std::pair<bool, double> yInfo2(true, 0);
+	Backend::Bearing Bearing2(100,0,xInfo2,yInfo2);
 	std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
 	Assembler truss(2, nodes.size(), nodes,rods, forces, bearings);
 	std::cout << "truss has been built" << std::endl;
 	bool isVisible = true;
-	truss.assemble(100000,1, isVisible);
+	Backend::Exception error(true);
+	truss.assemble(100000,1,error);
 	std::vector<std::vector<double>> A = truss.get_A();
 	std::cout << "A was built" << std::endl;
 	for (int i = 0; i < A.size(); i++) {

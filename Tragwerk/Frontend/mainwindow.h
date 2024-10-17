@@ -15,6 +15,10 @@
 #include <sstream>
 #include <limits>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QString>
+#include <iostream>
+#include <utility>
 #include <QGraphicsSceneMouseEvent>
 #include <QMessageBox>
 #include <QString>
@@ -97,10 +101,8 @@ private:
 
     void drawCoordinateSystem(); double width, height;
     void showBox(const QString &);
-
     bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node);  // Function to check line connection
     bool isLineBetweenNodes(QPointF lhs, QPointF rhs);
-
     bool isForceOnNode(nodeGraphicsItem* , force);
     bool isSupportOnNode(nodeGraphicsItem*, QPointF);
 };
