@@ -36,7 +36,7 @@
              <x>0</x>
              <y>0</y>
              <width>622</width>
-             <height>692</height>
+             <height>694</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_4">
@@ -167,41 +167,34 @@
                 <property name="topMargin">
                  <number>0</number>
                 </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string>xDisplacement</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
+                <item row="2" column="2">
                  <widget class="QLabel" name="label_11">
                   <property name="text">
                    <string>yPosition</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>xPosition</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="3">
+                <item row="2" column="3">
                  <widget class="QLineEdit" name="lineEditX_y_pos"/>
                 </item>
-                <item row="0" column="3">
-                 <widget class="QLineEdit" name="lineEdit_y_displacement"/>
-                </item>
-                <item row="0" column="2">
+                <item row="1" column="2">
                  <widget class="QLabel" name="label_10">
                   <property name="text">
                    <string>yDisplacement</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="1" column="3">
+                 <widget class="QLineEdit" name="lineEdit_y_displacement"/>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QCheckBox" name="checkBox_y_fixed">
+                  <property name="text">
+                   <string>Fixed y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
                  <widget class="QCheckBox" name="checkBox_y_fixed_2">
                   <property name="sizeIncrement">
                    <size>
@@ -218,17 +211,31 @@
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QCheckBox" name="checkBox_y_fixed">
+                 <widget class="QLineEdit" name="lineEdit_x_pos"/>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_9">
                   <property name="text">
-                   <string>Fixed y</string>
+                   <string>xPosition</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QLineEdit" name="lineEdit_x_pos"/>
-                </item>
-                <item row="0" column="1">
                  <widget class="QLineEdit" name="lineEdit_x_displacement"/>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string>xDisplacement</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="pushButton_itemInfo">
+                  <property name="text">
+                   <string>Item Info</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>

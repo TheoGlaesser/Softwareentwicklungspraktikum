@@ -59,6 +59,7 @@ private slots:
     void onButtonZoomOut();
     void xFixedChange();
     void yFixedChange();
+    void getInfo();
 
 private:
     Ui::MainWindow *ui;
