@@ -4,7 +4,6 @@
 CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   /usr/include/stdc-predef.h \
   ../Frontend/mainwindow.h \
-  ../Frontend/Constants.h \
   ../Backend/src/Backend.h \
   ../Backend/src/Backend/Simulator.h \
   ../Backend/src/Backend/linearAlgebra.h \
@@ -461,6 +460,7 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
   ../Backend/src/Backend/Constants.h \
   ../Backend/src/Backend/Assembler.h \
   ../Frontend/ownDataTypes.h \
+  ../Frontend/Constants.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsSceneMouseEvent \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -617,7 +617,6 @@ CMakeFiles/main.dir/Frontend/main.cpp.o: ../Frontend/main.cpp \
 CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/stdc-predef.h \
   ../Frontend/mainwindow.h \
-  ../Frontend/Constants.h \
   ../Backend/src/Backend.h \
   ../Backend/src/Backend/Simulator.h \
   ../Backend/src/Backend/linearAlgebra.h \
@@ -1074,6 +1073,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   ../Backend/src/Backend/Constants.h \
   ../Backend/src/Backend/Assembler.h \
   ../Frontend/ownDataTypes.h \
+  ../Frontend/Constants.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsSceneMouseEvent \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1271,6 +1271,8 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QScrollArea \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSpacerItem \
+  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSplitter \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsplitter.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar \
@@ -1296,6 +1298,7 @@ CMakeFiles/main.dir/Frontend/mainwindow.cpp.o: ../Frontend/mainwindow.cpp \
 CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/include/stdc-predef.h \
   ../Frontend/ownDataTypes.h \
+  ../Frontend/Constants.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsSceneMouseEvent \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1657,15 +1660,6 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-  ../Frontend/mainwindow.h \
-  ../Frontend/Constants.h \
-  ../Backend/src/Backend.h \
-  ../Backend/src/Backend/Simulator.h \
-  ../Backend/src/Backend/linearAlgebra.h \
-  ../Backend/thirdParty/eigen-3.4.0/Eigen/Dense \
-  ../Backend/thirdParty/eigen-3.4.0/Eigen/Core \
-  ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/DisableStupidWarnings.h \
-  ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/Macros.h \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -1690,6 +1684,14 @@ CMakeFiles/main.dir/Frontend/ownDataTypes.cpp.o: ../Frontend/ownDataTypes.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  ../Frontend/mainwindow.h \
+  ../Backend/src/Backend.h \
+  ../Backend/src/Backend/Simulator.h \
+  ../Backend/src/Backend/linearAlgebra.h \
+  ../Backend/thirdParty/eigen-3.4.0/Eigen/Dense \
+  ../Backend/thirdParty/eigen-3.4.0/Eigen/Core \
+  ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/DisableStupidWarnings.h \
+  ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/Macros.h \
   ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/ConfigureVectorization.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
@@ -2035,7 +2037,6 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../Frontend/mainwindow.h \
-  ../Frontend/Constants.h \
   ../Backend/src/Backend.h \
   ../Backend/src/Backend/Simulator.h \
   ../Backend/src/Backend/linearAlgebra.h \
@@ -2372,6 +2373,7 @@ CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.o: main_autogen/mocs_compi
   ../Backend/src/Backend/Constants.h \
   ../Backend/src/Backend/Assembler.h \
   ../Frontend/ownDataTypes.h \
+  ../Frontend/Constants.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsSceneMouseEvent \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h \
   /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -2583,6 +2585,8 @@ main_autogen/V57I63ONWH/moc_mainwindow.cpp:
 
 main_autogen/include/ui_mainwindow.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSpacerItem:
+
 ../Frontend/mainwindow.cpp:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h:
@@ -2734,6 +2738,12 @@ main_autogen/include/ui_mainwindow.h:
 /usr/include/c++/11/climits:
 
 /usr/include/c++/11/array:
+
+/usr/include/limits.h:
+
+main_autogen/mocs_compilation.cpp:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -2925,12 +2935,6 @@ main_autogen/include/ui_mainwindow.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qmetatype.h:
 
-/usr/include/c++/11/bits/stl_tempbuf.h:
-
-/usr/include/c++/11/bits/std_function.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Jacobi/Jacobi.h:
@@ -3001,6 +3005,20 @@ main_autogen/include/ui_mainwindow.h:
 
 ../Backend/src/Backend/Constants.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/c++/11/cmath:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/11/type_traits:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
 /usr/include/c++/11/streambuf:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/Tridiagonalization.h:
@@ -3039,74 +3057,6 @@ main_autogen/include/ui_mainwindow.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Householder/Householder.h:
 
-/usr/include/limits.h:
-
-main_autogen/mocs_compilation.cpp:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h:
-
-../Frontend/Constants.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Array.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/usr/include/c++/11/chrono:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/c++/11/bits/predefined_ops.h:
-
-/usr/include/math.h:
-
-/usr/include/c++/11/bits/charconv.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/c++/11/bits/exception_ptr.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/NestByValue.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/CommaInitializer.h:
-
-/usr/include/c++/11/cmath:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/11/type_traits:
-
-/usr/include/c++/11/pstl/pstl_config.h:
-
-/usr/include/c++/11/system_error:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-/usr/include/features-time64.h:
-
-/usr/include/c++/11/debug/debug.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Geometry/EulerAngles.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/ConfigureVectorization.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/Macros.h:
-
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/plugins/CommonCwiseUnaryOps.h:
-
 /usr/include/c++/11/bits/ios_base.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Eigenvalues/RealQZ.h:
@@ -3127,6 +3077,46 @@ main_autogen/mocs_compilation.cpp:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Assign.h:
 
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/StableNorm.h:
+
+../Frontend/mainwindow.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/c++/11/ext/type_traits.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/Macros.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/util/ConfigureVectorization.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/plugins/CommonCwiseUnaryOps.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Array.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/c++/11/chrono:
+
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
@@ -3146,6 +3136,32 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/strings.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+/usr/include/c++/11/tr1/modified_bessel_func.tcc:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h:
+
+/usr/include/math.h:
+
+/usr/include/c++/11/bits/charconv.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/NestByValue.h:
+
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/CommaInitializer.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/c++/11/bits/predefined_ops.h:
 
 /usr/include/linux/errno.h:
 
@@ -3171,33 +3187,19 @@ main_autogen/mocs_compilation.cpp:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Matrix.h:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+/usr/include/c++/11/system_error:
 
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/StableNorm.h:
+/usr/include/features-time64.h:
 
-../Backend/thirdParty/eigen-3.4.0/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+/usr/include/c++/11/debug/debug.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
 
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
+../Backend/thirdParty/eigen-3.4.0/Eigen/src/Geometry/EulerAngles.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h:
-
-/usr/include/c++/11/tr1/modified_bessel_func.tcc:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h:
-
-/usr/include/c++/11/ext/type_traits.h:
-
-../Frontend/mainwindow.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h:
-
-/usr/include/c++/11/bits/exception_defines.h:
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicssceneevent.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h:
 
@@ -3653,9 +3655,9 @@ main_autogen/mocs_compilation.cpp:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h:
 
-/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
-
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Core/Reverse.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 ../Backend/thirdParty/eigen-3.4.0/Eigen/src/Geometry/Rotation2D.h:
 
@@ -3692,6 +3694,8 @@ main_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
 ../Backend/src/Backend/Assembler.h:
+
+../Frontend/Constants.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h:
 
