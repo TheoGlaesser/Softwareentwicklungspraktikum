@@ -4,8 +4,10 @@
 #include <vector>
 #include <iostream>
 
+///Namespace including the necessary objects to correctly run the backend
 namespace Backend {
-
+ 
+  ///Class Point that represents a point on the grid	
   struct Point {
     double x, y;
 
@@ -13,7 +15,8 @@ namespace Backend {
     Point(double x, double y): x(x), y(y) {}
   };
 
-struct Node {
+  ///Class Node that represents a node on the grid
+  struct Node {
 	Point p;
 	int id;
 	Node() : p(0,0), id(0) {}
@@ -21,6 +24,7 @@ struct Node {
 	void print() {std::cout << "(" << p.x << "," << p.y << ")" << std::endl;}
 };
 
+   ///Class Rod that represents a rod on the grid   
   struct Rod {
     Point p1;
     Point p2;
@@ -33,7 +37,8 @@ struct Node {
 
   
 
-
+ 
+   ///Class Force that represents a force on the grid 
   struct Force {
     Point p;
     double norm;
@@ -43,7 +48,9 @@ struct Node {
     Force() : p(0,0), norm(0), angle(0) {}
     Force(double x, double y, double norm, double angle) : p(x,y), norm(norm), angle(angle) {}
   };
-
+  
+  
+   ///Class Bearing that represents a support on the grid
   struct Bearing {
     Point p;
     Node* node_p = nullptr;
@@ -53,7 +60,8 @@ struct Node {
     Bearing(double x, double y, const std::pair<bool,double> xInfo, const std::pair<bool,double> yInfo) : p(x,y), xInfo(xInfo), yInfo(yInfo) {}
   };
 
-
+ 
+  ///Class results that stores the values of the variables after the simulation 
   struct results {
     std::vector<Rod> rods;
     std::vector<Force> forces;
@@ -67,7 +75,8 @@ struct Node {
 
   };
 
-struct Exception {
+   /// Class Exception that contains a message and a boolean indicating if there has been an error during the simulation  
+  struct Exception {
         bool isVisible;
         std::string message = "no error";
         Exception(const bool & isVisible): isVisible(isVisible) {}
@@ -76,11 +85,13 @@ struct Exception {
 
 
 
+///Class Simulator, that runs and manages the simulation and connects frontend to backend, and viceversa
 class Simulator {
     public:
       Simulator(bool linear);
       ~Simulator() {};
-
+      
+      ///Runs the simulation invoking Assembler
       results run(std::vector<Rod>, std::vector<Force>, std::vector<Bearing>, std::vector<Node>, const double &, const double &, Exception &);
     private: 
       std::vector<Rod> rods;

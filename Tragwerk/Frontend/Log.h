@@ -11,6 +11,7 @@
 #include <vector>
 #include <fstream>
 
+///Log statements
 namespace Log 
 {
   void print_nodes(const std::vector<QPointF>&);

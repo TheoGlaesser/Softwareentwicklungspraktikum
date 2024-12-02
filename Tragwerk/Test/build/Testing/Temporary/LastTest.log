@@ -1,10 +1,10 @@
-Start testing: Oct 17 21:00 CEST
+Start testing: Nov 20 10:22 CET
 ----------------------------------------------------------
 1/2 Testing: TrussTest.General
 1/2 Test: TrussTest.General
 Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.General" "--gtest_also_run_disabled_tests"
 Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.General" start time: Oct 17 21:00 CEST
+"TrussTest.General" start time: Nov 20 10:22 CET
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = TrussTest.General
@@ -29,7 +29,7 @@ Note: Google Test filter = TrussTest.General
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TrussTest.General" end time: Oct 17 21:00 CEST
+"TrussTest.General" end time: Nov 20 10:22 CET
 "TrussTest.General" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -37,7 +37,7 @@ Test Passed.
 2/2 Test: TrussTest.Element
 Command: "/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build/TrussTest" "--gtest_filter=TrussTest.Element" "--gtest_also_run_disabled_tests"
 Directory: /home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/Tragwerk/Test/build
-"TrussTest.Element" start time: Oct 17 21:00 CEST
+"TrussTest.Element" start time: Nov 20 10:22 CET
 Output:
 ----------------------------------------------------------
 Note: Google Test filter = TrussTest.Element
@@ -52,11 +52,11 @@ Note: Google Test filter = TrussTest.Element
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.01 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TrussTest.Element" end time: Oct 17 21:00 CEST
+"TrussTest.Element" end time: Nov 20 10:22 CET
 "TrussTest.Element" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 17 21:00 CEST
+End testing: Nov 20 10:22 CET

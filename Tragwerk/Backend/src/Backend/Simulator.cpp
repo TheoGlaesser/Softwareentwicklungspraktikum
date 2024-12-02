@@ -7,9 +7,10 @@
 
 namespace Backend
 {
+
   Simulator::Simulator(bool linear): islinear(linear) {}
 
-
+  ///Runs the simulation, invoking the class Assembler
   results Simulator::run(std::vector<Rod> rods, std::vector<Force> forces, std::vector<Bearing> bearings, std::vector<Node> nodes, const double &  E, const double & A_0, Exception & error) 
   {
 	

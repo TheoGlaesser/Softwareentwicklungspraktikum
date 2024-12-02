@@ -6,6 +6,9 @@
 
 #define M_PI 3.14159265358979323846 //pi
 
+/**
+ * Connect GUI actions to technical implementation
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -70,6 +73,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * Print out a box
+ */
 void MainWindow::showBox(const QString & myStr) {
 	QMessageBox infoLabel;
         infoLabel.setInformativeText(myStr);
@@ -77,7 +83,9 @@ void MainWindow::showBox(const QString & myStr) {
 }
 
 
-
+/**
+ * Add a node to the grid
+ */
 void MainWindow::addNode()
 {
     QString xStr = ui->lineEditX->text();
@@ -172,14 +180,18 @@ void MainWindow::addNode()
 
 
 
-
+/**
+ * Check if node is connected to a rod
+ */
 bool MainWindow::isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node)
 {
     QPointF nodeCenter = node->rect().center() + node->pos();
     return line->line().p1() == nodeCenter || line->line().p2() == nodeCenter;
 }
 
-
+/**
+ * Check if there is a rod between two nodes
+ */
 bool MainWindow::isLineBetweenNodes(QPointF lhs, QPointF rhs) {
   for(auto line : lines) 
   {
@@ -196,25 +208,32 @@ bool MainWindow::isLineBetweenNodes(QPointF lhs, QPointF rhs) {
   }
 }
 
-
+/**
+ * Check if there is already a force on a node
+ */
 bool MainWindow::isForceOnNode(nodeGraphicsItem* node,force force) {
     QPointF nodeCenter = node->rect().center() + node->pos();
     return (force.point == nodeCenter);
 }
 
+/**
+ * Check if there is already a bearing/support on a node
+ */
 bool MainWindow::isSupportOnNode(nodeGraphicsItem* node, QPointF support) {
 	QPointF nodeCenter = node->rect().center() + node->pos();
 	return (support == nodeCenter);
 }
 
-
+/*
+ * Function to remove a selected graphical item
+ */
 void MainWindow::removeSelectedItems()
 {
     QList<QGraphicsItem*> selectedItems = scene->selectedItems();
     for (QGraphicsItem* item : selectedItems) {
         
       
-      //IF NODE SELECTED
+      //if node is selected
         if (nodeGraphicsItem* node = dynamic_cast<nodeGraphicsItem*>(item)) 
         {
             // Remove lines connected to this node
@@ -229,7 +248,7 @@ void MainWindow::removeSelectedItems()
                 }
             }
 
-	    //REMOVE POTENTIAL FORCE ON THAT POINT
+	    //Remove potential force on that point
 	    for(int i=0; i<forces.size(); i++) {
 		if(isForceOnNode(node, forces[i])) {
 			scene->removeItem(forceGraphicsItems[i].forceLineItem);
@@ -267,7 +286,7 @@ void MainWindow::removeSelectedItems()
 
 
 
-        //IF LINE SELECTED
+        //If line is selected
         else if (QGraphicsLineItem* line = dynamic_cast<QGraphicsLineItem*>(item)) 
         {
             // Remove the line
@@ -296,7 +315,7 @@ void MainWindow::removeSelectedItems()
 
 
 
-       //IF POLYGON SELECTED
+       //if polygon is selected
        else if (QGraphicsPolygonItem* polygon = dynamic_cast<QGraphicsPolygonItem*>(item)) 
         {
             // Remove the line
@@ -338,7 +357,9 @@ void MainWindow::removeSelectedItems()
 
 
 
-
+/**
+ * Draw the coordinate system of the grid
+ */
 void MainWindow::drawCoordinateSystem()
 {
     scene->setBackgroundBrush(QBrush(QColor(255, 255, 224)));
@@ -407,11 +428,13 @@ void MainWindow::drawCoordinateSystem()
 
 
 
-
+/**
+ * Undo the last node that has been created
+ */
 void MainWindow::undoLastNode()
 {
     if (!nodes.empty()) {
-        // Letzten Knoten und sein grafisches Element entfernen
+        // Remove node and its graphical element
         nodes.pop_back();
         if (!nodeItems.empty()) {
             nodeGraphicsItem* lastNodeItem = nodeItems.back();
@@ -420,7 +443,7 @@ void MainWindow::undoLastNode()
             delete lastNodeItem;
         }
 
-        // Letzte Linie und ihr grafisches Element entfernen, falls vorhanden
+        // Remove last line if existing
         if (!lineItems.empty()) {
             QGraphicsLineItem* lastLineItem = lineItems.back();
             lineItems.pop_back();
@@ -430,7 +453,9 @@ void MainWindow::undoLastNode()
     }
 }
 
-
+/**
+ * Function to instantiate a force on a node
+ */
 void MainWindow::makeForce()
 {
     QString xStr = ui->lineEditX_2->text();
@@ -521,7 +546,9 @@ void MainWindow::makeForce()
 
  
 
-
+/**
+ * Function to make a support on a node
+ */
 void MainWindow::makeSupport()
 {
     QString xStr = ui->lineEdit_x_pos->text();
@@ -583,7 +610,9 @@ void MainWindow::makeSupport()
 
 
 
-
+/**
+ * Clear the grid
+ */
 void MainWindow::clear() {
   //nodes
   nodes.clear();
@@ -671,7 +700,9 @@ void MainWindow::clear() {
 }
 
 
-
+/**
+ * Save the grid elements
+ */
 void MainWindow::save() {
   QString fileName = ui->lineEdit->text();
 
@@ -712,7 +743,9 @@ void MainWindow::save() {
 
 
 
-
+/**
+ * Load a truss from a txt file
+ */
 void MainWindow::load()
 {
 
@@ -806,28 +839,36 @@ void MainWindow::load()
 }
 
 
-
+/**
+ * Check if linear
+ */
 void MainWindow::linearStateChange()
 {
   isLinear = !(isLinear);
 }
 
 
-
+/**
+ * Check if bearing x coordinate is fixed
+ */
 void MainWindow::xFixedChange()
 {
   xFixed = !(xFixed);
   std::cout << "xFixed: " << xFixed << "\n";
 }
 
-
+/**
+ * Check if bearing y coordinate is fixed
+ */
 void MainWindow::yFixedChange()
 {
   yFixed = !(yFixed);
   std::cout << "yFixed: " << yFixed << "\n";
 }
 
-
+/**
+ * Update A
+ */
 void MainWindow::updateA()
 {
   QString AStr = ui->lineEditX_9->text();
@@ -843,7 +884,9 @@ void MainWindow::updateA()
 }
 
 
-
+/** 
+ * Update E
+ */
 void MainWindow::updateE()
 {
   QString EStr = ui->lineEditX_8->text();
@@ -861,7 +904,9 @@ void MainWindow::updateE()
 
 
 
-
+/**
+ * Solve the linear system and compute new variables
+ */
 void MainWindow::solve() 
 {
   //Make Variables compatible with Backend
@@ -891,14 +936,14 @@ void MainWindow::solve()
   }
 
   
-  //CREATE AND RUN SIMULATOR
+  //create and run simulator
   bool isVisible = true;
   Backend::Exception err(isVisible);
   Backend::Simulator simulator(isLinear);
   result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, err);
   
 
-  //ENABLE DISPLACEMENT AND RESULT VISIBILITY
+  //Enable displacement and result visibility
   if (err.isVisible) {
   	ui->checkBox_2->setEnabled(true);
   	ui->checkBox_4->setEnabled(true);
@@ -918,7 +963,9 @@ void MainWindow::solve()
   }
 }
 
-
+/**
+ * Display the results on the grid (GUI)
+ */
 void MainWindow::showResult() 
 {
   resultVisible  = !resultVisible;
@@ -1035,7 +1082,9 @@ void MainWindow::showResult()
 
 
 
-
+/**
+ * Display the displacement vectors for each node
+ */
 void MainWindow::showDisplacement() 
 {
   displacementVisible = !(displacementVisible);
@@ -1086,7 +1135,9 @@ void MainWindow::showDisplacement()
 
 
 
-
+/**
+ * Allow to show the original truss, before the simulation
+ */
 void MainWindow::showOriginal() 
 {
 
@@ -1200,16 +1251,18 @@ void MainWindow::showOriginal()
 
 
 
-
+/**
+ * Export the graphical image of truss
+ */
 void MainWindow::graphicalExport() {
     QString fileName = ui->exportName->text();
 
 
     if (fileName.isEmpty()) {
-        return;  // Falls kein Dateiname ausgewählt wurde, abbrechen
+        return;  // if the file doesn't have a name, we break
     }
 
-    // Falls die Datei keinen .pdf Suffix hat, fügen wir diesen hinzu
+    //if there is no suffix .pdf we add it
     if (QFileInfo(fileName).suffix().isEmpty()) {
         fileName.append(".pdf");
     }
@@ -1219,21 +1272,24 @@ void MainWindow::graphicalExport() {
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(fileName);
 
-    // QPainter auf dem Drucker initialisieren
+    //Qpainter initialisation
     QPainter painter(&printer);
 
-    // Optional: Layout des Widgets für die PDF-Seite anpassen
+    
     ui->graphicsView->render(&painter);
     
-    // PDF wird hier erzeugt, wenn der QPainter zerstört wird
+    //pdf will be created
     painter.end();
 }
 
+///To zoom in 
 void MainWindow::onButtonZoomIn()
 {
   double scale = ui->zoom_scale_spin_box->value();
   ui->graphicsView->scale(scale, scale);
 }
+
+///To zoom out
 void MainWindow::onButtonZoomOut()
 {
   double scale = ui->zoom_scale_spin_box->value();

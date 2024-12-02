@@ -1,5 +1,4 @@
-# Softwareentwicklungspraktikum
-
+/*! \mainpage Description
 ##External tools
 You need to have installed on your computer cmake and QT. In the following links you find the corresponding webpages of the external tools: cmake https://cmake.org/ and qt https://www.qt.io/
 
@@ -14,7 +13,7 @@ When entering data, there are no units. The user is responsible for providing da
 e.g.
 point coordinates in m, loads in N, cross sections in m² and the modulus of elasticity in N/m²,
 displacements then will be in m, bar forces in N, normal stress in N/m².
-
+*/
 
 
 

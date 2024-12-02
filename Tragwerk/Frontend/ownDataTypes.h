@@ -13,10 +13,10 @@
 #include <iostream>
 #include <string>
 
-
+///Class to manage the GUI and to create a clean interface with whom the user can interact
 class MainWindow; 
 
-
+///Represents a support/bearing of the truss
 struct support {
   QPointF p;
   bool xFixed, yFixed;
@@ -25,6 +25,7 @@ struct support {
   support(QPointF p, bool xFixed, bool yFixed, double xDisp, double yDisp) : p(p), xFixed(xFixed), yFixed(yFixed), xDisp(xDisp), yDisp(yDisp)  {}
 };
 
+///Represents a force on the truss 
 struct force {
   QPointF point;
   qreal betrag;
@@ -32,7 +33,7 @@ struct force {
 };
 
 
-
+///Represents the graphical illustration of a force
 struct forceGraphicsItem {
   forceGraphicsItem(QGraphicsLineItem* line, QGraphicsPolygonItem* polygon) : forceLineItem(line), forcePolygonItem(polygon) {}
 
@@ -42,7 +43,7 @@ struct forceGraphicsItem {
 
 
 
-//Subclass QGraphicsEllipseItem to represent a selectable "point"
+///Subclass QGraphicsEllipseItem to represent a selectable point
 class nodeGraphicsItem : public QGraphicsEllipseItem {
   // Q_OBJECT
 public:
@@ -72,7 +73,7 @@ private:
 };
 
 
-
+///Saves the results coming from the simulation
 struct resultGraphicsItems {
     std::vector<nodeGraphicsItem*> nodeItems;
     std::vector<QGraphicsLineItem*> lineItems;

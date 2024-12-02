@@ -3,7 +3,7 @@
 #include <vector>
 #include "Simulator.h"
 
-//represents a finite element of a truss. It is used to compute the local stiffness matrix and to assign nodes to the finite element
+///Represents a finite element of a truss. It is used to compute the local stiffness matrix and to assign nodes to the finite element
 class Element{
 	private:
 		double L_0;
