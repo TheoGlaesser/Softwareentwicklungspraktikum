@@ -1,8 +1,0 @@
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/install/strip.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/install/local.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/install.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/list_install_components.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/rebuild_cache.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/edit_cache.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/main.dir
-/home/stce/SEPraktikum/17_10_2024/Softwareentwicklungspraktikum/build/CMakeFiles/main_autogen.dir
