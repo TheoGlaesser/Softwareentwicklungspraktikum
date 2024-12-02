@@ -2,7 +2,8 @@
 #include <vector>
 #include "Simulator.h"
 
-//It assembles and solves the linear system of equation, eventually returning the new nodes and new rods
+
+///It assembles and solves the linear system of equation, eventually returning the new nodes and new rods
 class Assembler {
 	private:
 		int n;

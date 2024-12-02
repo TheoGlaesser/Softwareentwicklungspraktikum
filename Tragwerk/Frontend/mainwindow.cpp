@@ -5,6 +5,9 @@
 #include <QPrinter>
 
 
+/**
+ * Connect GUI actions to technical implementation
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -70,6 +73,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * Print out a box
+ */
 void MainWindow::showBox(const QString & myStr) {
 	QMessageBox infoLabel;
         infoLabel.setInformativeText(myStr);
@@ -88,6 +94,10 @@ void MainWindow::checkRedraw(const double& x, const double& y) {
      drawCoordinateSystem();
   } 
 }
+
+/**
+ * Add a node to the grid
+ */
 
 
 void MainWindow::isAlreadyDrawn(QPointF nodeP, bool createdByClick, bool& isDrawn) {
@@ -174,6 +184,9 @@ void MainWindow::handleNewForceGraphics(const double& x, const double& y, const 
 }
 
 
+/**
+ * Add a node to the grid
+ */
 void MainWindow::addNode()
 {
   QString xStr = ui->lineEditX->text();
@@ -251,7 +264,9 @@ void MainWindow::addNode()
 
 
 
-
+/**
+ * Check if node is connected to a rod
+ */
 bool MainWindow::isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node) const
 {
     QPointF nodeCenter = node->rect().center() + node->pos();
@@ -259,6 +274,10 @@ bool MainWindow::isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem
 }
 
 
+
+/**
+ * Check if there is a rod between two nodes
+ */
 bool MainWindow::isLineBetweenNodes(QPointF lhs, QPointF rhs)  const {
   for(auto line : lines) 
   {
@@ -276,24 +295,34 @@ bool MainWindow::isLineBetweenNodes(QPointF lhs, QPointF rhs)  const {
 }
 
 
+
+/**
+ * Check if there is already a force on a node
+ */
 bool MainWindow::isForceOnNode(nodeGraphicsItem* node,force force) const {
-    QPointF nodeCenter = node->rect().center() + node->pos();
-    return (force.point == nodeCenter);
+  QPointF nodeCenter = node->rect().center() + node->pos();
+  return (force.point == nodeCenter);
 }
 
-bool MainWindow::isSupportOnNode(nodeGraphicsItem* node, QPointF support) const {
+
+/**
+ * Check if there is already a bearing/support on a node
+ */
+bool MainWindow::isSupportOnNode(nodeGraphicsItem* node, QPointF support) const{
 	QPointF nodeCenter = node->rect().center() + node->pos();
 	return (support == nodeCenter);
 }
 
-
+/*
+ * Function to remove a selected graphical item
+ */
 void MainWindow::removeSelectedItems()
 {
     QList<QGraphicsItem*> selectedItems = scene->selectedItems();
-    for (QGraphicsItem* item : selectedItems) {
-        
-      
-      //IF NODE SELECTED
+  
+    for (QGraphicsItem* item : selectedItems) 
+    {
+    //IF NODE SELECTED
     if (nodeGraphicsItem* node = dynamic_cast<nodeGraphicsItem*>(item)) 
     {
       // Remove lines connected to this node
@@ -308,20 +337,24 @@ void MainWindow::removeSelectedItems()
          ++it;
         }
       }
-	    //REMOVE POTENTIAL FORCE ON THAT POINT
-	    for(int i=0; i<forces.size(); i++) {
-		    if(isForceOnNode(node, forces[i])) {
-			    scene->removeItem(forceGraphicsItems[i].forceLineItem);
-		      delete forceGraphicsItems[i].forceLineItem;
+    
+	    
 
-		      scene->removeItem(forceGraphicsItems[i].forcePolygonItem);
-          delete forceGraphicsItems[i].forcePolygonItem;
+    //Remove potential force on that point
+    for(int i=0; i<forces.size(); i++) {
+      if(isForceOnNode(node, forces[i])) {
+        scene->removeItem(forceGraphicsItems[i].forceLineItem);
+        delete forceGraphicsItems[i].forceLineItem;
 
-			    forces.erase(forces.begin() + i);
-			    forceGraphicsItems.erase(forceGraphicsItems.begin() + i);
+        scene->removeItem(forceGraphicsItems[i].forcePolygonItem);
+        delete forceGraphicsItems[i].forcePolygonItem;
+
+        forces.erase(forces.begin() + i);
+		    forceGraphicsItems.erase(forceGraphicsItems.begin() + i);
 		  }
 		}
-
+    
+    //Remove potential support on that node
     for(int i=0; i < supports.size(); i++) {
 		  if (isSupportOnNode(node, supports[i].p)) {
 		    scene->removeItem(supportItems[i]);
@@ -341,70 +374,69 @@ void MainWindow::removeSelectedItems()
     }
   } 
 
-        //IF LINE SELECTED
-   else if (QGraphicsLineItem* line = dynamic_cast<QGraphicsLineItem*>(item)) 
-   {
-     // Remove the line
-     scene->removeItem(line);
-     delete line;
+  else if (QGraphicsLineItem* line = dynamic_cast<QGraphicsLineItem*>(item)) 
+  {
+      // Remove the line
+      scene->removeItem(line);
+      delete line;
 
-            auto lineIt = std::find(lineItems.begin(), lineItems.end(), line);
-            if (lineIt != lineItems.end()) {
-                lineItems.erase(lineIt);
-                ptrdiff_t index = lineIt - lineItems.begin();
-                lines.erase(lines.begin() + index);
-            }
+      auto lineIt = std::find(lineItems.begin(), lineItems.end(), line);
+      if (lineIt != lineItems.end()) {
+          lineItems.erase(lineIt);
+          ptrdiff_t index = lineIt - lineItems.begin();
+          lines.erase(lines.begin() + index);
+      }
 
-           //deleting the according PolygonItem
-           auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
-               [&line] (const forceGraphicsItem& x) -> bool {return line == x.forceLineItem;}); 
-           if (forceGraphicsIt != forceGraphicsItems.end()) {
-               scene->removeItem(forceGraphicsIt->forcePolygonItem);
-               delete forceGraphicsIt->forcePolygonItem;
-               forceGraphicsItems.erase(forceGraphicsIt);
+     //deleting the according PolygonItem
+     auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
+         [&line] (const forceGraphicsItem& x) -> bool {return line == x.forceLineItem;}); 
+     if (forceGraphicsIt != forceGraphicsItems.end()) {
+         scene->removeItem(forceGraphicsIt->forcePolygonItem);
+         delete forceGraphicsIt->forcePolygonItem;
+         forceGraphicsItems.erase(forceGraphicsIt);
 
-               ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
-               forces.erase(forces.begin() + index);
-           }
-        }
-
+         ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
+         forces.erase(forces.begin() + index);
+     }
+  }
 
 
-       //IF POLYGON SELECTED
-       else if (QGraphicsPolygonItem* polygon = dynamic_cast<QGraphicsPolygonItem*>(item)) 
-        {
-            // Remove the line
-           scene->removeItem(polygon);
-           delete polygon;
 
-            auto supportIt = std::find(supportItems.begin(), supportItems.end(), polygon);
-            if (supportIt != supportItems.end()) {
-                supportItems.erase(supportIt);
+ //if polygon is selected
+ else if (QGraphicsPolygonItem* polygon = dynamic_cast<QGraphicsPolygonItem*>(item)) 
+  {
+      // Remove the line
+     scene->removeItem(polygon);
+     delete polygon;
 
-                ptrdiff_t index = supportIt - supportItems.begin();
-                supports.erase(supports.begin() + index);
-            }
+      auto supportIt = std::find(supportItems.begin(), supportItems.end(), polygon);
+      if (supportIt != supportItems.end()) {
+          supportItems.erase(supportIt);
 
-           auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
-               [&polygon] (const forceGraphicsItem& x) -> bool {return polygon == x.forcePolygonItem;}); 
-           if (forceGraphicsIt != forceGraphicsItems.end()) {
-               scene->removeItem(forceGraphicsIt->forceLineItem);
-               delete forceGraphicsIt->forceLineItem;
-               forceGraphicsItems.erase(forceGraphicsIt);
+          ptrdiff_t index = supportIt - supportItems.begin();
+          supports.erase(supports.begin() + index);
+      }
 
-               ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
-               forces.erase(forces.begin() + index);
-           }
-        } 
-        
+     auto forceGraphicsIt = std::find_if(forceGraphicsItems.begin(), forceGraphicsItems.end(),
+         [&polygon] (const forceGraphicsItem& x) -> bool {return polygon == x.forcePolygonItem;}); 
+     if (forceGraphicsIt != forceGraphicsItems.end()) {
+         scene->removeItem(forceGraphicsIt->forceLineItem);
+         delete forceGraphicsIt->forceLineItem;
+         forceGraphicsItems.erase(forceGraphicsIt);
 
-        else 
-        {
-            // Handle other types of items if needed
-            scene->removeItem(item);
-            delete item;
-        }
-    }
+         ptrdiff_t index = forceGraphicsIt - forceGraphicsItems.begin();
+         forces.erase(forces.begin() + index);
+     }
+  } 
+  
+
+  else 
+  {
+    // Handle other types of items if needed
+    scene->removeItem(item);
+    delete item;
+  }
+ }
 }
 
 
@@ -412,7 +444,9 @@ void MainWindow::removeSelectedItems()
 
 
 
-
+/**
+ * Draw the coordinate system of the grid
+ */
 void MainWindow::drawCoordinateSystem()
 {
     scene->setBackgroundBrush(QBrush(QColor(255, 255, 224)));
@@ -481,34 +515,41 @@ void MainWindow::drawCoordinateSystem()
 
 
 
-
+/**
+ * Undo the last node that has been created
+ */
 void MainWindow::undoLastNode()
 {
-    if (!nodes.empty()) {
-        // Letzten Knoten und sein grafisches Element entfernen
-        nodes.pop_back();
-        if (!nodeItems.empty()) {
-            nodeGraphicsItem* lastNodeItem = nodeItems.back();
-            nodeItems.pop_back();
-            scene->removeItem(lastNodeItem);
-            delete lastNodeItem;
-        }
+  if (!nodes.empty()) {
+      // Remove node and its graphical element
+      nodes.pop_back();
+      if (!nodeItems.empty()) {
+          nodeGraphicsItem* lastNodeItem = nodeItems.back();
+          nodeItems.pop_back();
+          scene->removeItem(lastNodeItem);
+          delete lastNodeItem;
+      }
 
-        // Letzte Linie und ihr grafisches Element entfernen, falls vorhanden
-        if (!lineItems.empty() && !lines.empty()) {
-            QGraphicsLineItem* lastLineItem = lineItems.back();
-            lineItems.pop_back();
-            lines.pop_back();
-            scene->removeItem(lastLineItem);
-            delete lastLineItem;
-        }
+      // Letzte Linie und ihr grafisches Element entfernen, falls vorhanden
+      if (!lineItems.empty() && !lines.empty()) {
+      // Remove last line if existing
+      if (!lineItems.empty()) {
+          QGraphicsLineItem* lastLineItem = lineItems.back();
+          lineItems.pop_back();
+          lines.pop_back();
+          scene->removeItem(lastLineItem);
+          delete lastLineItem;
+      }
     }
+  }
 }
 
-
+/**
+* Function to instantiate a force on a node
+*/
 void MainWindow::makeForce()
 {
-    QString xStr = ui->lineEditX_2->text();
+  QString xStr = ui->lineEditX_2->text();
     QString yStr = ui->lineEditX_3->text();
     QString betragStr = ui->lineEditX_4->text();
     QString winkelStr = ui->lineEditX_5->text();
@@ -570,7 +611,9 @@ void MainWindow::makeForce()
 
  
 
-
+/**
+ * Function to make a support on a node
+ */
 void MainWindow::makeSupport()
 {
     QString xStr = ui->lineEdit_x_pos->text();
@@ -618,7 +661,9 @@ void MainWindow::makeSupport()
 
 
 
-
+/**
+ * Clear the grid
+ */
 void MainWindow::clear() {
   //nodes
   nodes.clear();
@@ -706,7 +751,9 @@ void MainWindow::clear() {
 }
 
 
-
+/**
+ * Save the grid elements
+ */
 void MainWindow::save() {
   QString fileName = QFileDialog::getSaveFileName(this);
    
@@ -746,7 +793,9 @@ void MainWindow::save() {
 
 
 
-
+/**
+ * Load a truss from a txt file
+ */
 void MainWindow::load()
 {
 
@@ -804,26 +853,34 @@ void MainWindow::load()
 }
 
 
-
+/**
+ * Check if linear
+ */
 void MainWindow::linearStateChange()
 {
   isLinear = !(isLinear);
 }
 
 
-
+/**
+ * Check if bearing x coordinate is fixed
+ */
 void MainWindow::xFixedChange()
 {
   xFixed = !(xFixed);
 }
 
-
+/**
+ * Check if bearing y coordinate is fixed
+ */
 void MainWindow::yFixedChange()
 {
   yFixed = !(yFixed);
 }
 
-
+/**
+ * Update A
+ */
 void MainWindow::updateA()
 {
   QString AStr = ui->lineEditX_9->text();
@@ -838,7 +895,9 @@ void MainWindow::updateA()
 }
 
 
-
+/** 
+ * Update E
+ */
 void MainWindow::updateE()
 {
   QString EStr = ui->lineEditX_8->text();
@@ -855,7 +914,9 @@ void MainWindow::updateE()
 
 
 
-
+/**
+ * Solve the linear system and compute new variables
+ */
 void MainWindow::solve() 
 {
   //Make Variables compatible with Backend
@@ -885,14 +946,14 @@ void MainWindow::solve()
   }
 
   
-  //CREATE AND RUN SIMULATOR
+  //create and run simulator
   bool isVisible = true;
   Backend::Exception err(isVisible);
   Backend::Simulator simulator(isLinear);
   result = simulator.run(backendRods, backendForces, backendBearings, backendNodes, E, A, err);
   
 
-  //ENABLE DISPLACEMENT AND RESULT VISIBILITY
+  //Enable displacement and result visibility
   if (err.isVisible) {
   	ui->checkBox_2->setEnabled(true);
   	ui->checkBox_4->setEnabled(true);
@@ -912,7 +973,9 @@ void MainWindow::solve()
   }
 }
 
-
+/**
+ * Display the results on the grid (GUI)
+ */
 void MainWindow::showResult() 
 {
   resultVisible  = !resultVisible;
@@ -1029,7 +1092,9 @@ void MainWindow::showResult()
 
 
 
-
+/**
+ * Display the displacement vectors for each node
+ */
 void MainWindow::showDisplacement() 
 {
   displacementVisible = !(displacementVisible);
@@ -1079,7 +1144,9 @@ void MainWindow::showDisplacement()
 
 
 
-
+/**
+ * Allow to show the original truss, before the simulation
+ */
 void MainWindow::showOriginal() 
 {
 
@@ -1148,10 +1215,17 @@ void MainWindow::showOriginal()
 
 
 
-
+/**
+ * Export the graphical image of truss
+ */
 void MainWindow::graphicalExport() {
     QString fileName = QFileDialog::getSaveFileName(this);
    
+    if (fileName.isEmpty()) {
+        return;  // if the file doesn't have a name, we break
+    }
+
+    //if there is no suffix .pdf we add it
     if (QFileInfo(fileName).suffix().isEmpty()) {
         fileName.append(".pdf");
     }
@@ -1161,21 +1235,24 @@ void MainWindow::graphicalExport() {
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(fileName);
 
-    // QPainter auf dem Drucker initialisieren
+    //Qpainter initialisation
     QPainter painter(&printer);
 
-    // Optional: Layout des Widgets für die PDF-Seite anpassen
+    
     ui->graphicsView->render(&painter);
     
-    // PDF wird hier erzeugt, wenn der QPainter zerstört wird
+    //pdf will be created
     painter.end();
 }
 
+///To zoom in 
 void MainWindow::onButtonZoomIn()
 {
   double scale = ui->zoom_scale_spin_box->value();
   ui->graphicsView->scale(scale, scale);
 }
+
+///To zoom out
 void MainWindow::onButtonZoomOut()
 {
   double scale = ui->zoom_scale_spin_box->value();

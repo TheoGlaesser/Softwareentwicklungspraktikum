@@ -16,7 +16,9 @@ Assembler::Assembler() {
 	n = 0;
 }
 
-//Initialize all class members, parameters just in read mode
+/**
+Initialize all class members, parameters just in read mode
+*/
 Assembler::Assembler(const int & dim, const int & n, const std::vector<Backend::Node> & nodes, const std::vector<Backend::Rod> & rods, const std::vector<Backend::Force> & forces, const std::vector<Backend::Bearing> & bearings) : dim(dim),  n(n), nodes(nodes), rods(rods), forces(forces), bearings(bearings) {
 	std::vector<std::vector<double>> zero_stiff(dim*n, std::vector<double> (dim*n,0));
 	A = zero_stiff;
@@ -26,8 +28,7 @@ Assembler::Assembler(const int & dim, const int & n, const std::vector<Backend::
 	rhs = zero_rhs;
 };
 
-
-//Functions to get the class variables
+//Get functions
 std::vector<std::vector<double>> Assembler::get_A() {return A;}
 std::vector<double> Assembler::get_rhs() {return rhs;}
 std::vector<double> Assembler::get_displacement() {return displacement;}
@@ -36,7 +37,9 @@ std::vector<Backend::Rod> Assembler::get_new_rods() {return new_rods;}
 std::vector<Backend::Force> Assembler::get_new_forces() {return new_forces;}
 std::vector<Backend::Bearing> Assembler::get_new_bearings() {return new_bearings;}
 
-//Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
+/**
+Assembles and solves the system, i.e. for Ax = b, first A and b are built, and then it is solved for x
+*/
 void Assembler::assemble(const double & E, const double & A_0, Backend::Exception & error) {
 	//for each rod the local stiffness matrix is computed through the objects Element and then it is added accordingly to the global stiffness matrix 
 	std::vector<std::vector<double>> stiff;
@@ -101,7 +104,9 @@ void Assembler::assemble(const double & E, const double & A_0, Backend::Exceptio
 
 }
 
-//computes the force vector (right hand side)
+/**
+computes the force vector (right hand side)
+*/
 void Assembler::compute_rhs(Backend::Exception & error) {
 	
 	//assign to the forces the corresponding nodes (make it better?)
@@ -135,7 +140,9 @@ void Assembler::compute_rhs(Backend::Exception & error) {
 	rhs = force_truss;
 }
 
-//Consider bearings in the stiffness matrix
+/**
+Consider bearings in the stiffness matrix
+*/
 void Assembler::apply_bearings(Backend::Exception & error) {
 	//Assign bearing to node
 	for (int i = 0; i < bearings.size(); i++) {
@@ -234,8 +241,9 @@ void Assembler::apply_bearings(Backend::Exception & error) {
 	}		
 
 }
-
-//Solve the linear system with eigen
+/**
+Solve the linear system with eigen
+*/
 std::vector<Backend::Node> Assembler::solve(Backend::Exception & error) {
 	//Convert forces to eigen
 	Eigen::VectorXd eigen_rhs(n*dim);
@@ -287,7 +295,9 @@ std::vector<Backend::Node> Assembler::solve(Backend::Exception & error) {
 
 }
 
-//Compute the rods after the system has been solved
+/**
+Compute the rods after the system has been solved
+*/
 std::vector<Backend::Rod> Assembler::compute_new_rods(Backend::Exception & error) {
 	std::vector<Backend::Rod> new_rods((rods).size());
 	for (int i = 0; i < new_rods.size(); i++) {
@@ -310,7 +320,9 @@ std::vector<Backend::Rod> Assembler::compute_new_rods(Backend::Exception & error
 
 }
 
-
+/**
+Compute the new forces of the truss
+*/
 std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & error) {
 	std::vector<Backend::Force> new_forces(forces.size());
    for(int i=0; i<forces.size(); i++) {
@@ -329,6 +341,9 @@ std::vector<Backend::Force> Assembler::compute_new_forces(Backend::Exception & e
    return new_forces;
 }
 
+/**
+Compute the new bearings of the truss
+*/
 std::vector<Backend::Bearing> Assembler::compute_new_bearings(Backend::Exception & error) {
 	std::vector<Backend::Bearing> new_bearings(bearings.size());
 	for (int i=0; i < new_bearings.size(); i++) {
@@ -351,66 +366,3 @@ std::vector<Backend::Bearing> Assembler::compute_new_bearings(Backend::Exception
 }
 
 
-//In the following int main () function there is an implementation that checks if everything is working. If you compile it now it might not work because of the Makefiles. Anyway, the same correctness check is written in the test, so please run the test to check for correctness.
-
-/*
-int main() {
-	Backend::Node Node1(0,0,0);
-	Backend::Node Node2(0,100,1);
-	Backend::Node Node3(100,100,2);
-	Backend::Node Node4(100,0,3);
-	Backend::Node Node5(50,200,4);
-	std::vector<Backend::Node> nodes = {Node1, Node2, Node3, Node4, Node5};
-	Backend::Rod Rod1(0,0,0,100);
-	Backend::Rod Rod2(0,100,100,100);
-	Backend::Rod Rod3(100,100,100,0);
-	Backend::Rod Rod4(100,0,0,100);
-	Backend::Rod Rod5(0,100,50,200);
-	Backend::Rod Rod6(50,200,100,100);
-	Backend::Rod Rod7(100,100,0,0);
-	Backend::Rod Rod8(0,0,100,0);
-	std::vector<Backend::Rod> rods = {Rod1, Rod2, Rod3, Rod4, Rod5, Rod6, Rod7, Rod8};
-	double angle = 90;
-	double rad = angle*M_PI/180;
-	Backend::Force Force1(50,200,100000,rad);
-	//Backend::Force Force3(2,0,-70,30);
-	std::vector<Backend::Force> forces = {Force1};
-	std::pair<bool,double> xInfo1(false, 0);
-	std::pair<bool,double> yInfo1(true, 0);
-	Backend::Bearing Bearing1(0,0,xInfo1,yInfo1);
-	std::pair<bool, double> xInfo2(true, 0);
-	std::pair<bool, double> yInfo2(true, 0);
-	Backend::Bearing Bearing2(100,0,xInfo2,yInfo2);
-	std::vector<Backend::Bearing> bearings = {Bearing1, Bearing2};
-	Assembler truss(2, nodes.size(), nodes,rods, forces, bearings);
-	std::cout << "truss has been built" << std::endl;
-	bool isVisible = true;
-	Backend::Exception error(true);
-	truss.assemble(100000,1,error);
-	std::vector<std::vector<double>> A = truss.get_A();
-	std::cout << "A was built" << std::endl;
-	for (int i = 0; i < A.size(); i++) {
-		for (int j = 0; j < A.size(); j++) {
-			std::cout << A[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-
-	
-	std::vector<double> truss_forces = truss.get_rhs();
-	std::cout << "The vector of forces is: ";
-	for (int i = 0; i < truss_forces.size(); i++) {
-		std::cout << truss_forces[i] << " ";
-	}
-	std::cout << std::endl;
-	std::vector<double> truss_displacement = truss.get_displacement();
-	std::cout << "The displacements are: ";
-	for (int i = 0; i < truss_displacement.size(); i++) {
-		std::cout << truss_displacement[i] << " ";
-	}
-	std::cout << std::endl;
-
-
-	return 0;
-}
-*/

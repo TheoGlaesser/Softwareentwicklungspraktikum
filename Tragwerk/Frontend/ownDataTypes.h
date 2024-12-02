@@ -18,10 +18,10 @@
 #include <cmath>
 #include <limits>
 
-
+///Class to manage the GUI and to create a clean interface with whom the user can interact
 class MainWindow; 
 
-
+///Represents a support/bearing of the truss
 struct support {
   QPointF p;
   bool xFixed, yFixed;
@@ -29,6 +29,7 @@ struct support {
   support(QPointF p, bool xFixed, bool yFixed) : p(p), xFixed(xFixed), yFixed(yFixed) {}
 };
 
+///Represents a force on the truss 
 struct force {
   QPointF point;
   qreal betrag;
@@ -36,6 +37,7 @@ struct force {
 };
 
 
+///Represents the graphical illustration of a force
 struct forceGraphicsItem {
   forceGraphicsItem(QGraphicsLineItem* line, QGraphicsPolygonItem* polygon) : forceLineItem(line), forcePolygonItem(polygon) {}
 
@@ -75,12 +77,14 @@ private:
 };
 
 
+///Saves the results coming from the simulation
 struct resultGraphicsItems {
     std::vector<nodeGraphicsItem*> nodeItems;
     std::vector<QGraphicsLineItem*> lineItems;
     std::vector<forceGraphicsItem> forceGraphicsItems;
     std::vector<QGraphicsPolygonItem*> supportItems; 
 };
+
 
 
 class ownGraphicsScene : public QGraphicsScene 

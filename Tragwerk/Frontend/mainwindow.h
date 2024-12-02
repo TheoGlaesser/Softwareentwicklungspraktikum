@@ -22,11 +22,13 @@
 #include <QMessageBox>
 #include <QString>
 
-
+///Namespace of frontend
 namespace Ui {
 class MainWindow;
 }
 
+
+///Class that manages and coordinates the GUI
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
