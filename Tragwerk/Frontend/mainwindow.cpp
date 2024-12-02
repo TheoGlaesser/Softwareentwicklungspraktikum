@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->button_zoom_out, &QPushButton::clicked, this, &MainWindow::onButtonZoomOut);
     connect(ui->checkBox_y_fixed_2, &QCheckBox::stateChanged, this, &MainWindow::xFixedChange);
     connect(ui->checkBox_y_fixed, &QCheckBox::stateChanged, this, &MainWindow::yFixedChange);
+    connect(ui->pushButton_itemInfo, &QPushButton::clicked, this, &MainWindow::getInfo);
     
    
     //Greying out the Displacement and Result Checkbox before the user simulates
@@ -471,6 +472,8 @@ void MainWindow::makeForce()
     double x = xStr.toDouble(&okX);
     double y = yStr.toDouble(&okY);
     double betrag = betragStr.toDouble(&okBetrag);
+
+    
 	
     if (betrag <= 0) {
 	    const QString err = "Please make a force with positive amount";
@@ -479,6 +482,15 @@ void MainWindow::makeForce()
     }
 
     double winkel = winkelStr.toDouble(&okWinkel);
+    
+    //Check for same force
+    for(int i=0; i<forces.size(); i++) {
+      if(x==forces[i].point.x() && y==forces[i].point.y() && betrag == forces[i].betrag && winkel == forces[i].winkel) {
+        forces[i].betrag = forces[i].betrag + betrag;
+        return;
+      }
+    }
+
     winkel = winkel*M_PI/180;
     
     //Check that force points to a node
@@ -1295,5 +1307,65 @@ void MainWindow::onButtonZoomOut()
   double scale = ui->zoom_scale_spin_box->value();
   ui->graphicsView->scale(1.0/scale, 1.0/scale);
 }
+
+
+
+
+void MainWindow::getInfo() {
+   QList<QGraphicsItem*> selectedItems = scene->selectedItems();
+   for(auto item : selectedItems) {
+      if (nodeGraphicsItem* node = dynamic_cast<nodeGraphicsItem*>(item)) {
+        QPointF itemPos = node->rect().center() + node->pos();
+
+        QMessageBox *infoLabel = new QMessageBox;
+        infoLabel->setInformativeText("Node");
+        infoLabel->setText("x-Koordinate: " + QVariant(itemPos.x()).toString() + "\n" + "y-Koordinate: " + QVariant(itemPos.y()).toString());
+
+        infoLabel->show();
+      }
+   
+      if (QGraphicsPolygonItem* polygon = dynamic_cast<QGraphicsPolygonItem*>(item)) 
+      {
+
+        if(polygon->brush() == Qt::FDiagPattern) 
+        {
+          int index = 0;
+          for(int i=0; i<supportItems.size(); i++) {
+            if(supportItems[i] == polygon) {index = i;}
+          }
+          QPointF itemPos = supports[index].p;
+
+          QMessageBox *infoLabel = new QMessageBox;
+          infoLabel->setInformativeText("Support");
+          infoLabel->setText("x-Koordinate: " + QVariant(itemPos.x()).toString() + "\n" + "y-Koordinate: " + QVariant(itemPos.y()).toString()
+              + "\n" + "x-Fixed: " + QVariant(supports[index].xFixed).toString() + "\n" + "y-Fixed: " + QVariant(supports[index].yFixed).toString());
+
+          infoLabel->show();
+        }
+
+
+        else if(polygon->brush() == Qt::SolidPattern) 
+        {
+          int index = 0;
+          for(int i=0; i<forceGraphicsItems.size(); i++) {
+            if(forceGraphicsItems[i].forcePolygonItem == polygon) {index = i;}
+          }
+
+          std::cout << index << std::endl;
+          QPointF itemPos = forces[index].point;
+
+          QMessageBox *infoLabel = new QMessageBox;
+          infoLabel->setInformativeText("Force");
+          infoLabel->setText("x-Koordinate: " + QVariant(itemPos.x()).toString() + "\n" + "y-Koordinate: " + QVariant(itemPos.y()).toString()
+              + "\n" + "amount: " + QVariant(forces[index].betrag).toString() + "\n" + "angle: " + QVariant(forces[index].winkel * M_PI/180).toString());
+
+          infoLabel->show();
+         }
+      }
+   }
+}
+
+
+
 
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.15.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -24,6 +24,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -49,7 +50,10 @@ public:
     QLabel *label_7;
     QLineEdit *lineEditY;
     QPushButton *addNodeButton;
-    QFrame *line;
+    QFrame *frame;
+    QSpacerItem *horizontalSpacer;
+    QFrame *line_2;
+    QFrame *line_3;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QLineEdit *lineEditX_2;
@@ -61,35 +65,52 @@ public:
     QLabel *label_4;
     QLineEdit *lineEditX_5;
     QPushButton *makeForceButton;
-    QCheckBox *checkBox_y_fixed;
-    QCheckBox *checkBox_y_fixed_2;
-    QLineEdit *lineEdit_x_displacement;
-    QLineEdit *lineEdit_y_displacement;
-    QFrame *line_2;
-    QHBoxLayout *horizontalLayout_4;
+    QFrame *line_4;
+    QSpacerItem *horizontalSpacer_2;
+    QFrame *line_6;
+    QGridLayout *gridLayout_3;
+    QLabel *label_9;
     QLineEdit *lineEdit_x_pos;
     QLineEdit *lineEditX_y_pos;
-    QFrame *line_3;
+    QLabel *label_11;
+    QHBoxLayout *horizontalLayout_9;
+    QCheckBox *checkBox_y_fixed_2;
+    QCheckBox *checkBox_y_fixed;
+    QPushButton *pushButton_3;
+    QLineEdit *lineEdit;
     QPushButton *supportButton;
+    QFrame *line_7;
+    QSpacerItem *horizontalSpacer_8;
+    QFrame *line_8;
     QHBoxLayout *horizontalLayout_5;
+    QCheckBox *checkBox_3;
+    QPushButton *pushButton;
     QLineEdit *lineEditX_8;
+    QPushButton *parametersButton;
     QLineEdit *lineEditX_9;
     QHBoxLayout *horizontalLayout_6;
-    QPushButton *parametersButton;
-    QPushButton *pushButton;
-    QFrame *line_4;
     QGridLayout *gridLayout_2;
-    QPushButton *pushButton_2;
-    QLineEdit *exportName;
+    QPushButton *pushButton_itemInfo;
+    QFrame *line_9;
+    QFrame *line_10;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *saveButton;
-    QLineEdit *lineEdit;
-    QPushButton *undoButton;
-    QPushButton *loadButton;
-    QPushButton *clearButton;
     QPushButton *removeButton;
-    QCheckBox *checkBox_3;
     QPushButton *solveButton;
+    QPushButton *undoButton;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_10;
+    QPushButton *clearButton;
+    QPushButton *loadButton;
+    QFrame *line_11;
+    QFrame *line_12;
+    QFrame *line;
+    QFrame *line_14;
+    QFrame *line_15;
+    QFrame *line_16;
     QFrame *line_5;
+    QSpacerItem *horizontalSpacer_11;
+    QFrame *line_13;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_5;
     QVBoxLayout *verticalLayout;
@@ -125,7 +146,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 622, 752));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 671, 865));
         gridLayout_4 = new QGridLayout(scrollAreaWidgetContents);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         verticalLayout_2 = new QVBoxLayout();
@@ -157,15 +178,36 @@ public:
 
         addNodeButton = new QPushButton(scrollAreaWidgetContents);
         addNodeButton->setObjectName(QString::fromUtf8("addNodeButton"));
+        QFont font;
+        font.setBold(true);
+        addNodeButton->setFont(font);
 
         verticalLayout_2->addWidget(addNodeButton);
 
-        line = new QFrame(scrollAreaWidgetContents);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
+        frame = new QFrame(scrollAreaWidgetContents);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
 
-        verticalLayout_2->addWidget(line);
+        verticalLayout_2->addWidget(frame);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(horizontalSpacer);
+
+        line_2 = new QFrame(scrollAreaWidgetContents);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_2);
+
+        line_3 = new QFrame(scrollAreaWidgetContents);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_3);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -219,71 +261,127 @@ public:
 
         makeForceButton = new QPushButton(scrollAreaWidgetContents);
         makeForceButton->setObjectName(QString::fromUtf8("makeForceButton"));
+        makeForceButton->setFont(font);
 
         verticalLayout_2->addWidget(makeForceButton);
 
-        checkBox_y_fixed = new QCheckBox(scrollAreaWidgetContents);
-        checkBox_y_fixed->setObjectName(QString::fromUtf8("checkBox_y_fixed"));
+        line_4 = new QFrame(scrollAreaWidgetContents);
+        line_4->setObjectName(QString::fromUtf8("line_4"));
+        line_4->setFrameShape(QFrame::HLine);
+        line_4->setFrameShadow(QFrame::Sunken);
 
-        verticalLayout_2->addWidget(checkBox_y_fixed);
+        verticalLayout_2->addWidget(line_4);
 
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(horizontalSpacer_2);
+
+        line_6 = new QFrame(scrollAreaWidgetContents);
+        line_6->setObjectName(QString::fromUtf8("line_6"));
+        line_6->setFrameShape(QFrame::HLine);
+        line_6->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_6);
+
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setContentsMargins(-1, 0, -1, -1);
+        label_9 = new QLabel(scrollAreaWidgetContents);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        gridLayout_3->addWidget(label_9, 0, 0, 1, 1);
+
+        lineEdit_x_pos = new QLineEdit(scrollAreaWidgetContents);
+        lineEdit_x_pos->setObjectName(QString::fromUtf8("lineEdit_x_pos"));
+
+        gridLayout_3->addWidget(lineEdit_x_pos, 0, 1, 1, 1);
+
+        lineEditX_y_pos = new QLineEdit(scrollAreaWidgetContents);
+        lineEditX_y_pos->setObjectName(QString::fromUtf8("lineEditX_y_pos"));
+
+        gridLayout_3->addWidget(lineEditX_y_pos, 0, 4, 1, 1);
+
+        label_11 = new QLabel(scrollAreaWidgetContents);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout_3->addWidget(label_11, 0, 3, 1, 1);
+
+
+        verticalLayout_2->addLayout(gridLayout_3);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalLayout_9->setContentsMargins(-1, -1, -1, 0);
         checkBox_y_fixed_2 = new QCheckBox(scrollAreaWidgetContents);
         checkBox_y_fixed_2->setObjectName(QString::fromUtf8("checkBox_y_fixed_2"));
         checkBox_y_fixed_2->setSizeIncrement(QSize(120, 18));
         checkBox_y_fixed_2->setCursor(QCursor(Qt::BusyCursor));
 
-        verticalLayout_2->addWidget(checkBox_y_fixed_2);
+        horizontalLayout_9->addWidget(checkBox_y_fixed_2);
 
-        lineEdit_x_displacement = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_x_displacement->setObjectName(QString::fromUtf8("lineEdit_x_displacement"));
+        checkBox_y_fixed = new QCheckBox(scrollAreaWidgetContents);
+        checkBox_y_fixed->setObjectName(QString::fromUtf8("checkBox_y_fixed"));
 
-        verticalLayout_2->addWidget(lineEdit_x_displacement);
+        horizontalLayout_9->addWidget(checkBox_y_fixed);
 
-        lineEdit_y_displacement = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_y_displacement->setObjectName(QString::fromUtf8("lineEdit_y_displacement"));
+        pushButton_3 = new QPushButton(scrollAreaWidgetContents);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
 
-        verticalLayout_2->addWidget(lineEdit_y_displacement);
+        horizontalLayout_9->addWidget(pushButton_3);
 
-        line_2 = new QFrame(scrollAreaWidgetContents);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setFrameShape(QFrame::HLine);
-        line_2->setFrameShadow(QFrame::Sunken);
+        lineEdit = new QLineEdit(scrollAreaWidgetContents);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
-        verticalLayout_2->addWidget(line_2);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        lineEdit_x_pos = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit_x_pos->setObjectName(QString::fromUtf8("lineEdit_x_pos"));
-
-        horizontalLayout_4->addWidget(lineEdit_x_pos);
-
-        lineEditX_y_pos = new QLineEdit(scrollAreaWidgetContents);
-        lineEditX_y_pos->setObjectName(QString::fromUtf8("lineEditX_y_pos"));
-
-        horizontalLayout_4->addWidget(lineEditX_y_pos);
+        horizontalLayout_9->addWidget(lineEdit);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
-
-        line_3 = new QFrame(scrollAreaWidgetContents);
-        line_3->setObjectName(QString::fromUtf8("line_3"));
-        line_3->setFrameShape(QFrame::HLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_2->addWidget(line_3);
+        verticalLayout_2->addLayout(horizontalLayout_9);
 
         supportButton = new QPushButton(scrollAreaWidgetContents);
         supportButton->setObjectName(QString::fromUtf8("supportButton"));
+        supportButton->setFont(font);
 
         verticalLayout_2->addWidget(supportButton);
 
+        line_7 = new QFrame(scrollAreaWidgetContents);
+        line_7->setObjectName(QString::fromUtf8("line_7"));
+        line_7->setFrameShape(QFrame::HLine);
+        line_7->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_7);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(horizontalSpacer_8);
+
+        line_8 = new QFrame(scrollAreaWidgetContents);
+        line_8->setObjectName(QString::fromUtf8("line_8"));
+        line_8->setFrameShape(QFrame::HLine);
+        line_8->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_8);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        checkBox_3 = new QCheckBox(scrollAreaWidgetContents);
+        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
+
+        horizontalLayout_5->addWidget(checkBox_3);
+
+        pushButton = new QPushButton(scrollAreaWidgetContents);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        horizontalLayout_5->addWidget(pushButton);
+
         lineEditX_8 = new QLineEdit(scrollAreaWidgetContents);
         lineEditX_8->setObjectName(QString::fromUtf8("lineEditX_8"));
 
         horizontalLayout_5->addWidget(lineEditX_8);
+
+        parametersButton = new QPushButton(scrollAreaWidgetContents);
+        parametersButton->setObjectName(QString::fromUtf8("parametersButton"));
+
+        horizontalLayout_5->addWidget(parametersButton);
 
         lineEditX_9 = new QLineEdit(scrollAreaWidgetContents);
         lineEditX_9->setObjectName(QString::fromUtf8("lineEditX_9"));
@@ -295,77 +393,115 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        parametersButton = new QPushButton(scrollAreaWidgetContents);
-        parametersButton->setObjectName(QString::fromUtf8("parametersButton"));
-
-        horizontalLayout_6->addWidget(parametersButton);
-
-        pushButton = new QPushButton(scrollAreaWidgetContents);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        horizontalLayout_6->addWidget(pushButton);
-
 
         verticalLayout_2->addLayout(horizontalLayout_6);
 
-        line_4 = new QFrame(scrollAreaWidgetContents);
-        line_4->setObjectName(QString::fromUtf8("line_4"));
-        line_4->setFrameShape(QFrame::HLine);
-        line_4->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_2->addWidget(line_4);
-
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        pushButton_2 = new QPushButton(scrollAreaWidgetContents);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_itemInfo = new QPushButton(scrollAreaWidgetContents);
+        pushButton_itemInfo->setObjectName(QString::fromUtf8("pushButton_itemInfo"));
 
-        gridLayout_2->addWidget(pushButton_2, 0, 0, 1, 1);
+        gridLayout_2->addWidget(pushButton_itemInfo, 6, 1, 1, 1);
 
-        exportName = new QLineEdit(scrollAreaWidgetContents);
-        exportName->setObjectName(QString::fromUtf8("exportName"));
+        line_9 = new QFrame(scrollAreaWidgetContents);
+        line_9->setObjectName(QString::fromUtf8("line_9"));
+        line_9->setFrameShape(QFrame::HLine);
+        line_9->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_2->addWidget(exportName, 0, 1, 1, 1);
+        gridLayout_2->addWidget(line_9, 2, 0, 1, 1);
+
+        line_10 = new QFrame(scrollAreaWidgetContents);
+        line_10->setObjectName(QString::fromUtf8("line_10"));
+        line_10->setFrameShape(QFrame::HLine);
+        line_10->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_10, 4, 0, 1, 1);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_9, 3, 0, 1, 2);
 
         saveButton = new QPushButton(scrollAreaWidgetContents);
         saveButton->setObjectName(QString::fromUtf8("saveButton"));
 
-        gridLayout_2->addWidget(saveButton, 1, 0, 1, 1);
-
-        lineEdit = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        gridLayout_2->addWidget(lineEdit, 1, 1, 1, 1);
-
-        undoButton = new QPushButton(scrollAreaWidgetContents);
-        undoButton->setObjectName(QString::fromUtf8("undoButton"));
-
-        gridLayout_2->addWidget(undoButton, 2, 0, 1, 1);
-
-        loadButton = new QPushButton(scrollAreaWidgetContents);
-        loadButton->setObjectName(QString::fromUtf8("loadButton"));
-
-        gridLayout_2->addWidget(loadButton, 2, 1, 1, 1);
-
-        clearButton = new QPushButton(scrollAreaWidgetContents);
-        clearButton->setObjectName(QString::fromUtf8("clearButton"));
-
-        gridLayout_2->addWidget(clearButton, 3, 0, 1, 1);
+        gridLayout_2->addWidget(saveButton, 11, 0, 1, 1);
 
         removeButton = new QPushButton(scrollAreaWidgetContents);
         removeButton->setObjectName(QString::fromUtf8("removeButton"));
 
-        gridLayout_2->addWidget(removeButton, 3, 1, 1, 1);
-
-        checkBox_3 = new QCheckBox(scrollAreaWidgetContents);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
-
-        gridLayout_2->addWidget(checkBox_3, 4, 0, 1, 1);
+        gridLayout_2->addWidget(removeButton, 5, 1, 1, 1);
 
         solveButton = new QPushButton(scrollAreaWidgetContents);
         solveButton->setObjectName(QString::fromUtf8("solveButton"));
+        solveButton->setFont(font);
 
-        gridLayout_2->addWidget(solveButton, 4, 1, 1, 1);
+        gridLayout_2->addWidget(solveButton, 0, 0, 1, 2);
+
+        undoButton = new QPushButton(scrollAreaWidgetContents);
+        undoButton->setObjectName(QString::fromUtf8("undoButton"));
+
+        gridLayout_2->addWidget(undoButton, 5, 0, 1, 1);
+
+        pushButton_2 = new QPushButton(scrollAreaWidgetContents);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        gridLayout_2->addWidget(pushButton_2, 12, 1, 1, 1);
+
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_10, 9, 0, 1, 2);
+
+        clearButton = new QPushButton(scrollAreaWidgetContents);
+        clearButton->setObjectName(QString::fromUtf8("clearButton"));
+
+        gridLayout_2->addWidget(clearButton, 6, 0, 1, 1);
+
+        loadButton = new QPushButton(scrollAreaWidgetContents);
+        loadButton->setObjectName(QString::fromUtf8("loadButton"));
+
+        gridLayout_2->addWidget(loadButton, 12, 0, 1, 1);
+
+        line_11 = new QFrame(scrollAreaWidgetContents);
+        line_11->setObjectName(QString::fromUtf8("line_11"));
+        line_11->setFrameShape(QFrame::HLine);
+        line_11->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_11, 8, 0, 1, 1);
+
+        line_12 = new QFrame(scrollAreaWidgetContents);
+        line_12->setObjectName(QString::fromUtf8("line_12"));
+        line_12->setFrameShape(QFrame::HLine);
+        line_12->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_12, 10, 0, 1, 1);
+
+        line = new QFrame(scrollAreaWidgetContents);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line, 10, 1, 1, 1);
+
+        line_14 = new QFrame(scrollAreaWidgetContents);
+        line_14->setObjectName(QString::fromUtf8("line_14"));
+        line_14->setFrameShape(QFrame::HLine);
+        line_14->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_14, 4, 1, 1, 1);
+
+        line_15 = new QFrame(scrollAreaWidgetContents);
+        line_15->setObjectName(QString::fromUtf8("line_15"));
+        line_15->setFrameShape(QFrame::HLine);
+        line_15->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_15, 2, 1, 1, 1);
+
+        line_16 = new QFrame(scrollAreaWidgetContents);
+        line_16->setObjectName(QString::fromUtf8("line_16"));
+        line_16->setFrameShape(QFrame::HLine);
+        line_16->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_2->addWidget(line_16, 8, 1, 1, 1);
 
 
         verticalLayout_2->addLayout(gridLayout_2);
@@ -376,6 +512,17 @@ public:
         line_5->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line_5);
+
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        verticalLayout_2->addItem(horizontalSpacer_11);
+
+        line_13 = new QFrame(scrollAreaWidgetContents);
+        line_13->setObjectName(QString::fromUtf8("line_13"));
+        line_13->setFrameShape(QFrame::HLine);
+        line_13->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_13);
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
@@ -467,44 +614,46 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Drawing Tools", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "X", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "Drawing Tools", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         lineEditX->setText(QString());
-        label_7->setText(QApplication::translate("MainWindow", "Y", nullptr));
-        addNodeButton->setText(QApplication::translate("MainWindow", "Make Point", nullptr));
-        label->setText(QApplication::translate("MainWindow", "X", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        addNodeButton->setText(QCoreApplication::translate("MainWindow", "Make Point", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         lineEditX_2->setText(QString());
-        label_2->setText(QApplication::translate("MainWindow", "Y", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
         lineEditX_3->setText(QString());
-        label_3->setText(QApplication::translate("MainWindow", "Amount", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Amount", nullptr));
         lineEditX_4->setText(QString());
-        label_4->setText(QApplication::translate("MainWindow", "Angle", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Angle", nullptr));
         lineEditX_5->setText(QString());
-        makeForceButton->setText(QApplication::translate("MainWindow", "Make Force", nullptr));
-        checkBox_y_fixed->setText(QApplication::translate("MainWindow", "Fixed y", nullptr));
-        checkBox_y_fixed_2->setText(QApplication::translate("MainWindow", "Fixed x", nullptr));
-        lineEdit_x_pos->setText(QString());
-        lineEditX_y_pos->setText(QString());
-        supportButton->setText(QApplication::translate("MainWindow", "Make Support", nullptr));
+        makeForceButton->setText(QCoreApplication::translate("MainWindow", "Make Force", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "xPosition", nullptr));
+        label_11->setText(QCoreApplication::translate("MainWindow", "yPosition", nullptr));
+        checkBox_y_fixed_2->setText(QCoreApplication::translate("MainWindow", "Fixed x", nullptr));
+        checkBox_y_fixed->setText(QCoreApplication::translate("MainWindow", "Fixed y", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Angle", nullptr));
+        supportButton->setText(QCoreApplication::translate("MainWindow", "Make Support", nullptr));
+        checkBox_3->setText(QCoreApplication::translate("MainWindow", "Linear", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "set A", nullptr));
         lineEditX_8->setText(QString());
+        parametersButton->setText(QCoreApplication::translate("MainWindow", "set E", nullptr));
         lineEditX_9->setText(QString());
-        parametersButton->setText(QApplication::translate("MainWindow", "set E", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "set A", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Export as", nullptr));
-        saveButton->setText(QApplication::translate("MainWindow", "Save as", nullptr));
-        undoButton->setText(QApplication::translate("MainWindow", "Undo", nullptr));
-        loadButton->setText(QApplication::translate("MainWindow", "Load", nullptr));
-        clearButton->setText(QApplication::translate("MainWindow", "Clear", nullptr));
-        removeButton->setText(QApplication::translate("MainWindow", "Remove", nullptr));
-        checkBox_3->setText(QApplication::translate("MainWindow", "Linear", nullptr));
-        solveButton->setText(QApplication::translate("MainWindow", "Solve", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "Visibility", nullptr));
-        checkBox->setText(QApplication::translate("MainWindow", "Original", nullptr));
-        checkBox_2->setText(QApplication::translate("MainWindow", "Displacement", nullptr));
-        checkBox_4->setText(QApplication::translate("MainWindow", "show result", nullptr));
-        button_zoom_in->setText(QApplication::translate("MainWindow", "+", nullptr));
-        button_zoom_out->setText(QApplication::translate("MainWindow", "-", nullptr));
+        pushButton_itemInfo->setText(QCoreApplication::translate("MainWindow", "Item Info", nullptr));
+        saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        removeButton->setText(QCoreApplication::translate("MainWindow", "Remove", nullptr));
+        solveButton->setText(QCoreApplication::translate("MainWindow", "Solve", nullptr));
+        undoButton->setText(QCoreApplication::translate("MainWindow", "Undo", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Graphical Export", nullptr));
+        clearButton->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
+        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Visibility", nullptr));
+        checkBox->setText(QCoreApplication::translate("MainWindow", "Original", nullptr));
+        checkBox_2->setText(QCoreApplication::translate("MainWindow", "Displacement", nullptr));
+        checkBox_4->setText(QCoreApplication::translate("MainWindow", "show result", nullptr));
+        button_zoom_in->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        button_zoom_out->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
     } // retranslateUi
 
 };

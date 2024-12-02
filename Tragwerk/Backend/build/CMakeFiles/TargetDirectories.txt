@@ -1,3 +1,0 @@
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Backend/build/CMakeFiles/backend.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Backend/build/CMakeFiles/edit_cache.dir
-/home/theoman/Coding/Softwareentwicklungspraktikum/Tragwerk/Backend/build/CMakeFiles/rebuild_cache.dir
