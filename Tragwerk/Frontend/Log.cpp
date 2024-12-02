@@ -1,5 +1,5 @@
 #include "Log.h"
-
+/*
 void Log::print_nodes(const std::vector<QPointF>& nodes) {
   std::cout << "nodes : "; 
   for(auto node : nodes) {
@@ -54,6 +54,6 @@ void Log::print_supportItems(const std::vector<QPointF>& points) {
     std::cout << "(" << point.x() << "," <<  point.y() << ") ";
   }
   std::cout << "\n";
-}
+}*/
 
 

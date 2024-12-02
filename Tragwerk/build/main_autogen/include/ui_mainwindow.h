@@ -76,8 +76,6 @@ public:
     QHBoxLayout *horizontalLayout_9;
     QCheckBox *checkBox_y_fixed_2;
     QCheckBox *checkBox_y_fixed;
-    QPushButton *pushButton_3;
-    QLineEdit *lineEdit;
     QPushButton *supportButton;
     QFrame *line_7;
     QSpacerItem *horizontalSpacer_8;
@@ -146,7 +144,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 671, 865));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 673, 863));
         gridLayout_4 = new QGridLayout(scrollAreaWidgetContents);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         verticalLayout_2 = new QVBoxLayout();
@@ -323,16 +321,6 @@ public:
         checkBox_y_fixed->setObjectName(QString::fromUtf8("checkBox_y_fixed"));
 
         horizontalLayout_9->addWidget(checkBox_y_fixed);
-
-        pushButton_3 = new QPushButton(scrollAreaWidgetContents);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        horizontalLayout_9->addWidget(pushButton_3);
-
-        lineEdit = new QLineEdit(scrollAreaWidgetContents);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        horizontalLayout_9->addWidget(lineEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout_9);
@@ -633,7 +621,6 @@ public:
         label_11->setText(QCoreApplication::translate("MainWindow", "yPosition", nullptr));
         checkBox_y_fixed_2->setText(QCoreApplication::translate("MainWindow", "Fixed x", nullptr));
         checkBox_y_fixed->setText(QCoreApplication::translate("MainWindow", "Fixed y", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Angle", nullptr));
         supportButton->setText(QCoreApplication::translate("MainWindow", "Make Support", nullptr));
         checkBox_3->setText(QCoreApplication::translate("MainWindow", "Linear", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "set A", nullptr));

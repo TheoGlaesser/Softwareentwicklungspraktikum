@@ -3,19 +3,11 @@
 
 
 
-void nodeGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-      QGraphicsEllipseItem::mousePressEvent(event);
-      if (isSelected()) {
-          showInformationBox(event);
-      }
-  }
-
-
 void nodeGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-    // QGraphicsEllipseItem::mousePressEvent(event); 
-    if (event->button() == Qt::LeftButton) {
+    QGraphicsEllipseItem::mousePressEvent(event); 
+    /*if (event->button() == Qt::LeftButton) {
         isMoving = true;
-    } else if (event->button() == Qt::RightButton) {
+    }*/ if (event->button() == Qt::LeftButton) {
         isLining = true;
         startPosition = this->rect().center();
     }
@@ -47,7 +39,9 @@ void nodeGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {
         // Check if the mouse was released over another node
         for (QGraphicsItem* item : itemsAtEnd) {
             nodeGraphicsItem* otherNode = dynamic_cast<nodeGraphicsItem*>(item);
-            if (otherNode && otherNode != this) {
+            bool differentNode = (otherNode != this);
+             
+            if (otherNode && differentNode) {
                 bool lineAlreadyExists = mainWindow->isLineBetweenNodes(startPosition, otherNode->rect().center());
                 if(lineAlreadyExists) { std::cout << "line Bool: " << lineAlreadyExists << "\n"; return;}
 
@@ -60,7 +54,7 @@ void nodeGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {
                 mainWindow->lineItems.push_back(newLineItem);
                 }
             }
-            else {mainWindow->scene->removeItem(currentLine);}// currentLine = nullptr;}
+            else {mainWindow->scene->removeItem(currentLine);}// currentLine = nullptr;}*/
         }
     }
     isLining = false; isMoving = false;
@@ -79,3 +73,50 @@ void nodeGraphicsItem::showInformationBox(QGraphicsSceneMouseEvent *event) {
         infoLabel->show();
 }
 
+
+void ownGraphicsScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+  QPointF newNode = event->scenePos();
+
+  //Check if node already exists
+  bool isDrawn = false;
+  mainWindow->isAlreadyDrawn(newNode, true, isDrawn);
+
+  //Make Point in Grid if Close
+  double xRemainder = std::numeric_limits<double>::max(), yRemainder = std::numeric_limits<double>::max(), xGrid, yGrid;
+
+  //Find closest GridPoint
+  if(std::abs(std::remainder(newNode.x(), 20)) < 4)  {
+    xRemainder = std::remainder(newNode.x(), 20);
+    xGrid = newNode.x() - xRemainder;
+  }
+  else if(std::abs(std::remainder(newNode.x(), 20 + 4)) < 4)  {
+    xRemainder = std::remainder(newNode.x() + 4, 20);
+    xGrid = newNode.x() + xRemainder;
+  }
+  if(std::abs(std::remainder(newNode.y(), 20)) < 4)  {
+    yRemainder = std::remainder(newNode.y(), 20);
+    yGrid = newNode.y() - yRemainder;
+  }
+  else if(std::abs(std::remainder(newNode.y(), 20 + 4)) < 4)  {
+    yRemainder = std::remainder(newNode.y() + 4, 20);
+    yGrid = newNode.y() + yRemainder;
+  }
+
+  if(xRemainder < 4 && yRemainder < 4)  {
+      newNode.setX(xGrid);
+      newNode.setY(yGrid);
+  }
+  
+
+  if(isDrawn) {std::cout << "Already node there\n"; return;}
+
+  mainWindow->checkRedraw(newNode.x(), newNode.y());
+  mainWindow->nodes.push_back(newNode);
+  mainWindow->handleNewNodeGraphics(newNode);
+  
+  if (mainWindow->nodes.size() > 1) {//connect last node with new one
+      QPointF lastNode = mainWindow->nodes[mainWindow->nodes.size() - 2];
+      mainWindow->lines.push_back(std::pair(lastNode, newNode));
+      mainWindow->handleNewLineGraphics(lastNode, newNode);
+  }
+}

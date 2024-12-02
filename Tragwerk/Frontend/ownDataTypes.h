@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Constants.h"
+#include "Log.h"
 #include <QGraphicsSceneMouseEvent>
 #include <QMainWindow>
 #include <QGraphicsScene>
@@ -12,6 +15,8 @@
 #include <QMessageBox>
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <limits>
 
 
 class MainWindow; 
@@ -20,9 +25,8 @@ class MainWindow;
 struct support {
   QPointF p;
   bool xFixed, yFixed;
-  double xDisp, yDisp;
 
-  support(QPointF p, bool xFixed, bool yFixed, double xDisp, double yDisp) : p(p), xFixed(xFixed), yFixed(yFixed), xDisp(xDisp), yDisp(yDisp)  {}
+  support(QPointF p, bool xFixed, bool yFixed) : p(p), xFixed(xFixed), yFixed(yFixed) {}
 };
 
 struct force {
@@ -30,7 +34,6 @@ struct force {
   qreal betrag;
   qreal winkel;
 };
-
 
 
 struct forceGraphicsItem {
@@ -41,22 +44,22 @@ struct forceGraphicsItem {
 };
 
 
-
 //Subclass QGraphicsEllipseItem to represent a selectable "point"
 class nodeGraphicsItem : public QGraphicsEllipseItem {
   // Q_OBJECT
 public:
     nodeGraphicsItem(const QPointF &point, MainWindow *mainWindow)
-        : QGraphicsEllipseItem(point.x() - 4, point.y() - 4, 2 * 4, 2 * 4), currentLine(nullptr), isMoving(false), isLining(false), mainWindow(mainWindow) 
+        : QGraphicsEllipseItem(point.x() - CONSTANTS::nodeRadius, point.y() - CONSTANTS::nodeRadius, 2 * CONSTANTS::nodeRadius, 2 * CONSTANTS::nodeRadius)
+          , currentLine(nullptr), isMoving(false), isLining(false), mainWindow(mainWindow) 
     {
         setFlags(QGraphicsItem::ItemIsSelectable);  // Allow the point to be selectable
         setBrush(Qt::black);  // Fill the point with a color
     }
 
     ~nodeGraphicsItem() {};
+
 protected:
     // Override the mousePressEvent to handle selection
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event); 
     void mousePressEvent(QGraphicsSceneMouseEvent* event); 
     void mouseMoveEvent(QGraphicsSceneMouseEvent* event); 
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* event); 
@@ -72,7 +75,6 @@ private:
 };
 
 
-
 struct resultGraphicsItems {
     std::vector<nodeGraphicsItem*> nodeItems;
     std::vector<QGraphicsLineItem*> lineItems;
@@ -81,6 +83,19 @@ struct resultGraphicsItems {
 };
 
 
+class ownGraphicsScene : public QGraphicsScene 
+{
+public:
+  ownGraphicsScene(MainWindow* window) :
+  QGraphicsScene(nullptr),
+  mainWindow(window) {}
+
+protected:
+  void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+
+private:
+  MainWindow* mainWindow;
+};
 
 
 

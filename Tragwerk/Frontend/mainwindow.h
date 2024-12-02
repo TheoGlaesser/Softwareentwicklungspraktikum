@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Constants.h"
 #include "../Backend/src/Backend.h"
 #include "ownDataTypes.h"
 #include "math.h"
@@ -37,6 +36,7 @@ public:
     ~MainWindow();
 
     friend class ::nodeGraphicsItem;
+    friend class ::ownGraphicsScene;
 
 private slots:
     void addNode();
@@ -62,8 +62,24 @@ private slots:
     void getInfo();
 
 private:
+    void drawCoordinateSystem(); double width, height;
+    void showBox(const QString &);
+    bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node) const;  // Function to check line connection
+    bool isLineBetweenNodes(QPointF lhs, QPointF rhs) const;
+    bool isForceOnNode(nodeGraphicsItem* , force) const;
+    bool isSupportOnNode(nodeGraphicsItem*, QPointF) const;
+    void checkRedraw(const double& x, const double& y);
+    void isAlreadyDrawn(QPointF, bool isCreatedByClick, bool& isDrawn);
+
+    void handleNewNodeGraphics(const QPointF&);
+    void handleNewLineGraphics(const QPointF& lhs, const QPointF& rhs); 
+    void handleNewForceGraphics(const double& x, const double& y, const double& betrag, const double& winkel); 
+    void handleNewSupportGraphics(const QPointF&);
+
+
+private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene;
+    ownGraphicsScene *scene;
     
     //Nodes
     std::vector<QPointF> nodes;
@@ -99,13 +115,6 @@ private:
   
     //Bools for newsupportItems
     bool xFixed = 0, yFixed = 0;
-
-    void drawCoordinateSystem(); double width, height;
-    void showBox(const QString &);
-    bool isLineConnectedToNode(QGraphicsLineItem* line, nodeGraphicsItem* node);  // Function to check line connection
-    bool isLineBetweenNodes(QPointF lhs, QPointF rhs);
-    bool isForceOnNode(nodeGraphicsItem* , force);
-    bool isSupportOnNode(nodeGraphicsItem*, QPointF);
 };
 
 //#endif // MAINWINDOW_H
